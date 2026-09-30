@@ -138,7 +138,7 @@ def _page_state_via_browser(url: str) -> Tuple[dict, dict, List[dict], str]:
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
-            headless=True,
+            headless=False,
             args=[
                 "--disable-blink-features=AutomationControlled",
                 "--no-sandbox",
@@ -148,10 +148,14 @@ def _page_state_via_browser(url: str) -> Tuple[dict, dict, List[dict], str]:
         context = browser.new_context(
             user_agent=UA,
             locale="zh-CN",
+            timezone_id="Asia/Shanghai",
             viewport={"width": 1440, "height": 900},
             extra_http_headers={
                 "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.6",
             },
+        )
+        context.add_init_script(
+            "Object.defineProperty(navigator, 'webdriver', {get: () => undefined});"
         )
         page = context.new_page()
 
@@ -168,18 +172,44 @@ def _page_state_via_browser(url: str) -> Tuple[dict, dict, List[dict], str]:
                 pass
 
         page.on("response", on_response)
-        page.goto(url, wait_until="domcontentloaded", timeout=90000)
-        page.wait_for_timeout(8000)
+        nav_response = page.goto(url, wait_until="domcontentloaded", timeout=90000)
 
-        initial = page.evaluate("() => window.__INITIAL_STATE__ || null") or {}
-        playinfo = page.evaluate("() => window.__playinfo__ || null") or {}
+        initial: dict = {}
+        playinfo: dict = {}
+        html = ""
+        last_eval_error = ""
 
-        if not initial or not playinfo:
-            html = page.content()
+        # Bilibili may perform one or more SPA/risk navigations after first load.
+        # Retry until the execution context is stable instead of reading once.
+        for _ in range(20):
+            page.wait_for_timeout(1000)
+            try:
+                page.wait_for_load_state("domcontentloaded", timeout=5000)
+            except Exception:
+                pass
+            try:
+                initial = page.evaluate("() => window.__INITIAL_STATE__ || null") or initial
+                playinfo = page.evaluate("() => window.__playinfo__ || null") or playinfo
+                html = page.content()
+            except Exception as exc:
+                last_eval_error = f"{type(exc).__name__}: {exc}"
+                continue
+
+            if playinfo:
+                break
+            if captured:
+                for body in captured:
+                    data = body.get("data")
+                    if isinstance(data, dict) and (data.get("dash") or data.get("durl")):
+                        playinfo = {"data": data}
+                        break
+                if playinfo:
+                    break
+
+        if html:
             initial = initial or _raw_decode_assignment(html, "__INITIAL_STATE__") or {}
             playinfo = playinfo or _raw_decode_assignment(html, "__playinfo__") or {}
 
-        # If the page loaded a playurl response after hydration, use it when page-level playinfo is absent.
         if not playinfo:
             for body in captured:
                 data = body.get("data")
@@ -187,8 +217,23 @@ def _page_state_via_browser(url: str) -> Tuple[dict, dict, List[dict], str]:
                     playinfo = {"data": data}
                     break
 
+        final_url = page.url
+        try:
+            title = page.title()
+        except Exception:
+            title = ""
+        status_code = nav_response.status if nav_response else None
+
         cookies = context.cookies()
         browser.close()
+
+        if not playinfo:
+            raise RuntimeError(
+                "Chromium loaded no playable media; "
+                f"status={status_code}, final_url={final_url}, title={title!r}, "
+                f"captured_playurl={len(captured)}, last_eval_error={last_eval_error}"
+            )
+
         return initial, playinfo, cookies, "chromium_page"
 
 
