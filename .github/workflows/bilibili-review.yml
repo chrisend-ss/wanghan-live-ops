@@ -96,7 +96,11 @@ jobs:
         run: |
           git config user.name "wanghan-live-ops-bot"
           git config user.email "wanghan-live-ops-bot@users.noreply.github.com"
-          git add reviews/
+          if [ -d reviews ]; then
+            git add reviews/
+          else
+            echo "No reviews directory was produced."
+          fi
           if git diff --cached --quiet; then
             echo "No review outputs to commit."
           else
