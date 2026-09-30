@@ -84,7 +84,7 @@ jobs:
           while IFS= read -r req; do
             [ -z "$req" ] && continue
             echo "=== Processing $req ==="
-            python tools/cloud_bilibili_review.py --request "$req"
+            xvfb-run -a python tools/cloud_bilibili_review.py --request "$req"
             CODE=$?
             if [ $CODE -ne 0 ]; then
               FAILED=1
