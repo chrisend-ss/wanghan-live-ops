@@ -1,0 +1,14 @@
+{
+  "status": "failed",
+  "date": "2026-09-29",
+  "bvid": "BV1xNas6ZEpB",
+  "url": "https://www.bilibili.com/video/BV1xNas6ZEpB/?spm_id_from=333.337.search-card.all.click",
+  "label": "王焓昨日直播录屏",
+  "request_file": "review_requests/2026-09-29_BV1xNas6ZEpB.json",
+  "started_at": "2026-09-30T07:06:23.823838+00:00",
+  "storage_mode": "cloud-temporary-media",
+  "media_committed": false,
+  "error_type": "HTTPError",
+  "error": "412 Client Error: Precondition Failed for url: https://api.bilibili.com/x/web-interface/view?bvid=BV1xNas6ZEpB",
+  "finished_at": "2026-09-30T07:06:24.375613+00:00"
+}
