@@ -29,6 +29,16 @@ speaker_confidence 描述身份判定，asr_confidence / asr_quality_score 描�
 默认阈值尚未经同场人工标签校准，cosine 不等于身份概率；非王焓仅表示不匹配王焓参考，不能推断嘉宾名字。
 参考一致性无法验证其真实身份，也不是完整重叠说话检测器。
 
+用户确认一个至少 5 秒的同场参考时，可显式设置 `allow_single_reference: true`。
+报告标记 `limited_single_confirmed_clip`，仍须至少两个一致的子窗口；verify 阈值提高 0.05、reject 降低 0.05。
+单段参考证据有限，应在后续补充独立参考和人工抽样，不自动推断其他候选身份。
+
+`speaker_remove_background_music: true` 使用 torchaudio 的预训练 HDemucs vocals 源，
+参考和候选验声子窗口采用相同处理，保持 16kHz 单声道和原始样本数，音频仅在内存中。
+失败、时间长度改变、无有效语音能量时不退回未去伴奏原音，身份保持 uncertain 并报告错误类型。
+该处理只用于验声，ASR 原始证据不被重写。它可能保留 BGM 歌曲人声或其他说话人，也可能改变音色。
+模型接口见 [torchaudio 官方说明](https://docs.pytorch.org/audio/2.8/generated/torchaudio.pipelines.HDEMUCS_HIGH_MUSDB_PLUS.html)。
+
 ## ASR 与幻觉
 
 保留 raw text 和模型指标，独立审计 avg_logprob、no_speech_prob、compression_ratio、单字、字速、长音频稀疏文本。

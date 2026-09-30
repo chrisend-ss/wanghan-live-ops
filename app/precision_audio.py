@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional, Sequence
 
 import numpy as np
 
+from .audio_preprocessing import VocalIsolation
 from .speaker_verification import REJECT_THRESHOLD, VERIFY_THRESHOLD, validate_thresholds, verify_speakers
 from .transcript_quality import ASR_PASS_THRESHOLD, audit_asr_quality, verified_wanghan
 
@@ -183,10 +184,13 @@ def assign_speakers(
     verify_threshold: float = VERIFY_THRESHOLD,
     reject_threshold: float = REJECT_THRESHOLD,
     zones: Optional[Sequence[AudioZone]] = None,
+    allow_single_reference: bool = False,
+    remove_background_music: bool = False,
 ) -> Dict[str, Any]:
     """Use in-memory references only; missing/unclean references fail closed."""
     encoder = None
     samples = None
+    isolation = VocalIsolation() if remove_background_music else None
     with tempfile.TemporaryDirectory(prefix="wanghan_verify_") as temp_dir:
         def embedding(start: float, end: float):
             nonlocal encoder, samples
@@ -200,6 +204,8 @@ def assign_speakers(
             clip = samples[int(start * 16000):int(end * 16000)]
             if len(clip) < int(1.5 * 16000):
                 return None
+            if isolation is not None:
+                clip = isolation(clip)
             with torch.inference_mode():
                 return encoder.encode_batch(torch.from_numpy(clip).unsqueeze(0)).detach().cpu().numpy()
         summary = verify_speakers(
@@ -207,7 +213,9 @@ def assign_speakers(
             reference_confirmed=reference_confirmed,
             verify_threshold=verify_threshold, reject_threshold=reject_threshold,
             zones=zones, embedding=embedding,
+            allow_single_reference=allow_single_reference,
         )
+        summary["audio_preprocessing"] = isolation.summary() if isolation is not None else {"method":"none"}
     return {"segments": segments, "speaker_summary": summary}
 
 
@@ -222,6 +230,8 @@ def build_precision_transcript(
     speaker_verify_threshold: float = VERIFY_THRESHOLD,
     speaker_reject_threshold: float = REJECT_THRESHOLD,
     asr_pass_threshold: float = ASR_PASS_THRESHOLD,
+    allow_single_reference: bool = False,
+    speaker_remove_background_music: bool = False,
 ) -> Dict[str, Any]:
     validate_thresholds(speaker_verify_threshold, speaker_reject_threshold)
     if not 0 < asr_pass_threshold <= 1:
@@ -245,6 +255,8 @@ def build_precision_transcript(
         verify_threshold=speaker_verify_threshold,
         reject_threshold=speaker_reject_threshold,
         zones=zones,
+        allow_single_reference=allow_single_reference,
+        remove_background_music=speaker_remove_background_music,
     )
     speech_segments = speaker_result["segments"]
     verified = verified_wanghan(speech_segments)

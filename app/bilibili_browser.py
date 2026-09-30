@@ -406,6 +406,8 @@ def transcribe_page_media(
     speaker_verify_threshold: float = 0.72,
     speaker_reject_threshold: float = 0.45,
     asr_pass_threshold: float = 0.72,
+    allow_single_reference: bool = False,
+    speaker_remove_background_music: bool = False,
 ) -> Dict[str, Any]:
     try:
         from faster_whisper import WhisperModel
@@ -480,6 +482,8 @@ def transcribe_page_media(
                 speaker_verify_threshold=speaker_verify_threshold,
                 speaker_reject_threshold=speaker_reject_threshold,
                 asr_pass_threshold=asr_pass_threshold,
+                allow_single_reference=allow_single_reference,
+                speaker_remove_background_music=speaker_remove_background_music,
             )
             return {
                 "info": media["info"],

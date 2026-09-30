@@ -13,6 +13,7 @@ from unittest.mock import patch
 import numpy as np
 
 from app.precision_audio import AudioZone, assign_speakers, build_precision_transcript
+from app.audio_preprocessing import VocalIsolation
 from app.review_output import quality_status, write_transcripts
 from app.speaker_verification import classify_scores, verify_speakers
 from app.transcript_quality import audit_asr_quality, verified_wanghan
@@ -71,6 +72,26 @@ class ASRTests(unittest.TestCase):
 
 
 class SpeakerTests(unittest.TestCase):
+    def test_single_confirmed_reference_needs_explicit_mode_and_stricter_thresholds(self):
+        rows = [speech(start=30)]
+        options = dict(ranges=[[10,15.25]], reference_confirmed=True,
+            zones=[AudioZone("speech",0,100)], embedding=lambda s,e:[1,0])
+        result = verify_speakers(rows, **options)
+        self.assertFalse(result["reference_usable"])
+        result = verify_speakers(rows, allow_single_reference=True, **options)
+        self.assertTrue(result["reference_usable"])
+        self.assertTrue(result["single_reference_used"])
+        self.assertEqual(result["reference_evidence_strength"], "limited_single_confirmed_clip")
+        self.assertAlmostEqual(result["thresholds"]["verify"], .77)
+        self.assertAlmostEqual(result["thresholds"]["reject"], .40)
+        self.assertEqual(rows[0]["speaker_verification"], "wanghan")
+
+    def test_unconfirmed_single_reference_never_activates(self):
+        rows = [speech(start=30)]
+        result = verify_speakers(rows, ranges=[[10,15.25]], allow_single_reference=True,
+            zones=[AudioZone("speech",0,100)], embedding=lambda s,e:[1,0])
+        self.assertFalse(result["reference_usable"])
+
     def verify(self, rows, embedding, **kwargs):
         return verify_speakers(rows, ranges=[[10, 14], [20, 24]],
             reference_confirmed=True, zones=[AudioZone("speech", 0, 1000)],
@@ -231,6 +252,63 @@ class OutputTests(unittest.TestCase):
         named = [r for r in rows if any(s in r.get("text","") for s in ("中文字幕志愿者", "明镜", "YoYo Television Series Exclusive"))]
         self.assertGreater(len(named), 0)
         self.assertTrue(all(not r["asr_quality_pass"] for r in named))
+
+
+class PreprocessingTests(unittest.TestCase):
+    def test_isolation_preserves_samples_and_does_not_mutate_raw_audio(self):
+        raw = np.ones(48000, dtype=np.float32)
+        isolation = VocalIsolation(lambda wave: wave * .5)
+        isolated = isolation(raw)
+        self.assertEqual(isolated.shape, raw.shape)
+        np.testing.assert_array_equal(raw, np.ones_like(raw))
+        np.testing.assert_array_equal(isolated, raw * .5)
+        self.assertEqual(isolation.summary()["processed_window_count"], 1)
+        self.assertFalse(isolation.summary()["isolated_audio_persisted"])
+
+    def test_invalid_or_silent_isolation_never_falls_back_to_original(self):
+        for infer in (lambda wave:wave[:-1], lambda wave:wave * 0,
+                      lambda wave:wave * float("nan")):
+            isolation = VocalIsolation(infer)
+            with self.assertRaises(ValueError):
+                isolation(np.ones(48000, dtype=np.float32))
+            self.assertEqual(isolation.summary()["failed_window_count"], 1)
+            self.assertFalse(isolation.summary()["raw_fallback_on_failure"])
+
+    def test_references_and_targets_use_same_isolated_embedding_path(self):
+        class Tensor:
+            def __init__(self, array):
+                self.array = np.asarray(array)
+            def unsqueeze(self, dim): return self
+            def detach(self): return self
+            def cpu(self): return self
+            def numpy(self): return self.array
+        waves = []
+        class Encoder:
+            def encode_batch(self, tensor):
+                waves.append(tensor.array.copy())
+                return Tensor([1.,0.])
+        torch = types.SimpleNamespace(from_numpy=Tensor, inference_mode=contextlib.nullcontext)
+        sf = types.SimpleNamespace(read=lambda *args, **kwargs:(np.ones(1600000,dtype=np.float32),16000))
+        isolation = VocalIsolation(lambda wave:wave * .5)
+        with patch.dict(sys.modules, {"torch":torch, "soundfile":sf}), \
+             patch("app.precision_audio._speaker_encoder", return_value=Encoder()), \
+             patch("app.precision_audio.VocalIsolation", return_value=isolation):
+            result = assign_speakers(Path("fake.wav"), [speech(start=30)],
+                wanghan_reference_ranges=[[10,14],[20,24]], reference_confirmed=True,
+                zones=[AudioZone("speech",0,100)], remove_background_music=True)
+        self.assertEqual(len(waves), 3)
+        self.assertTrue(all(np.allclose(wave, .5) for wave in waves))
+        self.assertEqual(result["speaker_summary"]["audio_preprocessing"]["processed_window_count"], 3)
+
+    def test_preprocessing_error_marks_identity_uncertain(self):
+        rows = [speech(start=30)]
+        def failing_embedding(start,end):
+            raise ValueError("separation failed")
+        result = verify_speakers(rows, ranges=[[10,14],[20,24]], reference_confirmed=True,
+            zones=[AudioZone("speech",0,100)], embedding=failing_embedding)
+        self.assertEqual(result["reference_status"], "reference_embedding_failed")
+        self.assertEqual(result["embedding_error_types"], {"ValueError":1})
+        self.assertEqual(rows[0]["speaker_verification"], "uncertain")
 
 
 if __name__ == "__main__":

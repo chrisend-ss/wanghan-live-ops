@@ -92,6 +92,8 @@ def main() -> int:
             speaker_verify_threshold=float(request.get("speaker_verify_threshold", 0.72)),
             speaker_reject_threshold=float(request.get("speaker_reject_threshold", 0.45)),
             asr_pass_threshold=float(request.get("asr_pass_threshold", 0.72)),
+            allow_single_reference=request.get("allow_single_reference") is True,
+            speaker_remove_background_music=request.get("speaker_remove_background_music") is True,
         )
         info = result["info"]
         segments = result["segments"]
@@ -142,6 +144,8 @@ def main() -> int:
                     "quality": result.get("quality") or {},
                     "wanghan_reference_ranges": wanghan_reference_ranges,
                     "wanghan_reference_confirmed": reference_confirmed,
+                    "reference_confirmation_note": request.get("reference_note"),
+                    "speaker_remove_background_music": request.get("speaker_remove_background_music") is True,
                     "voiceprint_persisted": False,
                     "hotwords": hotwords,
                 },

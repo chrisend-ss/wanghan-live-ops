@@ -1,13 +1,18 @@
 {
   "bvid": "BV1xNas6ZEpB",
   "confirmed": false,
+  "confirmed_candidate_count": 1,
   "method": "Candidates from the pre-call opening, ASR gate passed; no identity inference from the previous clusters.",
-  "warning": "These ranges have not been heard and confirmed. Do not set wanghan_reference_confirmed from this file alone.",
+  "warning": "User confirmed the t=166 candidate as WangHan with BGM. Other candidates remain unconfirmed. Identity confirmation does not prove clean audio or successful separation.",
   "candidates": [
     {
       "start_seconds": 166.5,
       "end_seconds": 172.04,
       "timecode": "02:46.50-02:52.04",
+      "speaker_confirmed": true,
+      "confirmation_note": "用户：去掉背景音乐是他说话。当前浏览器 t=166。",
+      "background_music_present": true,
+      "speaker_reference_range": [166.65, 171.90],
       "raw_text": "都涨了 我觉得正常了 那就合理了",
       "review_url": "https://www.bilibili.com/video/BV1xNas6ZEpB/?t=166"
     },

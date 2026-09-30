@@ -31,6 +31,9 @@ description: Review WangHan livestream recordings and evidence timelines with Pr
 至少两段不重叠、每段 3–12 秒的同场王焓独白；参考中不能夹入嘉宾、歌唱或背景人声。
 代码检查 speech 覆盖率与参考一致性；声纹一致不能证明参考的身份一定是王焓。
 没有已确认干净参考时仍可做 ASR/幻觉审计，但全部身份保持 uncertain，质量状态为 reference_required。
+用户仅确认当前一段至少 5 秒参考时，可以显式启用 allow_single_reference；报告注明单段证据有限，使用更严格门槛。
+用户指出参考有背景伴奏时，启用 speaker_remove_background_music，参考与待验证窗口均先做内存中的人声/伴奏分离。
+该处理失败不得静默退回原音；人声分离不能移除所有歌曲人声或其他说话人，仍需身份/文本复核。
 历史 BV1xNas6ZEpB 的 47:03–47:55、49:12–49:50 已被审计指出混有多人，不能复用为干净参考。
 
 默认门槛：speaker verify 0.72、reject 0.45、ASR pass 0.72，均是待标注数据校准的启发式门槛。

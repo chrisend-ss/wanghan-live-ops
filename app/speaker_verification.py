@@ -57,6 +57,7 @@ def verify_speakers(
     reference_confirmed: bool = False, verify_threshold: float = VERIFY_THRESHOLD,
     reject_threshold: float = REJECT_THRESHOLD, zones=None,
     embedding: Optional[Callable[[float, float], Any]] = None,
+    allow_single_reference: bool = False,
 ) -> Dict[str, Any]:
     validate_thresholds(verify_threshold, reject_threshold)
     for row in rows:
@@ -97,13 +98,21 @@ def verify_speakers(
             return finish("reference_not_clean_speech")
         parsed.append((start, end))
     parsed.sort()
-    if len(parsed) < 2 or any(parsed[i][1] > parsed[i + 1][0] for i in range(len(parsed) - 1)):
+    single = len(parsed) == 1 and allow_single_reference and parsed[0][1] - parsed[0][0] >= 5
+    if (len(parsed) < 2 and not single) or any(parsed[i][1] > parsed[i + 1][0] for i in range(len(parsed) - 1)):
         return finish("need_two_independent_nonoverlapping_references")
+    summary["single_reference_used"] = single
+    summary["reference_evidence_strength"] = "limited_single_confirmed_clip" if single else "multiple_confirmed_clips"
+    if single:
+        verify_threshold = min(1.0, verify_threshold + 0.05)
+        reject_threshold = max(-1.0, reject_threshold - 0.05)
+        summary["thresholds"] = {"verify": verify_threshold, "reject": reject_threshold}
     if embedding is None:
         return finish("embedding_backend_unavailable")
 
     import numpy as np
 
+    errors = Counter()
     def encode(start, end):
         try:
             raw = embedding(start, end)
@@ -114,7 +123,9 @@ def verify_speakers(
             if not np.isfinite(vector).all() or norm <= 1e-9:
                 return None
             return vector / norm
-        except Exception:
+        except Exception as exc:
+            errors[type(exc).__name__] += 1
+            summary["embedding_error_types"] = dict(errors)
             return None
 
     refs = []
