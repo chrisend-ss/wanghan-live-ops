@@ -1,3 +1,4 @@
-# Optional: only needed when a Bilibili video has no usable public subtitles.
-# This is intentionally separate because speech models consume disk/RAM.
-faster-whisper
+# Optional/cloud transcription dependencies.
+# Media is downloaded only into a temporary runner directory and is not committed.
+yt-dlp>=2026.8.0
+faster-whisper>=1.2.0
