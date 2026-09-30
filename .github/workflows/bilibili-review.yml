@@ -9,6 +9,12 @@ on:
 permissions:
   contents: write
 
+# Review jobs write deterministic paths under reviews/<date>_<bvid>.
+# Serialize runs so duplicate/retry requests cannot race and conflict.
+concurrency:
+  group: wanghan-bilibili-review-main
+  cancel-in-progress: false
+
 jobs:
   transcribe:
     runs-on: ubuntu-latest
@@ -48,6 +54,12 @@ jobs:
       - name: Install Chromium for Bilibili browser fallback
         run: |
           python -m playwright install --with-deps chromium
+
+      - name: Sync latest main before processing
+        shell: bash
+        run: |
+          git fetch origin main
+          git rebase origin/main
 
       - name: Find review requests
         id: requests
