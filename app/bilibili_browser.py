@@ -457,7 +457,7 @@ def transcribe_page_media(
             str(audio_path),
             language=language,
             vad_filter=True,
-            beam_size=3,
+            beam_size=1,
         )
 
         segments: List[Dict[str, Any]] = []
