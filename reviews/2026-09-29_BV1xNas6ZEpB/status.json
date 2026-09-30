@@ -5,10 +5,10 @@
   "url": "https://www.bilibili.com/video/BV1xNas6ZEpB/?spm_id_from=333.337.search-card.all.click",
   "label": "王焓昨日直播录屏",
   "request_file": "review_requests/2026-09-29_BV1xNas6ZEpB.json",
-  "started_at": "2026-09-30T07:06:23.823838+00:00",
+  "started_at": "2026-09-30T07:10:44.339940+00:00",
   "storage_mode": "cloud-temporary-media",
   "media_committed": false,
-  "error_type": "HTTPError",
-  "error": "412 Client Error: Precondition Failed for url: https://api.bilibili.com/x/web-interface/view?bvid=BV1xNas6ZEpB",
-  "finished_at": "2026-09-30T07:06:24.375613+00:00"
+  "error_type": "RuntimeError",
+  "error": "HTTP page fallback failed: HTTPError: 412 Client Error: Precondition Failed for url: https://www.bilibili.com/video/BV1xNas6ZEpB/?spm_id_from=333.337.search-card.all.click | Browser fallback failed: Error: Page.evaluate: Execution context was destroyed, most likely because of a navigation",
+  "finished_at": "2026-09-30T07:11:01.475876+00:00"
 }
