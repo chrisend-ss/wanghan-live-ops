@@ -398,6 +398,9 @@ def transcribe_page_media(
     url: str,
     model_size: str = "small",
     language: str = "zh",
+    precision_mode: bool = False,
+    hotwords: Optional[str] = None,
+    wanghan_reference_ranges: Optional[List[List[float]]] = None,
 ) -> Dict[str, Any]:
     try:
         from faster_whisper import WhisperModel
@@ -406,10 +409,20 @@ def transcribe_page_media(
 
     media = get_page_media(url)
 
-    if media.get("subtitles"):
+    # Precision mode must inspect the audio itself so it can separate speech,
+    # music/singing and multiple speakers. Public subtitles have no reliable
+    # speaker/music attribution, so they are used only in legacy mode.
+    if media.get("subtitles") and not precision_mode:
+        safe_subtitles = []
+        for item in media["subtitles"]:
+            row = dict(item)
+            row["speaker"] = "说话人_未区分"
+            row["speaker_confidence"] = "low"
+            row["kind"] = "speech"
+            safe_subtitles.append(row)
         return {
             "info": media["info"],
-            "segments": media["subtitles"],
+            "segments": safe_subtitles,
             "source": f"bilibili_{media['method']}_subtitle",
             "needs_audio_fallback": False,
             "detected_language": language,
@@ -447,6 +460,30 @@ def transcribe_page_media(
         except Exception:
             audio_path = source_path
 
+        if precision_mode:
+            analysis_wav = convert_to_analysis_wav(
+                audio_path,
+                tmp / "analysis_16k_mono.wav",
+            )
+            precise = build_precision_transcript(
+                analysis_wav,
+                model_size=model_size,
+                language=language,
+                hotwords=hotwords,
+                wanghan_reference_ranges=wanghan_reference_ranges,
+            )
+            return {
+                "info": media["info"],
+                "segments": precise["segments"],
+                "speech_segments": precise["speech_segments"],
+                "zones": precise["zones"],
+                "speaker_summary": precise["speaker_summary"],
+                "quality": precise["quality"],
+                "source": f"bilibili_{media['method']}_{source_kind}_precision_v2",
+                "needs_audio_fallback": False,
+                "detected_language": language,
+            }
+
         model = WhisperModel(
             model_size,
             device="cpu",
@@ -470,7 +507,9 @@ def transcribe_page_media(
                     "start_seconds": float(seg.start),
                     "end_seconds": float(seg.end),
                     "text": text,
-                    "speaker": "王焓",
+                    "speaker": "说话人_未区分",
+                    "speaker_confidence": "low",
+                    "kind": "speech",
                 }
             )
 
