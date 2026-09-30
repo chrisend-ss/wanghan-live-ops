@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-29",
+  "label": "王焓昨日直播录屏",
+  "bvid": "BV1xNas6ZEpB",
+  "url": "https://www.bilibili.com/video/BV1xNas6ZEpB/?spm_id_from=333.337.search-card.all.click",
+  "title": "【听潮阁 王焓】2026. 9.29个播晚上场录屏（不清屏版  社恐）",
+  "owner": "王焓录屏组",
+  "duration_seconds": 3608,
+  "cid": 42312794772,
+  "source": "bilibili_chromium_page_audio_whisper",
+  "segment_count": 1641,
+  "generated_at": "2026-09-30T08:11:16.135769+00:00",
+  "storage_mode": "text-only-after-cloud-processing",
+  "notes": [
+    "Full video/audio is not committed to GitHub.",
+    "If public subtitles are unavailable, audio is downloaded only inside the ephemeral GitHub runner.",
+    "Automatic speech recognition may contain mistakes; preserve it as raw evidence until reviewed."
+  ]
+}
