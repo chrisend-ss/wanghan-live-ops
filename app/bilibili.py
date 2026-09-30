@@ -101,10 +101,12 @@ def _download_audio_via_browser(video_url: str, tmp_dir: str) -> Path:
     """
     Browser fallback for Bilibili anti-bot HTTP 412.
 
-    Opens the public video page in Chromium, reads window.__playinfo__ from the
-    same browser context, selects an audio DASH URL, and downloads it only to
-    the temporary runner directory. No browser profile, cookie jar, video, or
-    audio is persisted to the repository.
+    Strategy:
+    1. Open the public video page in real Chromium.
+    2. Prefer window.__playinfo__ DASH audio.
+    3. If playinfo is unavailable, capture real media requests emitted by the
+       Bilibili player and select an audio/media URL.
+    4. Download only into the ephemeral runner temp directory.
     """
     try:
         from playwright.sync_api import sync_playwright
@@ -115,6 +117,7 @@ def _download_audio_via_browser(video_url: str, tmp_dir: str) -> Path:
         ) from exc
 
     output = Path(tmp_dir) / "browser_audio.m4s"
+    captured_media: List[Dict[str, Any]] = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -131,63 +134,115 @@ def _download_audio_via_browser(video_url: str, tmp_dir: str) -> Path:
             },
         )
         page = context.new_page()
-        page.goto(video_url, wait_until="domcontentloaded", timeout=90_000)
 
-        try:
-            page.wait_for_function(
-                "() => !!window.__playinfo__",
-                timeout=30_000,
-            )
-        except Exception:
-            # Some pages populate playback state after the video element starts.
+        def remember_response(response) -> None:
             try:
-                page.evaluate(
-                    """() => {
-                        const v = document.querySelector('video');
-                        if (v) {
-                            v.muted = true;
-                            const p = v.play();
-                            if (p && p.catch) p.catch(() => {});
-                        }
-                    }"""
+                url = response.url
+                headers = response.headers
+                ctype = (headers.get("content-type") or "").lower()
+                lower = url.lower()
+                looks_media = (
+                    response.request.resource_type == "media"
+                    or "audio/" in ctype
+                    or "video/" in ctype
+                    or ".m4s" in lower
+                    or ".mp4" in lower
+                    or ".flv" in lower
                 )
-                page.wait_for_timeout(5_000)
+                if looks_media:
+                    captured_media.append(
+                        {
+                            "url": url,
+                            "content_type": ctype,
+                            "resource_type": response.request.resource_type,
+                        }
+                    )
             except Exception:
                 pass
+
+        page.on("response", remember_response)
+        page.goto(video_url, wait_until="domcontentloaded", timeout=90_000)
+
+        # Ask the player to start so Chromium emits actual media requests.
+        try:
+            page.evaluate(
+                """() => {
+                    const v = document.querySelector('video');
+                    if (v) {
+                        v.muted = true;
+                        const p = v.play();
+                        if (p && p.catch) p.catch(() => {});
+                    }
+                }"""
+            )
+        except Exception:
+            pass
+
+        # Give the page time to populate embedded playinfo and/or send media.
+        page.wait_for_timeout(8_000)
 
         play_info = page.evaluate(
             "() => window.__playinfo__ ? JSON.parse(JSON.stringify(window.__playinfo__)) : null"
         )
-        if not play_info:
-            browser.close()
-            raise RuntimeError("浏览器已打开 B站页面，但未取得 window.__playinfo__")
-
-        data = play_info.get("data") or {}
-        dash = data.get("dash") or {}
-        audio_list = dash.get("audio") or []
 
         audio_url = None
-        if audio_list:
-            best = max(
-                audio_list,
-                key=lambda item: int(item.get("bandwidth") or 0),
-            )
-            audio_url = (
-                best.get("baseUrl")
-                or best.get("base_url")
-                or ((best.get("backupUrl") or best.get("backup_url") or [None])[0])
-            )
+        if play_info:
+            data = play_info.get("data") or {}
+            dash = data.get("dash") or {}
+            audio_list = dash.get("audio") or []
 
-        # Legacy playback can expose durl instead of DASH. It may contain
-        # muxed audio+video, but it is still usable as a temporary ASR source.
-        if not audio_url:
-            durl = data.get("durl") or []
-            if durl:
-                audio_url = durl[0].get("url")
+            if audio_list:
+                best = max(
+                    audio_list,
+                    key=lambda item: int(item.get("bandwidth") or 0),
+                )
+                audio_url = (
+                    best.get("baseUrl")
+                    or best.get("base_url")
+                    or ((best.get("backupUrl") or best.get("backup_url") or [None])[0])
+                )
+
+            # Legacy playback can expose durl instead of DASH.
+            if not audio_url:
+                durl = data.get("durl") or []
+                if durl:
+                    audio_url = durl[0].get("url")
+
+        # Third fallback: use the browser's real player requests. Prefer URLs
+        # whose response MIME explicitly says audio, then generic m4s/media.
+        if not audio_url and captured_media:
+            def media_score(item: Dict[str, Any]) -> int:
+                url = item["url"].lower()
+                ctype = item["content_type"]
+                score = 0
+                if "audio/" in ctype:
+                    score += 100
+                if "audio" in url:
+                    score += 40
+                if ".m4s" in url:
+                    score += 20
+                if item["resource_type"] == "media":
+                    score += 10
+                if "video/" in ctype:
+                    score -= 10
+                return score
+
+            captured_media.sort(key=media_score, reverse=True)
+            audio_url = captured_media[0]["url"]
 
         if not audio_url:
+            debug = {
+                "page_title": page.title(),
+                "page_url": page.url,
+                "captured_media_count": len(captured_media),
+                "captured_media_sample": captured_media[:20],
+                "has_playinfo": bool(play_info),
+            }
             browser.close()
-            raise RuntimeError("B站页面存在 playinfo，但没有可用的音频/媒体 URL")
+            raise RuntimeError(
+                "浏览器已打开 B站页面，但没有取得可用音频/媒体 URL；"
+                + json.dumps(debug, ensure_ascii=False)
+            )
 
         cookies = context.cookies()
         cookie_header = "; ".join(
