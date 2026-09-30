@@ -97,6 +97,130 @@ def get_public_subtitles(bvid: str, cid: int) -> List[Dict[str, Any]]:
     ]
 
 
+def _download_audio_via_browser(video_url: str, tmp_dir: str) -> Path:
+    """
+    Browser fallback for Bilibili anti-bot HTTP 412.
+
+    Opens the public video page in Chromium, reads window.__playinfo__ from the
+    same browser context, selects an audio DASH URL, and downloads it only to
+    the temporary runner directory. No browser profile, cookie jar, video, or
+    audio is persisted to the repository.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:
+        raise RuntimeError(
+            "浏览器兜底需要 Playwright：pip install playwright && "
+            "python -m playwright install chromium"
+        ) from exc
+
+    output = Path(tmp_dir) / "browser_audio.m4s"
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(
+            headless=True,
+            args=["--no-sandbox", "--disable-dev-shm-usage"],
+        )
+        context = browser.new_context(
+            user_agent=UA,
+            locale="zh-CN",
+            viewport={"width": 1365, "height": 768},
+            extra_http_headers={
+                "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.7",
+                "Referer": "https://www.bilibili.com/",
+            },
+        )
+        page = context.new_page()
+        page.goto(video_url, wait_until="domcontentloaded", timeout=90_000)
+
+        try:
+            page.wait_for_function(
+                "() => !!window.__playinfo__",
+                timeout=30_000,
+            )
+        except Exception:
+            # Some pages populate playback state after the video element starts.
+            try:
+                page.evaluate(
+                    """() => {
+                        const v = document.querySelector('video');
+                        if (v) {
+                            v.muted = true;
+                            const p = v.play();
+                            if (p && p.catch) p.catch(() => {});
+                        }
+                    }"""
+                )
+                page.wait_for_timeout(5_000)
+            except Exception:
+                pass
+
+        play_info = page.evaluate(
+            "() => window.__playinfo__ ? JSON.parse(JSON.stringify(window.__playinfo__)) : null"
+        )
+        if not play_info:
+            browser.close()
+            raise RuntimeError("浏览器已打开 B站页面，但未取得 window.__playinfo__")
+
+        data = play_info.get("data") or {}
+        dash = data.get("dash") or {}
+        audio_list = dash.get("audio") or []
+
+        audio_url = None
+        if audio_list:
+            best = max(
+                audio_list,
+                key=lambda item: int(item.get("bandwidth") or 0),
+            )
+            audio_url = (
+                best.get("baseUrl")
+                or best.get("base_url")
+                or ((best.get("backupUrl") or best.get("backup_url") or [None])[0])
+            )
+
+        # Legacy playback can expose durl instead of DASH. It may contain
+        # muxed audio+video, but it is still usable as a temporary ASR source.
+        if not audio_url:
+            durl = data.get("durl") or []
+            if durl:
+                audio_url = durl[0].get("url")
+
+        if not audio_url:
+            browser.close()
+            raise RuntimeError("B站页面存在 playinfo，但没有可用的音频/媒体 URL")
+
+        cookies = context.cookies()
+        cookie_header = "; ".join(
+            f"{item['name']}={item['value']}" for item in cookies
+        )
+        browser.close()
+
+    headers = {
+        "User-Agent": UA,
+        "Referer": video_url,
+        "Origin": "https://www.bilibili.com",
+    }
+    if cookie_header:
+        headers["Cookie"] = cookie_header
+
+    with requests.get(
+        audio_url,
+        headers=headers,
+        stream=True,
+        timeout=(20, 120),
+    ) as resp:
+        resp.raise_for_status()
+        with output.open("wb") as f:
+            for chunk in resp.iter_content(chunk_size=1024 * 1024):
+                if chunk:
+                    f.write(chunk)
+
+    if not output.exists() or output.stat().st_size < 1024:
+        raise RuntimeError("浏览器获取到媒体地址，但临时音频下载为空")
+
+    return output
+
+
 def transcribe_temp_audio(
     video_url: str,
     model_size: str = "small",
@@ -133,15 +257,24 @@ def transcribe_temp_audio(
             output_template,
             video_url,
         ]
-        subprocess.run(cmd, check=True)
+        audio_path: Optional[Path] = None
+        try:
+            subprocess.run(cmd, check=True)
+            audio_files = list(Path(tmp).glob("audio.*"))
+            if audio_files:
+                audio_path = audio_files[0]
+        except subprocess.CalledProcessError:
+            # Bilibili frequently returns HTTP 412 to non-browser cloud
+            # requests. Fall back to a real Chromium page and its embedded
+            # playback state.
+            audio_path = _download_audio_via_browser(video_url, tmp)
 
-        audio_files = list(Path(tmp).glob("audio.*"))
-        if not audio_files:
-            raise RuntimeError("没有生成临时音频")
+        if audio_path is None:
+            audio_path = _download_audio_via_browser(video_url, tmp)
 
         model = WhisperModel(model_size, device="auto", compute_type="int8")
         segments, _ = model.transcribe(
-            str(audio_files[0]),
+            str(audio_path),
             language=language,
             vad_filter=True,
         )
