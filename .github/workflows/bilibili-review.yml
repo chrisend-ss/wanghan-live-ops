@@ -109,7 +109,25 @@ jobs:
             echo "No review outputs to commit."
           else
             git commit -m "data: add Bilibili review transcript"
-            git push
+
+            # Multiple transcription jobs may finish at nearly the same time.
+            # Rebase onto the newest main before pushing so independent review
+            # folders do not fail with a non-fast-forward race.
+            PUSHED=0
+            for attempt in 1 2 3 4; do
+              echo "Push attempt $attempt"
+              if git pull --rebase origin main && git push origin HEAD:main; then
+                PUSHED=1
+                break
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+
+            if [ "$PUSHED" -ne 1 ]; then
+              echo "Failed to publish review outputs after retries."
+              exit 1
+            fi
           fi
 
       - name: Upload review artifact
