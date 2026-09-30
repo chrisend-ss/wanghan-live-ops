@@ -4,5 +4,5 @@
   "label": "王焓昨日直播录屏",
   "audio_fallback": true,
   "model": "small",
-  "retry": 3
+  "retry": 4
 }
