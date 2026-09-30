@@ -217,6 +217,69 @@ def _page_state_via_browser(url: str) -> Tuple[dict, dict, List[dict], str]:
                     playinfo = {"data": data}
                     break
 
+        # Prefer subtitles fetched from inside the real browser context.
+        # This avoids Bilibili's 412 responses seen from direct cloud API requests.
+        subtitle_segments: List[Dict[str, Any]] = []
+        try:
+            meta = _metadata_from_initial(initial, extract_bvid(url))
+            bvid_value = meta.get("bvid")
+            cid_value = meta.get("cid")
+            if bvid_value and cid_value:
+                player_payload = page.evaluate(
+                    """async ({bvid, cid}) => {
+                        const u = new URL('https://api.bilibili.com/x/player/v2');
+                        u.searchParams.set('bvid', bvid);
+                        u.searchParams.set('cid', String(cid));
+                        const r = await fetch(u.toString(), {
+                            credentials: 'include',
+                            headers: { 'Accept': 'application/json, text/plain, */*' }
+                        });
+                        return await r.json();
+                    }""",
+                    {"bvid": bvid_value, "cid": cid_value},
+                )
+                tracks = (
+                    (((player_payload or {}).get("data") or {}).get("subtitle") or {}).get("subtitles")
+                    or []
+                )
+                tracks = sorted(
+                    tracks,
+                    key=lambda s: (
+                        0 if "zh" in str(s.get("lan", "")).lower() else 1,
+                        0 if "ai" not in str(s.get("lan_doc", "")).lower() else 1,
+                    ),
+                )
+                if tracks:
+                    subtitle_url = tracks[0].get("subtitle_url")
+                    if subtitle_url:
+                        if subtitle_url.startswith("//"):
+                            subtitle_url = "https:" + subtitle_url
+                        subtitle_payload = page.evaluate(
+                            """async (u) => {
+                                const r = await fetch(u, {credentials: 'include'});
+                                return await r.json();
+                            }""",
+                            subtitle_url,
+                        )
+                        for item in (subtitle_payload or {}).get("body") or []:
+                            text_value = str(item.get("content", "")).strip()
+                            if not text_value:
+                                continue
+                            subtitle_segments.append(
+                                {
+                                    "start_seconds": float(item.get("from", 0)),
+                                    "end_seconds": float(item.get("to", item.get("from", 0))),
+                                    "text": text_value,
+                                    "speaker": "王焓",
+                                }
+                            )
+        except Exception as exc:
+            if isinstance(playinfo, dict):
+                playinfo["_wanghan_subtitle_error"] = f"{type(exc).__name__}: {exc}"
+
+        if isinstance(playinfo, dict) and subtitle_segments:
+            playinfo["_wanghan_subtitles"] = subtitle_segments
+
         final_url = page.url
         try:
             title = page.title()
@@ -251,6 +314,7 @@ def get_page_media(url: str) -> Dict[str, Any]:
                 "cookies": cookies,
                 "method": method,
                 "candidates": candidates,
+                "subtitles": playinfo.get("_wanghan_subtitles") or [],
             }
         errors.append("HTTP page loaded but contained no usable playinfo media.")
     except Exception as exc:
@@ -267,6 +331,7 @@ def get_page_media(url: str) -> Dict[str, Any]:
             "cookies": cookies,
             "method": method,
             "candidates": candidates,
+            "subtitles": playinfo.get("_wanghan_subtitles") or [],
         }
     except Exception as exc:
         errors.append(f"Browser fallback failed: {type(exc).__name__}: {exc}")
@@ -340,6 +405,15 @@ def transcribe_page_media(
         raise RuntimeError("faster-whisper is required") from exc
 
     media = get_page_media(url)
+
+    if media.get("subtitles"):
+        return {
+            "info": media["info"],
+            "segments": media["subtitles"],
+            "source": f"bilibili_{media['method']}_subtitle",
+            "needs_audio_fallback": False,
+            "detected_language": language,
+        }
 
     with tempfile.TemporaryDirectory(prefix="wanghan_bili_page_") as tmp_dir:
         tmp = Path(tmp_dir)
