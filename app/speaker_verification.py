@@ -173,4 +173,3 @@ def verify_speakers(
         })
     summary["embedding_failure_count"] = failures
     return finish("usable")
-

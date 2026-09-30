@@ -58,4 +58,3 @@ Workflow artifact 可用于恢复文字结果；产物提交失败与转写失�
 媒体和语音片段仅在临时 Runner；声纹向量只在本次内存中，结束即释放。
 通用模型权重缓存不含个人声纹。Git 与 artifact 只提交文字/JSON/JSONL，禁止音视频、向量文件或媒体目录。
 具体请求和字段见仓库 `docs/PRECISION_V21.md`。
-

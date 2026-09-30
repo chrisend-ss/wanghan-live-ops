@@ -57,4 +57,3 @@ def quality_status(quality: Dict[str, Any], speaker: Dict[str, Any]) -> Dict[str
         "verified_transcript": quality.get("verified_transcript", {}),
         "voiceprint_persisted": False,
     }
-

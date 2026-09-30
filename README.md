@@ -99,4 +99,3 @@ curl -X POST http://127.0.0.1:8080/ingest \
 ## 数据合规
 
 只采集运营所需的直播事件；不要把登录 Cookie、账号密码、App Secret 或长期 token 提交到 GitHub。生产环境请使用环境变量或密钥管理服务。
-

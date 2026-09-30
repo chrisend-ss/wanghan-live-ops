@@ -65,4 +65,3 @@ python tools/cloud_bilibili_review.py --request review_requests/2026-09-29_BV1xN
 
 audit 工具只重审旧文本，原有身份标注在新结果中失效，不能当成 full audio rerun。
 维护技能入口在 `skills/wanghan-live-review/SKILL.md`。
-

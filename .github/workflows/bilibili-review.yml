@@ -173,4 +173,3 @@ jobs:
       - name: Mark workflow failed when transcription failed
         if: steps.process.outcome == 'failure'
         run: exit 1
-

@@ -13,4 +13,3 @@ torchaudio==2.8.0
 huggingface-hub>=0.23,<1
 numpy>=1.26,<3
 soundfile>=0.12.1
-

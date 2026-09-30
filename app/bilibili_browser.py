@@ -529,4 +529,3 @@ def transcribe_page_media(
             "needs_audio_fallback": False,
             "detected_language": getattr(detected, "language", language),
         }
-

@@ -188,4 +188,3 @@ def verified_wanghan(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             and r.get("asr_quality_pass") is True
             and r.get("hallucination_status") == "clear"
             and str(r.get("text", "")).strip()]
-

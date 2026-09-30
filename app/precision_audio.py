@@ -318,4 +318,3 @@ def build_precision_transcript(
             },
         },
     }
-

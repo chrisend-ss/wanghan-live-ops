@@ -53,4 +53,3 @@ Runner 销毁 → 临时音频自动消失
 - `bilibili_temp_audio_whisper`：GitHub Runner 临时音频 + Whisper 自动转写；
 - 自动转写必须保留时间码，并在成为“王焓真实口语样本”前进行校对；
 - 唱歌歌词、背景人声和连麦对象可能被识别进转写，后续复盘需要区分。
-
