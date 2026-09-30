@@ -1,6 +1,6 @@
 {
   "date": "2026-09-29",
-  "url": "https://www.bilibili.com/video/BV1xNas6ZEpB/?spm_id_from=333.1387.homepage.video_card.click&vd_source=695c8532c926bd4eb1c470ededc1660b",
+  "url": "https://www.bilibili.com/video/BV1xNas6ZEpB/?spm_id_from=333.337.search-card.all.click",
   "label": "王焓 9月29日晚场 精准转写V2",
   "audio_fallback": true,
   "model": "large-v3",
@@ -8,13 +8,9 @@
   "output_suffix": "precise_v2",
   "hotwords": "王焓 焓太医 听潮阁 中医 连麦 PK 粉丝团 灯牌 音浪 开灯 不周山",
   "wanghan_reference_ranges": [
-    [
-      2823,
-      2875
-    ],
-    [
-      2952,
-      2990
-    ]
-  ]
+    [2823, 2875],
+    [2952, 2990]
+  ],
+  "retry": 1,
+  "requested_at": "2026-09-30T17:51:00+08:00"
 }
