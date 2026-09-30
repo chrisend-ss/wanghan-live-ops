@@ -1,0 +1,44 @@
+{
+  "status": "audit_completed",
+  "run_mode": "legacy_text_audit",
+  "pipeline_version": "precision_v2_1",
+  "quality_status": "reference_required",
+  "speaker_distribution": {
+    "wanghan": 0,
+    "non_wanghan": 0,
+    "uncertain": 534
+  },
+  "asr_quality": {
+    "scored_count": 534,
+    "passed_count": 386,
+    "excluded_count": 148,
+    "pass_threshold": 0.72,
+    "score_semantics": "heuristic_quality_gate_not_accuracy_probability",
+    "independent_of_speaker_confidence": true,
+    "model_evidence_coverage": {
+      "avg_logprob": 534,
+      "no_speech_prob": 534,
+      "compression_ratio": 0
+    },
+    "reason_counts": {
+      "sparse_text": 4,
+      "borderline_no_speech_probability": 49,
+      "single_character": 9,
+      "high_no_speech_probability": 34,
+      "low_logprob": 5,
+      "borderline_logprob": 16,
+      "implausible_text_rate": 3
+    }
+  },
+  "hallucination_distribution": {
+    "clear": 483,
+    "review": 3,
+    "rejected": 48
+  },
+  "verified_transcript": {
+    "segment_count": 0,
+    "speech_seconds": 0,
+    "reason": "No new audio speaker verification in a legacy-text audit"
+  },
+  "voiceprint_persisted": false
+}

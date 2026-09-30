@@ -402,6 +402,10 @@ def transcribe_page_media(
     precision_mode: bool = False,
     hotwords: Optional[str] = None,
     wanghan_reference_ranges: Optional[List[List[float]]] = None,
+    reference_confirmed: bool = False,
+    speaker_verify_threshold: float = 0.72,
+    speaker_reject_threshold: float = 0.45,
+    asr_pass_threshold: float = 0.72,
 ) -> Dict[str, Any]:
     try:
         from faster_whisper import WhisperModel
@@ -472,6 +476,10 @@ def transcribe_page_media(
                 language=language,
                 hotwords=hotwords,
                 wanghan_reference_ranges=wanghan_reference_ranges,
+                reference_confirmed=reference_confirmed,
+                speaker_verify_threshold=speaker_verify_threshold,
+                speaker_reject_threshold=speaker_reject_threshold,
+                asr_pass_threshold=asr_pass_threshold,
             )
             return {
                 "info": media["info"],
@@ -480,7 +488,7 @@ def transcribe_page_media(
                 "zones": precise["zones"],
                 "speaker_summary": precise["speaker_summary"],
                 "quality": precise["quality"],
-                "source": f"bilibili_{media['method']}_{source_kind}_precision_v2",
+                "source": f"bilibili_{media['method']}_{source_kind}_precision_v2_1",
                 "needs_audio_fallback": False,
                 "detected_language": language,
             }
@@ -521,3 +529,4 @@ def transcribe_page_media(
             "needs_audio_fallback": False,
             "detected_language": getattr(detected, "language", language),
         }
+

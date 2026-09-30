@@ -1,5 +1,10 @@
 # WangHan Live Ops Hub
 
+Precision V2.1 使用同场参考逐段验证王焓身份，并独立审计 ASR 与字幕幻觉。
+产物含 `wanghan_verified_transcript.md`；参考未确认时保持“不确定”。
+请求、验收口径与低存储规则见 [Precision V2.1](docs/PRECISION_V21.md)，
+技能入口见 [王焓直播复盘](skills/wanghan-live-review/SKILL.md)。
+
 面向王焓直播运营的数据接口层。目标是把直播侧事件统一为一个稳定的本地/服务器 API，供实时面板、飞书、ChatGPT 分析和直播复盘使用。
 
 ## 当前能力
@@ -94,3 +99,4 @@ curl -X POST http://127.0.0.1:8080/ingest \
 ## 数据合规
 
 只采集运营所需的直播事件；不要把登录 Cookie、账号密码、App Secret 或长期 token 提交到 GitHub。生产环境请使用环境变量或密钥管理服务。
+

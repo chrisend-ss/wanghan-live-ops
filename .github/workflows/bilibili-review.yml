@@ -5,6 +5,11 @@ on:
     paths:
       - "review_requests/*.json"
   workflow_dispatch:
+    inputs:
+      request:
+        description: Review request JSON path
+        required: true
+        default: review_requests/2026-09-29_BV1xNas6ZEpB_precise_v2_1.json
 
 permissions:
   contents: write
@@ -12,13 +17,15 @@ permissions:
 # Review jobs write deterministic paths under reviews/<date>_<bvid>.
 # Serialize runs so duplicate/retry requests cannot race and conflict.
 concurrency:
-  group: wanghan-bilibili-review-main
+  group: wanghan-bilibili-review-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   transcribe:
     runs-on: ubuntu-latest
     timeout-minutes: 330
+    env:
+      RESULTS_BRANCH: ${{ github.ref_name }}
 
     steps:
       - name: Checkout
@@ -48,30 +55,34 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
           pip install -r requirements-transcribe.txt
+
+      - name: Test Precision V2.1 gates
+        run: python -m unittest discover -s tests -v
 
       - name: Install Chromium for Bilibili browser fallback
         run: |
           python -m playwright install --with-deps chromium
 
-      - name: Sync latest main before processing
-        shell: bash
-        run: |
-          git fetch origin main
-          git rebase origin/main
-
       - name: Find review requests
         id: requests
         shell: bash
+        env:
+          REQUEST_PATH: ${{ inputs.request }}
         run: |
           set -u
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            FILES=$(find review_requests -maxdepth 1 -type f -name '*.json' | sort)
+            if [[ ! "$REQUEST_PATH" =~ ^review_requests/[A-Za-z0-9_-]+\.json$ ]] || [ ! -f "$REQUEST_PATH" ]; then
+              echo "Invalid review request path"
+              exit 1
+            fi
+            FILES="$REQUEST_PATH"
           else
             BEFORE="${{ github.event.before }}"
             if [[ "$BEFORE" =~ ^0+$ ]]; then
-              FILES=$(find review_requests -maxdepth 1 -type f -name '*.json' | sort)
+              FILES=$(git diff --name-only HEAD^ HEAD -- 'review_requests/*.json')
             else
               FILES=$(git diff --name-only "$BEFORE" "${{ github.sha }}" -- 'review_requests/*.json' || true)
             fi
@@ -113,6 +124,11 @@ jobs:
           git config user.name "wanghan-live-ops-bot"
           git config user.email "wanghan-live-ops-bot@users.noreply.github.com"
           if [ -d reviews ]; then
+            UNEXPECTED=$(find reviews -type f ! -name '*.md' ! -name '*.json' ! -name '*.jsonl')
+            if [ -n "$UNEXPECTED" ]; then
+              echo "Refusing to commit non-text review files."
+              exit 1
+            fi
             git add reviews/
           else
             echo "No reviews directory was produced."
@@ -123,12 +139,12 @@ jobs:
             git commit -m "data: add Bilibili review transcript"
 
             # Multiple transcription jobs may finish at nearly the same time.
-            # Rebase onto the newest main before pushing so independent review
+            # Rebase onto the requested branch before pushing so independent review
             # folders do not fail with a non-fast-forward race.
             PUSHED=0
             for attempt in 1 2 3 4; do
               echo "Push attempt $attempt"
-              if git pull --rebase origin main && git push origin HEAD:main; then
+              if git pull --rebase origin "$RESULTS_BRANCH" && git push origin "HEAD:$RESULTS_BRANCH"; then
                 PUSHED=1
                 break
               fi
@@ -147,10 +163,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wanghan-bilibili-review-${{ github.run_id }}
-          path: reviews/
+          path: |
+            reviews/**/*.md
+            reviews/**/*.json
+            reviews/**/*.jsonl
           if-no-files-found: warn
           retention-days: 14
 
       - name: Mark workflow failed when transcription failed
         if: steps.process.outcome == 'failure'
         run: exit 1
+

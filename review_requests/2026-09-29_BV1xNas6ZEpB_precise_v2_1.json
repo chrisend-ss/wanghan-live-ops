@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-29",
+  "url": "https://www.bilibili.com/video/BV1xNas6ZEpB/",
+  "label": "王焓 9月29日晚场 Precision V2.1",
+  "audio_fallback": true,
+  "model": "large-v3",
+  "precision_mode": true,
+  "output_suffix": "precise_v2_1",
+  "hotwords": "王焓 焓太医 听潮阁 中医 连麦 PK 粉丝团 灯牌 音浪 开灯 不周山",
+  "wanghan_reference_ranges": [],
+  "wanghan_reference_confirmed": false,
+  "speaker_verify_threshold": 0.72,
+  "speaker_reject_threshold": 0.45,
+  "asr_pass_threshold": 0.72,
+  "reference_note": "Previous 47:03-47:55 and 49:12-49:50 references contain multiple voices. Await confirmed clean same-recording ranges.",
+  "retry": 1
+}
+

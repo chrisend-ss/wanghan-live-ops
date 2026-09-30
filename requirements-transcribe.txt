@@ -6,6 +6,11 @@ playwright>=1.55.0
 
 # Precision transcription mode: speech/music/noise segmentation + speaker verification.
 inaSpeechSegmenter>=0.8.0
-speechbrain>=1.0.0
-scikit-learn>=1.4.0
+speechbrain==1.0.3
+# SpeechBrain 1.0.3 requires the pre-2.9 torchaudio backend APIs.
+torch==2.8.0
+torchaudio==2.8.0
+huggingface-hub>=0.23,<1
+numpy>=1.26,<3
 soundfile>=0.12.1
+
