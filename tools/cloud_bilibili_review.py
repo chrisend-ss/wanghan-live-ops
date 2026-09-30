@@ -45,6 +45,12 @@ def main() -> int:
     allow_audio = bool(request.get("audio_fallback", True))
     label = str(request.get("label") or "王焓直播录屏").strip()
     output_suffix = str(request.get("output_suffix") or "").strip()
+    precision_mode = bool(request.get("precision_mode", False))
+    hotwords = str(
+        request.get("hotwords")
+        or "王焓 焓太医 听潮阁 中医 连麦 PK 粉丝团 灯牌 音浪 开灯"
+    ).strip()
+    wanghan_reference_ranges = request.get("wanghan_reference_ranges") or []
 
     bvid = extract_bvid(url)
     folder_name = f"{date}_{bvid}" + (f"_{output_suffix}" if output_suffix else "")
@@ -62,10 +68,18 @@ def main() -> int:
         "started_at": started_at,
         "storage_mode": "cloud-temporary-media",
         "media_committed": False,
+        "precision_mode": precision_mode,
     }
     write_json(out_dir / "status.json", status)
 
-    for stale_name in ("ERROR.md", "metadata.json", "transcript.jsonl", "transcript.md"):
+    for stale_name in (
+        "ERROR.md",
+        "metadata.json",
+        "transcript.jsonl",
+        "transcript.md",
+        "quality_report.json",
+        "audio_zones.jsonl",
+    ):
         stale = out_dir / stale_name
         if stale.exists():
             stale.unlink()
@@ -75,6 +89,9 @@ def main() -> int:
             url=url,
             model_size=model,
             language="zh",
+            precision_mode=precision_mode,
+            hotwords=hotwords,
+            wanghan_reference_ranges=wanghan_reference_ranges,
         )
         info = result["info"]
         segments = result["segments"]
@@ -92,10 +109,19 @@ def main() -> int:
             "segment_count": len(segments),
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "storage_mode": "text-only-after-cloud-processing",
+            "precision_mode": precision_mode,
+            "speaker_summary": result.get("speaker_summary"),
+            "quality": result.get("quality"),
             "notes": [
                 "Full video/audio is not committed to GitHub.",
                 "If public subtitles are unavailable, audio is downloaded only inside the ephemeral GitHub runner.",
                 "Automatic speech recognition may contain mistakes; preserve it as raw evidence until reviewed.",
+                (
+                    "Precision mode separates speech from music/singing before ASR and "
+                    "clusters speakers; speaker labels still carry confidence and are not ground truth."
+                    if precision_mode
+                    else "Legacy mode does not reliably separate speakers from background audio."
+                ),
             ],
         }
         write_json(out_dir / "metadata.json", metadata)
@@ -105,8 +131,13 @@ def main() -> int:
                 row = {
                     "start_seconds": float(seg["start_seconds"]),
                     "end_seconds": float(seg["end_seconds"]),
-                    "speaker": str(seg.get("speaker", "王焓")),
-                    "text": str(seg["text"]),
+                    "kind": str(seg.get("kind", "speech")),
+                    "speaker": str(seg.get("speaker", "说话人_未区分")),
+                    "speaker_confidence": str(seg.get("speaker_confidence", "low")),
+                    "speaker_cluster": seg.get("speaker_cluster"),
+                    "text": str(seg.get("text", "")),
+                    "avg_logprob": seg.get("avg_logprob"),
+                    "no_speech_prob": seg.get("no_speech_prob"),
                     "source": result["source"],
                 }
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -120,20 +151,49 @@ def main() -> int:
             f"- 时长: {info.get('duration') or ''} 秒",
             f"- 片段数: {len(segments)}",
             "",
-            "> 自动转写属于原始证据草稿。唱歌、多人声音、背景音和识别错误需要后续校对，不应直接当作王焓固定口头禅。",
+            (
+                "> 精准模式会先把语音与音乐/歌唱分开，再做多人说话人聚类。"
+                "标为王焓的片段仍应结合 speaker_confidence 复核。"
+                if precision_mode
+                else "> 自动转写属于原始证据草稿。唱歌、多人声音、背景音和识别错误需要后续校对。"
+            ),
             "",
         ]
         for seg in segments:
             start = fmt_time(float(seg["start_seconds"]))
             end = fmt_time(float(seg["end_seconds"]))
-            text = str(seg["text"]).strip()
-            if text:
-                lines.append(f"**[{start}–{end}] 王焓**  {text}")
+            kind = str(seg.get("kind", "speech"))
+            speaker = str(seg.get("speaker", "说话人_未区分"))
+            confidence = str(seg.get("speaker_confidence", "low"))
+            text = str(seg.get("text", "")).strip()
+
+            if kind == "speech" and text:
+                lines.append(
+                    f"**[{start}–{end}] {speaker} [{confidence}]**  {text}"
+                )
+            elif precision_mode and kind == "music":
+                lines.append(f"**[{start}–{end}] 背景音乐/歌唱**")
 
         (out_dir / "transcript.md").write_text(
             "\n\n".join(lines) + "\n",
             encoding="utf-8",
         )
+
+        if precision_mode:
+            write_json(
+                out_dir / "quality_report.json",
+                {
+                    "precision_mode": True,
+                    "source": result["source"],
+                    "speaker_summary": result.get("speaker_summary") or {},
+                    "quality": result.get("quality") or {},
+                    "wanghan_reference_ranges": wanghan_reference_ranges,
+                    "hotwords": hotwords,
+                },
+            )
+            with (out_dir / "audio_zones.jsonl").open("w", encoding="utf-8") as f:
+                for zone in result.get("zones") or []:
+                    f.write(json.dumps(zone, ensure_ascii=False) + "\n")
 
         status.update(
             {
@@ -142,6 +202,9 @@ def main() -> int:
                 "segment_count": len(segments),
                 "finished_at": datetime.now(timezone.utc).isoformat(),
                 "needs_audio_fallback": result.get("needs_audio_fallback", False),
+                "precision_mode": precision_mode,
+                "speaker_summary": result.get("speaker_summary"),
+                "quality": result.get("quality"),
             }
         )
         write_json(out_dir / "status.json", status)
