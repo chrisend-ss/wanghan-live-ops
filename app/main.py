@@ -5,27 +5,33 @@ from fastapi import Depends, FastAPI, Query, WebSocket, WebSocketDisconnect
 
 from .auth import require_api_key
 from .models import LiveEvent, StatsResponse
+from .ops_router import router as ops_router
+from .sessions import get_active_session_id
 from .state import state
+from .storage import storage
 
 load_dotenv()
 
 app = FastAPI(
     title="WangHan Live Ops Hub",
-    version="0.1.0",
-    description="Realtime event hub for WangHan live operations.",
+    version="0.2.0",
+    description="Realtime event hub and experiment system for WangHan live operations.",
 )
+
+app.include_router(ops_router)
 
 
 @app.get("/health")
 async def health():
-    return {"ok": True, "service": "wanghan-live-ops"}
+    return {"ok": True, "service": "wanghan-live-ops", "version": "0.2.0"}
 
 
 @app.post("/ingest")
 async def ingest(event: LiveEvent, _: None = Depends(require_api_key)):
     await state.add_event(event)
+    storage.save_event(event, get_active_session_id())
     await state.broadcast(event)
-    return {"ok": True}
+    return {"ok": True, "session_id": get_active_session_id()}
 
 
 @app.get("/events/recent", response_model=List[LiveEvent])
