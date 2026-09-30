@@ -44,9 +44,11 @@ def main() -> int:
     model = str(request.get("model") or "small").strip()
     allow_audio = bool(request.get("audio_fallback", True))
     label = str(request.get("label") or "王焓直播录屏").strip()
+    output_suffix = str(request.get("output_suffix") or "").strip()
 
     bvid = extract_bvid(url)
-    out_dir = Path("reviews") / f"{date}_{bvid}"
+    folder_name = f"{date}_{bvid}" + (f"_{output_suffix}" if output_suffix else "")
+    out_dir = Path("reviews") / folder_name
     out_dir.mkdir(parents=True, exist_ok=True)
 
     started_at = datetime.now(timezone.utc).isoformat()
