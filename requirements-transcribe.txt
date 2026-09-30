@@ -3,4 +3,9 @@
 yt-dlp>=2026.8.0
 faster-whisper>=1.2.0
 playwright>=1.55.0
-\ninaSpeechSegmenter>=0.8.0\nspeechbrain>=1.0.0\nscikit-learn>=1.4.0\nsoundfile>=0.12.1\n
+
+# Precision transcription mode: speech/music/noise segmentation + speaker verification.
+inaSpeechSegmenter>=0.8.0
+speechbrain>=1.0.0
+scikit-learn>=1.4.0
+soundfile>=0.12.1
