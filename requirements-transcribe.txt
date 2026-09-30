@@ -2,3 +2,4 @@
 # Media is downloaded only into a temporary runner directory and is not committed.
 yt-dlp>=2026.8.0
 faster-whisper>=1.2.0
+playwright>=1.55.0
