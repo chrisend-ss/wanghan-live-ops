@@ -1,0 +1,15 @@
+{
+  "status": "completed",
+  "date": "2026-09-29",
+  "bvid": "BV1xNas6ZEpB",
+  "url": "https://www.bilibili.com/video/BV1xNas6ZEpB/?spm_id_from=333.337.search-card.all.click",
+  "label": "王焓昨日直播录屏-极速草稿",
+  "request_file": "review_requests/2026-09-29_BV1xNas6ZEpB_draft.json",
+  "started_at": "2026-09-30T07:36:53.995629+00:00",
+  "storage_mode": "cloud-temporary-media",
+  "media_committed": false,
+  "source": "bilibili_chromium_page_audio_whisper",
+  "segment_count": 2205,
+  "finished_at": "2026-09-30T07:44:13.285295+00:00",
+  "needs_audio_fallback": false
+}
