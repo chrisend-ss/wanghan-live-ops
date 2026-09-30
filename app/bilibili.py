@@ -167,9 +167,34 @@ def import_bilibili(
     allow_temp_audio: bool = False,
     whisper_model: str = "small",
 ) -> Dict[str, Any]:
-    info = get_video_info(url)
-    segments = get_public_subtitles(info["bvid"], info["cid"])
-    source = "bilibili_subtitle"
+    """
+    Prefer lightweight Bilibili metadata/subtitles, but never let the public
+    metadata API be a single point of failure. Bilibili may return HTTP 412 to
+    cloud IPs. In that case, fall through to yt-dlp, which can often recover
+    media from the webpage's embedded window.__playinfo__.
+    """
+    bvid = extract_bvid(url)
+    info: Dict[str, Any] = {
+        "bvid": bvid,
+        "title": bvid,
+        "owner": None,
+        "duration": None,
+        "cid": None,
+        "pages": [],
+    }
+    segments: List[Dict[str, Any]] = []
+    source = "none"
+    metadata_error: Optional[str] = None
+
+    try:
+        info = get_video_info(url)
+        segments = get_public_subtitles(info["bvid"], info["cid"])
+        if segments:
+            source = "bilibili_subtitle"
+    except Exception as exc:
+        # HTTP 412 and other metadata failures are expected on some cloud IPs.
+        # Preserve the error for diagnostics but continue to the media fallback.
+        metadata_error = f"{type(exc).__name__}: {exc}"
 
     if not segments and allow_temp_audio:
         segments = transcribe_temp_audio(
@@ -183,4 +208,5 @@ def import_bilibili(
         "segments": segments,
         "source": source,
         "needs_audio_fallback": not bool(segments),
+        "metadata_error": metadata_error,
     }
