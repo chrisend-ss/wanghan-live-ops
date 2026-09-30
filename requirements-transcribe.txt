@@ -1,0 +1,3 @@
+# Optional: only needed when a Bilibili video has no usable public subtitles.
+# This is intentionally separate because speech models consume disk/RAM.
+faster-whisper
