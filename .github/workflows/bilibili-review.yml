@@ -45,6 +45,10 @@ jobs:
           pip install -r requirements.txt
           pip install -r requirements-transcribe.txt
 
+      - name: Install Chromium for Bilibili browser fallback
+        run: |
+          python -m playwright install --with-deps chromium
+
       - name: Find review requests
         id: requests
         shell: bash
