@@ -11,6 +11,7 @@ from urllib.parse import urljoin
 import requests
 
 from .bilibili import extract_bvid
+from .precision_audio import build_precision_transcript, convert_to_analysis_wav
 
 UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
