@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from app.bilibili import extract_bvid, import_bilibili
+from app.bilibili import extract_bvid
+from app.bilibili_browser import transcribe_page_media
 
 
 def fmt_time(seconds: float) -> str:
@@ -62,11 +63,16 @@ def main() -> int:
     }
     write_json(out_dir / "status.json", status)
 
+    for stale_name in ("ERROR.md", "metadata.json", "transcript.jsonl", "transcript.md"):
+        stale = out_dir / stale_name
+        if stale.exists():
+            stale.unlink()
+
     try:
-        result = import_bilibili(
+        result = transcribe_page_media(
             url=url,
-            allow_temp_audio=allow_audio,
-            whisper_model=model,
+            model_size=model,
+            language="zh",
         )
         info = result["info"]
         segments = result["segments"]
