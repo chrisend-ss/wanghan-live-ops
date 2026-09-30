@@ -1,0 +1,118 @@
+name: Bilibili Cloud Review
+
+on:
+  push:
+    paths:
+      - "review_requests/*.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Cache Whisper models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-${{ runner.os }}-small-v1
+          restore-keys: |
+            whisper-${{ runner.os }}-
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-transcribe.txt
+
+      - name: Find review requests
+        id: requests
+        shell: bash
+        run: |
+          set -u
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            FILES=$(find review_requests -maxdepth 1 -type f -name '*.json' | sort)
+          else
+            BEFORE="${{ github.event.before }}"
+            if [[ "$BEFORE" =~ ^0+$ ]]; then
+              FILES=$(find review_requests -maxdepth 1 -type f -name '*.json' | sort)
+            else
+              FILES=$(git diff --name-only "$BEFORE" "${{ github.sha }}" -- 'review_requests/*.json' || true)
+            fi
+          fi
+
+          echo "Request files:"
+          printf '%s\n' "$FILES"
+
+          {
+            echo "files<<EOF"
+            printf '%s\n' "$FILES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Process Bilibili requests
+        id: process
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          FAILED=0
+          while IFS= read -r req; do
+            [ -z "$req" ] && continue
+            echo "=== Processing $req ==="
+            python tools/cloud_bilibili_review.py --request "$req"
+            CODE=$?
+            if [ $CODE -ne 0 ]; then
+              FAILED=1
+            fi
+          done <<'EOF'
+          ${{ steps.requests.outputs.files }}
+          EOF
+          exit $FAILED
+
+      - name: Commit text-only review results
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "wanghan-live-ops-bot"
+          git config user.email "wanghan-live-ops-bot@users.noreply.github.com"
+          git add reviews/
+          if git diff --cached --quiet; then
+            echo "No review outputs to commit."
+          else
+            git commit -m "data: add Bilibili review transcript"
+            git push
+          fi
+
+      - name: Upload review artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wanghan-bilibili-review-${{ github.run_id }}
+          path: reviews/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Mark workflow failed when transcription failed
+        if: steps.process.outcome == 'failure'
+        run: exit 1
