@@ -1,0 +1,126 @@
+{
+  "status": "completed",
+  "date": "2026-09-29",
+  "bvid": "BV1xNas6ZEpB",
+  "url": "https://www.bilibili.com/video/BV1xNas6ZEpB/",
+  "label": "王焓 9月29日晚场 Precision V2.1",
+  "request_file": "review_requests/2026-09-29_BV1xNas6ZEpB_precise_v2_1.json",
+  "started_at": "2026-09-30T15:42:39.999615+00:00",
+  "storage_mode": "cloud-temporary-media",
+  "media_committed": false,
+  "precision_mode": true,
+  "pipeline_version": "precision_v2_1",
+  "voiceprint_persisted": false,
+  "source": "bilibili_chromium_page_audio_precision_v2_1",
+  "segment_count": 976,
+  "finished_at": "2026-09-30T16:47:57.353484+00:00",
+  "needs_audio_fallback": false,
+  "speaker_summary": {
+    "mode": "same_recording_reference_verification",
+    "reference_confirmed": false,
+    "reference_usable": false,
+    "reference_ranges": [],
+    "thresholds": {
+      "verify": 0.72,
+      "reject": 0.45
+    },
+    "score_semantics": "cosine_similarity_not_identity_accuracy_probability",
+    "full_recording_clustering_used": false,
+    "voiceprint_persisted": false,
+    "reference_scope": "same_recording_in_memory_only",
+    "reference_status": "missing_or_unconfirmed",
+    "distribution": {
+      "wanghan": 0,
+      "non_wanghan": 0,
+      "uncertain": 644
+    },
+    "duration_seconds": {
+      "wanghan": 0,
+      "non_wanghan": 0,
+      "uncertain": 2083.02
+    }
+  },
+  "quality": {
+    "pipeline_version": "precision_v2_1",
+    "speech_segment_count": 644,
+    "zone_count": 610,
+    "duration_by_zone_seconds": {
+      "music": 1150.52,
+      "speech": 2096.5,
+      "noEnergy": 342.08,
+      "noise": 18.5
+    },
+    "model": "large-v3",
+    "music_is_not_transcribed": true,
+    "singing_is_expected_to_be_labeled_music": true,
+    "asr_quality": {
+      "scored_count": 644,
+      "passed_count": 407,
+      "excluded_count": 237,
+      "pass_threshold": 0.72,
+      "score_semantics": "heuristic_quality_gate_not_accuracy_probability",
+      "independent_of_speaker_confidence": true,
+      "model_evidence_coverage": {
+        "avg_logprob": 644,
+        "no_speech_prob": 644,
+        "compression_ratio": 644
+      },
+      "reason_counts": {
+        "sparse_text": 5,
+        "high_no_speech_probability": 114,
+        "single_character": 11,
+        "high_compression_ratio": 9,
+        "borderline_no_speech_probability": 53,
+        "low_logprob": 4,
+        "borderline_logprob": 12,
+        "implausible_text_rate": 6
+      }
+    },
+    "verified_transcript": {
+      "segment_count": 0,
+      "speech_seconds": 0,
+      "filter": "speech + wanghan_verified + asr_quality_pass + hallucination_clear",
+      "human_text_review_required": true
+    }
+  },
+  "quality_status": "reference_required",
+  "speaker_distribution": {
+    "wanghan": 0,
+    "non_wanghan": 0,
+    "uncertain": 644
+  },
+  "asr_quality": {
+    "scored_count": 644,
+    "passed_count": 407,
+    "excluded_count": 237,
+    "pass_threshold": 0.72,
+    "score_semantics": "heuristic_quality_gate_not_accuracy_probability",
+    "independent_of_speaker_confidence": true,
+    "model_evidence_coverage": {
+      "avg_logprob": 644,
+      "no_speech_prob": 644,
+      "compression_ratio": 644
+    },
+    "reason_counts": {
+      "sparse_text": 5,
+      "high_no_speech_probability": 114,
+      "single_character": 11,
+      "high_compression_ratio": 9,
+      "borderline_no_speech_probability": 53,
+      "low_logprob": 4,
+      "borderline_logprob": 12,
+      "implausible_text_rate": 6
+    }
+  },
+  "hallucination_distribution": {
+    "clear": 588,
+    "review": 2,
+    "rejected": 54
+  },
+  "verified_transcript": {
+    "segment_count": 0,
+    "speech_seconds": 0,
+    "filter": "speech + wanghan_verified + asr_quality_pass + hallucination_clear",
+    "human_text_review_required": true
+  }
+}

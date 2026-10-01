@@ -1,5 +1,10 @@
 # GitHub 云端 B站转写
 
+精准模式现为 [Precision V2.1](PRECISION_V21.md)：页面音轨 -> speech/music/noise ->
+large-v3 -> 独立 ASR/幻觉审计 -> 同场参考王焓验声 -> 验证版原话。
+无干净参考时全部身份为 uncertain；completed 与质量验收分开。
+下文公开字幕/普通 Whisper 流程仅适用于 legacy 模式。
+
 目标：解决运营电脑不想长期保存录屏、ChatGPT 当前环境又不能直接解码 B站媒体的问题。
 
 ## 流程

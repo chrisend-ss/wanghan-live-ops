@@ -1,6 +1,5 @@
 import argparse
 import json
-import os
 import sys
 import traceback
 from datetime import datetime, timezone
@@ -13,13 +12,7 @@ if str(ROOT) not in sys.path:
 
 from app.bilibili import extract_bvid
 from app.bilibili_browser import transcribe_page_media
-
-
-def fmt_time(seconds: float) -> str:
-    total = max(0, int(seconds))
-    h, rem = divmod(total, 3600)
-    m, s = divmod(rem, 60)
-    return f"{h:02d}:{m:02d}:{s:02d}"
+from app.review_output import quality_status, write_transcripts
 
 
 def write_json(path: Path, data: Dict[str, Any]) -> None:
@@ -42,7 +35,6 @@ def main() -> int:
     url = str(request["url"]).strip()
     date = str(request.get("date") or "unknown-date").strip()
     model = str(request.get("model") or "small").strip()
-    allow_audio = bool(request.get("audio_fallback", True))
     label = str(request.get("label") or "王焓直播录屏").strip()
     output_suffix = str(request.get("output_suffix") or "").strip()
     precision_mode = bool(request.get("precision_mode", False))
@@ -51,6 +43,7 @@ def main() -> int:
         or "王焓 焓太医 听潮阁 中医 连麦 PK 粉丝团 灯牌 音浪 开灯"
     ).strip()
     wanghan_reference_ranges = request.get("wanghan_reference_ranges") or []
+    reference_confirmed = request.get("wanghan_reference_confirmed") is True
 
     bvid = extract_bvid(url)
     folder_name = f"{date}_{bvid}" + (f"_{output_suffix}" if output_suffix else "")
@@ -69,6 +62,8 @@ def main() -> int:
         "storage_mode": "cloud-temporary-media",
         "media_committed": False,
         "precision_mode": precision_mode,
+        "pipeline_version": "precision_v2_1" if precision_mode else "legacy",
+        "voiceprint_persisted": False,
     }
     write_json(out_dir / "status.json", status)
 
@@ -79,6 +74,7 @@ def main() -> int:
         "transcript.md",
         "quality_report.json",
         "audio_zones.jsonl",
+        "wanghan_verified_transcript.md",
     ):
         stale = out_dir / stale_name
         if stale.exists():
@@ -92,6 +88,12 @@ def main() -> int:
             precision_mode=precision_mode,
             hotwords=hotwords,
             wanghan_reference_ranges=wanghan_reference_ranges,
+            reference_confirmed=reference_confirmed,
+            speaker_verify_threshold=float(request.get("speaker_verify_threshold", 0.72)),
+            speaker_reject_threshold=float(request.get("speaker_reject_threshold", 0.45)),
+            asr_pass_threshold=float(request.get("asr_pass_threshold", 0.72)),
+            allow_single_reference=request.get("allow_single_reference") is True,
+            speaker_remove_background_music=request.get("speaker_remove_background_music") is True,
         )
         info = result["info"]
         segments = result["segments"]
@@ -118,7 +120,8 @@ def main() -> int:
                 "Automatic speech recognition may contain mistakes; preserve it as raw evidence until reviewed.",
                 (
                     "Precision mode separates speech from music/singing before ASR and "
-                    "clusters speakers; speaker labels still carry confidence and are not ground truth."
+                    "verifies WangHan against confirmed same-recording references; "
+                    "speaker confidence and ASR quality are independent gates."
                     if precision_mode
                     else "Legacy mode does not reliably separate speakers from background audio."
                 ),
@@ -126,68 +129,24 @@ def main() -> int:
         }
         write_json(out_dir / "metadata.json", metadata)
 
-        with (out_dir / "transcript.jsonl").open("w", encoding="utf-8") as f:
-            for seg in segments:
-                row = {
-                    "start_seconds": float(seg["start_seconds"]),
-                    "end_seconds": float(seg["end_seconds"]),
-                    "kind": str(seg.get("kind", "speech")),
-                    "speaker": str(seg.get("speaker", "说话人_未区分")),
-                    "speaker_confidence": str(seg.get("speaker_confidence", "low")),
-                    "speaker_cluster": seg.get("speaker_cluster"),
-                    "text": str(seg.get("text", "")),
-                    "avg_logprob": seg.get("avg_logprob"),
-                    "no_speech_prob": seg.get("no_speech_prob"),
-                    "source": result["source"],
-                }
-                f.write(json.dumps(row, ensure_ascii=False) + "\n")
-
-        lines = [
-            f"# {date} 王焓直播录屏转写",
-            "",
-            f"- BVID: \`{info['bvid']}\`",
-            f"- 标题: {info.get('title') or ''}",
-            f"- 来源: {result['source']}",
-            f"- 时长: {info.get('duration') or ''} 秒",
-            f"- 片段数: {len(segments)}",
-            "",
-            (
-                "> 精准模式会先把语音与音乐/歌唱分开，再做多人说话人聚类。"
-                "标为王焓的片段仍应结合 speaker_confidence 复核。"
-                if precision_mode
-                else "> 自动转写属于原始证据草稿。唱歌、多人声音、背景音和识别错误需要后续校对。"
-            ),
-            "",
-        ]
-        for seg in segments:
-            start = fmt_time(float(seg["start_seconds"]))
-            end = fmt_time(float(seg["end_seconds"]))
-            kind = str(seg.get("kind", "speech"))
-            speaker = str(seg.get("speaker", "说话人_未区分"))
-            confidence = str(seg.get("speaker_confidence", "low"))
-            text = str(seg.get("text", "")).strip()
-
-            if kind == "speech" and text:
-                lines.append(
-                    f"**[{start}–{end}] {speaker} [{confidence}]**  {text}"
-                )
-            elif precision_mode and kind == "music":
-                lines.append(f"**[{start}–{end}] 背景音乐/歌唱**")
-
-        (out_dir / "transcript.md").write_text(
-            "\n\n".join(lines) + "\n",
-            encoding="utf-8",
-        )
+        write_transcripts(out_dir, segments, source=result["source"], date=date,
+                          bvid=bvid, precision=precision_mode)
 
         if precision_mode:
             write_json(
                 out_dir / "quality_report.json",
                 {
                     "precision_mode": True,
+                    "pipeline_version": "precision_v2_1",
                     "source": result["source"],
                     "speaker_summary": result.get("speaker_summary") or {},
+                    "speaker_verification": result.get("speaker_summary") or {},
                     "quality": result.get("quality") or {},
                     "wanghan_reference_ranges": wanghan_reference_ranges,
+                    "wanghan_reference_confirmed": reference_confirmed,
+                    "reference_confirmation_note": request.get("reference_note"),
+                    "speaker_remove_background_music": request.get("speaker_remove_background_music") is True,
+                    "voiceprint_persisted": False,
                     "hotwords": hotwords,
                 },
             )
@@ -204,9 +163,13 @@ def main() -> int:
                 "needs_audio_fallback": result.get("needs_audio_fallback", False),
                 "precision_mode": precision_mode,
                 "speaker_summary": result.get("speaker_summary"),
-                "quality": result.get("quality"),
+                "quality": {key: value for key, value in (result.get("quality") or {}).items()
+                            if key != "hallucination_audit"},
             }
         )
+        if precision_mode:
+            status.update(quality_status(result.get("quality") or {},
+                                         result.get("speaker_summary") or {}))
         write_json(out_dir / "status.json", status)
         print(f"Completed {bvid}: {len(segments)} segments via {result['source']}")
         return 0
@@ -223,14 +186,14 @@ def main() -> int:
         write_json(out_dir / "status.json", status)
         (out_dir / "ERROR.md").write_text(
             "# B站云端处理失败\n\n"
-            f"- BVID: \`{bvid}\`\n"
+            f"- BVID: `{bvid}`\n"
             f"- URL: {url}\n"
-            f"- 错误类型: \`{type(exc).__name__}\`\n"
+            f"- 错误类型: `{type(exc).__name__}`\n"
             f"- 错误: {exc}\n\n"
             "## Traceback\n\n"
-            "\`\`\`text\n"
+            "```text\n"
             + traceback.format_exc()
-            + "\n\`\`\`\n",
+            + "\n```\n",
             encoding="utf-8",
         )
         print(traceback.format_exc())
