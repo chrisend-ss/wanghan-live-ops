@@ -1,12 +1,27 @@
 # WangHan Live Ops Hub
 
-面向王焓直播运营的数据接口层。目标是把直播侧事件统一为一个稳定的本地/服务器 API，供实时面板、飞书、ChatGPT 分析和直播复盘使用。
+面向王焓直播运营的数据与策略中枢。目标是把直播侧事件、录屏复盘、运营部门审查和长期实验统一到一套可追踪的系统里。
 
 ## 个人运营 Skill：新分支核心运营思路
 
-新增可复用的八大战略模块Skill，以直播数据验证视觉、内容与活动。默认先画面/进房，再内容承接、人群粘性和二创放大，每日复盘贯穿全程；默认不写主播具体话术。
+当前版本：**0.2.0**
 
-查看 [Skill说明、安装与调用示例](docs/CORE_OPS_SKILL.md) 或直接阅读 [SKILL.md](skills/wanghan-core-ops/SKILL.md)。调用标识：`$wanghan-core-ops`，中文展示名：**新分支核心运营思路**。
+该 Skill 现在包含四层：
+- **战略层**：八大战略模块 + 进房/留人/关系/消费/扩散
+- **运营部门审查层**：证据等级、真人一致性、包装倒灌、关系边界、数据归因与执行风险
+- **插件工具层**：wanghan-live-review、GitHub、Google Drive、Files/Library、Web/Deep Research、可选 vidIQ
+- **数据闭环**：变量 → 指标 → 验证 → 审查 → 结论 → 下一轮实验
+
+默认先画面/进房，再内容承接、人群粘性和二创放大，每日复盘贯穿全程；默认不写主播具体话术。
+
+核心文件：
+- [SKILL.md](skills/wanghan-core-ops/SKILL.md)
+- [运营部门审查规则](skills/wanghan-core-ops/references/operations-department.md)
+- [指标口径](skills/wanghan-core-ops/references/measurement.md)
+- [调用示例](skills/wanghan-core-ops/references/examples.md)
+
+调用标识：`$wanghan-core-ops`
+中文展示名：**新分支核心运营思路**
 
 ## 当前能力
 
@@ -42,7 +57,7 @@ WangHan Live Ops Hub
   ├─ rolling stats
   └─ recent event buffer
       ↓
-dashboard / Feishu / ChatGPT
+dashboard / Drive / ChatGPT / 核心运营Skill
 ```
 
 ## 启动
@@ -70,33 +85,6 @@ uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
 - Stats: http://127.0.0.1:8080/stats
 - WebSocket: ws://127.0.0.1:8080/ws/events
 
-## 写入事件示例
-
-```bash
-curl -X POST http://127.0.0.1:8080/ingest \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: change-me" \
-  -d '{
-    "type": "chat",
-    "room_id": "WANGHAN_ROOM",
-    "user_id": "123",
-    "nickname": "焓门观众",
-    "content": "今晚这首歌好听",
-    "metadata": {}
-  }'
-```
-
-如果 `.env` 里的 `LIVE_OPS_API_KEY` 留空，则本地调试时不校验 API Key。
-
-## 下一步接抖音采集
-
-本仓库先提供稳定接口层，不直接复制第三方逆向代码。推荐把抖音采集器作为独立进程运行，再将标准化事件 POST 到 `/ingest`。
-
-这样可以：
-1. 避免采集协议变化拖垮整个系统；
-2. 独立处理 Cookie/验证码等敏感信息；
-3. 后续替换成官方或更稳定的数据源时，下游不需要改。
-
 ## 数据合规
 
-只采集运营所需的直播事件；不要把登录 Cookie、账号密码、App Secret 或长期 token 提交到 GitHub。生产环境请使用环境变量或密钥管理服务。
+只采集运营所需的直播事件；不要把登录 Cookie、账号密码、App Secret、长期 token 或可识别粉丝个人身份的后台原始数据提交到 GitHub。生产环境请使用环境变量或密钥管理服务。
