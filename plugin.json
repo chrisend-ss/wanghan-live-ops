@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "wanghan-core-ops",
+  "version": "0.1.0",
+  "description": "新分支核心运营思路：以直播数据验证王焓八大战略模块，输出归类、实验、指标、复盘与下一轮行动。",
+  "author": { "name": "chrisend-ss" },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "新分支核心运营思路",
+        "shortDescription": "王焓八大战略模块与直播数据实验",
+        "longDescription": "默认依次推进画面与进房、内容承接、人群粘性、二创放大，每日复盘贯穿全程。除非明确要求，不下钻主播话术。",
+        "developerName": "chrisend-ss",
+        "category": "Productivity",
+        "defaultPrompt": "用新分支核心运营思路分析这份王焓运营资料，先判断模块与运营功能，再给变量、核心指标、验证方式、结论标准和下一步。"
+      }
+    }
+  }
+}
