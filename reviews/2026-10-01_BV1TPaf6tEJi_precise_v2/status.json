@@ -1,0 +1,3616 @@
+{
+  "status": "completed",
+  "date": "2026-10-01",
+  "bvid": "BV1TPaf6tEJi",
+  "url": "https://www.bilibili.com/video/BV1TPaf6tEJi?spm_id_from=333.788.videopod.sections&vd_source=695c8532c926bd4eb1c470ededc1660b",
+  "label": "王焓直播录屏 BV1TPaf6tEJi 精准转写V2",
+  "request_file": "review_requests/2026-10-01_BV1TPaf6tEJi_precise_v2.json",
+  "started_at": "2026-10-01T05:14:00.851743+00:00",
+  "storage_mode": "cloud-temporary-media",
+  "media_committed": false,
+  "precision_mode": true,
+  "source": "bilibili_chromium_page_audio_precision_v2",
+  "segment_count": 1656,
+  "finished_at": "2026-10-01T06:47:29.818777+00:00",
+  "needs_audio_fallback": false,
+  "speaker_summary": {
+    "mode": "dominant_first",
+    "wanghan_cluster": 709,
+    "identification_score": 0.2003557641216511,
+    "clusters": {
+      "0": {
+        "name": "其他说话人_1",
+        "speech_seconds": 3.54,
+        "first_seconds": 573.86
+      },
+      "1": {
+        "name": "其他说话人_2",
+        "speech_seconds": 80.58,
+        "first_seconds": 2245.54
+      },
+      "2": {
+        "name": "其他说话人_3",
+        "speech_seconds": 6.28,
+        "first_seconds": 4817.98
+      },
+      "3": {
+        "name": "其他说话人_4",
+        "speech_seconds": 6.9,
+        "first_seconds": 3879.92
+      },
+      "4": {
+        "name": "其他说话人_5",
+        "speech_seconds": 4.64,
+        "first_seconds": 2656.24
+      },
+      "5": {
+        "name": "其他说话人_6",
+        "speech_seconds": 8.18,
+        "first_seconds": 2016.38
+      },
+      "6": {
+        "name": "其他说话人_7",
+        "speech_seconds": 7.4,
+        "first_seconds": 1976.36
+      },
+      "7": {
+        "name": "其他说话人_8",
+        "speech_seconds": 4.08,
+        "first_seconds": 2976.5
+      },
+      "8": {
+        "name": "其他说话人_9",
+        "speech_seconds": 4.72,
+        "first_seconds": 2707.82
+      },
+      "9": {
+        "name": "其他说话人_10",
+        "speech_seconds": 7.74,
+        "first_seconds": 1074.68
+      },
+      "10": {
+        "name": "其他说话人_11",
+        "speech_seconds": 8.38,
+        "first_seconds": 1227.5
+      },
+      "11": {
+        "name": "其他说话人_12",
+        "speech_seconds": 4.6,
+        "first_seconds": 1062.02
+      },
+      "12": {
+        "name": "其他说话人_13",
+        "speech_seconds": 3.64,
+        "first_seconds": 5071.98
+      },
+      "13": {
+        "name": "其他说话人_14",
+        "speech_seconds": 3.3,
+        "first_seconds": 3745.62
+      },
+      "14": {
+        "name": "其他说话人_15",
+        "speech_seconds": 4.54,
+        "first_seconds": 3572.54
+      },
+      "15": {
+        "name": "其他说话人_16",
+        "speech_seconds": 6.9,
+        "first_seconds": 551.68
+      },
+      "16": {
+        "name": "其他说话人_17",
+        "speech_seconds": 4.56,
+        "first_seconds": 2418.54
+      },
+      "17": {
+        "name": "其他说话人_18",
+        "speech_seconds": 5.62,
+        "first_seconds": 1526.56
+      },
+      "18": {
+        "name": "其他说话人_19",
+        "speech_seconds": 76.06,
+        "first_seconds": 4691.18
+      },
+      "19": {
+        "name": "其他说话人_20",
+        "speech_seconds": 6.52,
+        "first_seconds": 2137.92
+      },
+      "20": {
+        "name": "其他说话人_21",
+        "speech_seconds": 8.18,
+        "first_seconds": 5341.74
+      },
+      "21": {
+        "name": "其他说话人_22",
+        "speech_seconds": 21.6,
+        "first_seconds": 2858.28
+      },
+      "22": {
+        "name": "其他说话人_23",
+        "speech_seconds": 2.58,
+        "first_seconds": 1956.16
+      },
+      "23": {
+        "name": "其他说话人_24",
+        "speech_seconds": 1.34,
+        "first_seconds": 5417.62
+      },
+      "24": {
+        "name": "其他说话人_25",
+        "speech_seconds": 3.4,
+        "first_seconds": 2678.78
+      },
+      "25": {
+        "name": "其他说话人_26",
+        "speech_seconds": 154.2,
+        "first_seconds": 329.28
+      },
+      "26": {
+        "name": "其他说话人_27",
+        "speech_seconds": 1.48,
+        "first_seconds": 5434.2
+      },
+      "27": {
+        "name": "其他说话人_28",
+        "speech_seconds": 3.0,
+        "first_seconds": 2127.18
+      },
+      "28": {
+        "name": "其他说话人_29",
+        "speech_seconds": 6.16,
+        "first_seconds": 1514.92
+      },
+      "29": {
+        "name": "其他说话人_30",
+        "speech_seconds": 75.88,
+        "first_seconds": 2765.58
+      },
+      "30": {
+        "name": "其他说话人_31",
+        "speech_seconds": 1.44,
+        "first_seconds": 5302.82
+      },
+      "31": {
+        "name": "其他说话人_32",
+        "speech_seconds": 1.14,
+        "first_seconds": 5063.14
+      },
+      "32": {
+        "name": "其他说话人_33",
+        "speech_seconds": 6.36,
+        "first_seconds": 3065.42
+      },
+      "33": {
+        "name": "其他说话人_34",
+        "speech_seconds": 3.06,
+        "first_seconds": 1060.56
+      },
+      "34": {
+        "name": "其他说话人_35",
+        "speech_seconds": 18.08,
+        "first_seconds": 998.74
+      },
+      "35": {
+        "name": "其他说话人_36",
+        "speech_seconds": 11.54,
+        "first_seconds": 2756.62
+      },
+      "36": {
+        "name": "其他说话人_37",
+        "speech_seconds": 1.72,
+        "first_seconds": 4889.78
+      },
+      "37": {
+        "name": "其他说话人_38",
+        "speech_seconds": 11.8,
+        "first_seconds": 751.38
+      },
+      "38": {
+        "name": "其他说话人_39",
+        "speech_seconds": 6.3,
+        "first_seconds": 3657.64
+      },
+      "39": {
+        "name": "其他说话人_40",
+        "speech_seconds": 5.44,
+        "first_seconds": 1830.22
+      },
+      "40": {
+        "name": "其他说话人_41",
+        "speech_seconds": 5.64,
+        "first_seconds": 177.68
+      },
+      "41": {
+        "name": "其他说话人_42",
+        "speech_seconds": 32.8,
+        "first_seconds": 1915.18
+      },
+      "42": {
+        "name": "其他说话人_43",
+        "speech_seconds": 3.76,
+        "first_seconds": 976.18
+      },
+      "43": {
+        "name": "其他说话人_44",
+        "speech_seconds": 2.22,
+        "first_seconds": 5415.4
+      },
+      "44": {
+        "name": "其他说话人_45",
+        "speech_seconds": 2.0,
+        "first_seconds": 4867.84
+      },
+      "45": {
+        "name": "其他说话人_46",
+        "speech_seconds": 22.94,
+        "first_seconds": 4041.08
+      },
+      "46": {
+        "name": "其他说话人_47",
+        "speech_seconds": 2.96,
+        "first_seconds": 5306.06
+      },
+      "47": {
+        "name": "其他说话人_48",
+        "speech_seconds": 1.96,
+        "first_seconds": 5036.9
+      },
+      "48": {
+        "name": "其他说话人_49",
+        "speech_seconds": 1.88,
+        "first_seconds": 5041.54
+      },
+      "49": {
+        "name": "其他说话人_50",
+        "speech_seconds": 4.44,
+        "first_seconds": 4639.6
+      },
+      "50": {
+        "name": "其他说话人_51",
+        "speech_seconds": 8.6,
+        "first_seconds": 1996.98
+      },
+      "51": {
+        "name": "其他说话人_52",
+        "speech_seconds": 4.28,
+        "first_seconds": 1288.34
+      },
+      "52": {
+        "name": "其他说话人_53",
+        "speech_seconds": 2.7,
+        "first_seconds": 405.54
+      },
+      "53": {
+        "name": "其他说话人_54",
+        "speech_seconds": 1.56,
+        "first_seconds": 4887.62
+      },
+      "54": {
+        "name": "其他说话人_55",
+        "speech_seconds": 1.6,
+        "first_seconds": 4633.82
+      },
+      "55": {
+        "name": "其他说话人_56",
+        "speech_seconds": 1.2,
+        "first_seconds": 5069.86
+      },
+      "56": {
+        "name": "其他说话人_57",
+        "speech_seconds": 1.5,
+        "first_seconds": 4991.84
+      },
+      "57": {
+        "name": "其他说话人_58",
+        "speech_seconds": 7.0,
+        "first_seconds": 1020.2
+      },
+      "58": {
+        "name": "其他说话人_59",
+        "speech_seconds": 5.34,
+        "first_seconds": 4720.2
+      },
+      "59": {
+        "name": "其他说话人_60",
+        "speech_seconds": 1.34,
+        "first_seconds": 5340.4
+      },
+      "60": {
+        "name": "其他说话人_61",
+        "speech_seconds": 4.12,
+        "first_seconds": 99.98
+      },
+      "61": {
+        "name": "其他说话人_62",
+        "speech_seconds": 3.48,
+        "first_seconds": 3785.54
+      },
+      "62": {
+        "name": "其他说话人_63",
+        "speech_seconds": 1.62,
+        "first_seconds": 5066.38
+      },
+      "63": {
+        "name": "其他说话人_64",
+        "speech_seconds": 1.62,
+        "first_seconds": 4990.22
+      },
+      "64": {
+        "name": "其他说话人_65",
+        "speech_seconds": 1.16,
+        "first_seconds": 5050.42
+      },
+      "65": {
+        "name": "其他说话人_66",
+        "speech_seconds": 2.2,
+        "first_seconds": 5300.62
+      },
+      "66": {
+        "name": "其他说话人_67",
+        "speech_seconds": 39.72,
+        "first_seconds": 2916.1
+      },
+      "67": {
+        "name": "其他说话人_68",
+        "speech_seconds": 5.8,
+        "first_seconds": 4705.6
+      },
+      "68": {
+        "name": "其他说话人_69",
+        "speech_seconds": 1.52,
+        "first_seconds": 5009.78
+      },
+      "69": {
+        "name": "其他说话人_70",
+        "speech_seconds": 42.58,
+        "first_seconds": 1097.94
+      },
+      "70": {
+        "name": "其他说话人_71",
+        "speech_seconds": 6.88,
+        "first_seconds": 1042.98
+      },
+      "71": {
+        "name": "其他说话人_72",
+        "speech_seconds": 1.18,
+        "first_seconds": 4989.04
+      },
+      "72": {
+        "name": "其他说话人_73",
+        "speech_seconds": 5.76,
+        "first_seconds": 1948.94
+      },
+      "73": {
+        "name": "其他说话人_74",
+        "speech_seconds": 2.08,
+        "first_seconds": 3846.44
+      },
+      "74": {
+        "name": "其他说话人_75",
+        "speech_seconds": 1.0,
+        "first_seconds": 4808.8
+      },
+      "75": {
+        "name": "其他说话人_76",
+        "speech_seconds": 17.32,
+        "first_seconds": 3377.24
+      },
+      "76": {
+        "name": "其他说话人_77",
+        "speech_seconds": 17.08,
+        "first_seconds": 163.92
+      },
+      "77": {
+        "name": "其他说话人_78",
+        "speech_seconds": 1.22,
+        "first_seconds": 4678.18
+      },
+      "78": {
+        "name": "其他说话人_79",
+        "speech_seconds": 2.32,
+        "first_seconds": 473.56
+      },
+      "79": {
+        "name": "其他说话人_80",
+        "speech_seconds": 15.38,
+        "first_seconds": 3368.24
+      },
+      "80": {
+        "name": "其他说话人_81",
+        "speech_seconds": 1.02,
+        "first_seconds": 5436.64
+      },
+      "81": {
+        "name": "其他说话人_82",
+        "speech_seconds": 1.76,
+        "first_seconds": 5114.32
+      },
+      "82": {
+        "name": "其他说话人_83",
+        "speech_seconds": 8.14,
+        "first_seconds": 879.96
+      },
+      "83": {
+        "name": "其他说话人_84",
+        "speech_seconds": 1.32,
+        "first_seconds": 5432.88
+      },
+      "84": {
+        "name": "其他说话人_85",
+        "speech_seconds": 8.48,
+        "first_seconds": 526.66
+      },
+      "85": {
+        "name": "其他说话人_86",
+        "speech_seconds": 6.36,
+        "first_seconds": 377.0
+      },
+      "86": {
+        "name": "其他说话人_87",
+        "speech_seconds": 8.34,
+        "first_seconds": 594.52
+      },
+      "87": {
+        "name": "其他说话人_88",
+        "speech_seconds": 2.0,
+        "first_seconds": 5105.16
+      },
+      "88": {
+        "name": "其他说话人_89",
+        "speech_seconds": 2.76,
+        "first_seconds": 4944.42
+      },
+      "89": {
+        "name": "其他说话人_90",
+        "speech_seconds": 1.9,
+        "first_seconds": 3636.68
+      },
+      "90": {
+        "name": "其他说话人_91",
+        "speech_seconds": 1.04,
+        "first_seconds": 3772.02
+      },
+      "91": {
+        "name": "其他说话人_92",
+        "speech_seconds": 3.88,
+        "first_seconds": 5531.22
+      },
+      "92": {
+        "name": "其他说话人_93",
+        "speech_seconds": 2.84,
+        "first_seconds": 5076.14
+      },
+      "93": {
+        "name": "其他说话人_94",
+        "speech_seconds": 1.36,
+        "first_seconds": 4807.44
+      },
+      "94": {
+        "name": "其他说话人_95",
+        "speech_seconds": 10.1,
+        "first_seconds": 5087.74
+      },
+      "95": {
+        "name": "其他说话人_96",
+        "speech_seconds": 3.76,
+        "first_seconds": 4930.04
+      },
+      "96": {
+        "name": "其他说话人_97",
+        "speech_seconds": 15.08,
+        "first_seconds": 5014.98
+      },
+      "97": {
+        "name": "其他说话人_98",
+        "speech_seconds": 1.4,
+        "first_seconds": 4955.56
+      },
+      "98": {
+        "name": "其他说话人_99",
+        "speech_seconds": 3.7,
+        "first_seconds": 3767.36
+      },
+      "99": {
+        "name": "其他说话人_100",
+        "speech_seconds": 2.0,
+        "first_seconds": 3616.92
+      },
+      "100": {
+        "name": "其他说话人_101",
+        "speech_seconds": 1.44,
+        "first_seconds": 5437.66
+      },
+      "101": {
+        "name": "其他说话人_102",
+        "speech_seconds": 3.78,
+        "first_seconds": 4723.34
+      },
+      "102": {
+        "name": "其他说话人_103",
+        "speech_seconds": 1.04,
+        "first_seconds": 4294.52
+      },
+      "103": {
+        "name": "其他说话人_104",
+        "speech_seconds": 1.4,
+        "first_seconds": 3725.94
+      },
+      "104": {
+        "name": "其他说话人_105",
+        "speech_seconds": 4.76,
+        "first_seconds": 5099.92
+      },
+      "105": {
+        "name": "其他说话人_106",
+        "speech_seconds": 3.8,
+        "first_seconds": 4947.84
+      },
+      "106": {
+        "name": "其他说话人_107",
+        "speech_seconds": 9.32,
+        "first_seconds": 5000.3
+      },
+      "107": {
+        "name": "其他说话人_108",
+        "speech_seconds": 1.36,
+        "first_seconds": 4301.46
+      },
+      "108": {
+        "name": "其他说话人_109",
+        "speech_seconds": 1.84,
+        "first_seconds": 4779.98
+      },
+      "109": {
+        "name": "其他说话人_110",
+        "speech_seconds": 1.72,
+        "first_seconds": 4283.9
+      },
+      "110": {
+        "name": "其他说话人_111",
+        "speech_seconds": 1.0,
+        "first_seconds": 3720.7
+      },
+      "111": {
+        "name": "其他说话人_112",
+        "speech_seconds": 2.2,
+        "first_seconds": 4883.48
+      },
+      "112": {
+        "name": "其他说话人_113",
+        "speech_seconds": 1.52,
+        "first_seconds": 3966.96
+      },
+      "113": {
+        "name": "其他说话人_114",
+        "speech_seconds": 1.24,
+        "first_seconds": 4909.9
+      },
+      "114": {
+        "name": "其他说话人_115",
+        "speech_seconds": 2.2,
+        "first_seconds": 3728.94
+      },
+      "115": {
+        "name": "其他说话人_116",
+        "speech_seconds": 1.14,
+        "first_seconds": 5380.58
+      },
+      "116": {
+        "name": "其他说话人_117",
+        "speech_seconds": 3.48,
+        "first_seconds": 2710.66
+      },
+      "117": {
+        "name": "其他说话人_118",
+        "speech_seconds": 2.96,
+        "first_seconds": 5466.04
+      },
+      "118": {
+        "name": "其他说话人_119",
+        "speech_seconds": 1.42,
+        "first_seconds": 5413.98
+      },
+      "119": {
+        "name": "其他说话人_120",
+        "speech_seconds": 2.58,
+        "first_seconds": 4925.74
+      },
+      "120": {
+        "name": "其他说话人_121",
+        "speech_seconds": 1.18,
+        "first_seconds": 5059.9
+      },
+      "121": {
+        "name": "其他说话人_122",
+        "speech_seconds": 20.22,
+        "first_seconds": 946.02
+      },
+      "122": {
+        "name": "其他说话人_123",
+        "speech_seconds": 2.44,
+        "first_seconds": 4877.68
+      },
+      "123": {
+        "name": "其他说话人_124",
+        "speech_seconds": 2.02,
+        "first_seconds": 3446.44
+      },
+      "124": {
+        "name": "其他说话人_125",
+        "speech_seconds": 8.42,
+        "first_seconds": 3539.1
+      },
+      "125": {
+        "name": "其他说话人_126",
+        "speech_seconds": 2.0,
+        "first_seconds": 4596.42
+      },
+      "126": {
+        "name": "其他说话人_127",
+        "speech_seconds": 1.14,
+        "first_seconds": 4767.52
+      },
+      "127": {
+        "name": "其他说话人_128",
+        "speech_seconds": 3.36,
+        "first_seconds": 4952.2
+      },
+      "128": {
+        "name": "其他说话人_129",
+        "speech_seconds": 1.92,
+        "first_seconds": 2654.32
+      },
+      "129": {
+        "name": "其他说话人_130",
+        "speech_seconds": 1.0,
+        "first_seconds": 5035.1
+      },
+      "130": {
+        "name": "其他说话人_131",
+        "speech_seconds": 2.84,
+        "first_seconds": 3782.7
+      },
+      "131": {
+        "name": "其他说话人_132",
+        "speech_seconds": 2.04,
+        "first_seconds": 5161.64
+      },
+      "132": {
+        "name": "其他说话人_133",
+        "speech_seconds": 1.44,
+        "first_seconds": 4711.28
+      },
+      "133": {
+        "name": "其他说话人_134",
+        "speech_seconds": 1.6,
+        "first_seconds": 5412.38
+      },
+      "134": {
+        "name": "其他说话人_135",
+        "speech_seconds": 9.24,
+        "first_seconds": 4969.08
+      },
+      "135": {
+        "name": "其他说话人_136",
+        "speech_seconds": 1.1,
+        "first_seconds": 5048.94
+      },
+      "136": {
+        "name": "其他说话人_137",
+        "speech_seconds": 1.2,
+        "first_seconds": 5065.18
+      },
+      "137": {
+        "name": "其他说话人_138",
+        "speech_seconds": 1.86,
+        "first_seconds": 4784.44
+      },
+      "138": {
+        "name": "其他说话人_139",
+        "speech_seconds": 1.74,
+        "first_seconds": 3028.48
+      },
+      "139": {
+        "name": "其他说话人_140",
+        "speech_seconds": 2.16,
+        "first_seconds": 4907.18
+      },
+      "140": {
+        "name": "其他说话人_141",
+        "speech_seconds": 1.32,
+        "first_seconds": 5335.2
+      },
+      "141": {
+        "name": "其他说话人_142",
+        "speech_seconds": 1.86,
+        "first_seconds": 5046.44
+      },
+      "142": {
+        "name": "其他说话人_143",
+        "speech_seconds": 28.96,
+        "first_seconds": 2045.16
+      },
+      "143": {
+        "name": "其他说话人_144",
+        "speech_seconds": 1.18,
+        "first_seconds": 4811.34
+      },
+      "144": {
+        "name": "其他说话人_145",
+        "speech_seconds": 2.5,
+        "first_seconds": 4941.0
+      },
+      "145": {
+        "name": "其他说话人_146",
+        "speech_seconds": 1.04,
+        "first_seconds": 5068.82
+      },
+      "146": {
+        "name": "其他说话人_147",
+        "speech_seconds": 5.68,
+        "first_seconds": 4922.5
+      },
+      "147": {
+        "name": "其他说话人_148",
+        "speech_seconds": 2.46,
+        "first_seconds": 3644.56
+      },
+      "148": {
+        "name": "其他说话人_149",
+        "speech_seconds": 1.7,
+        "first_seconds": 3671.8
+      },
+      "149": {
+        "name": "其他说话人_150",
+        "speech_seconds": 2.28,
+        "first_seconds": 4600.38
+      },
+      "150": {
+        "name": "其他说话人_151",
+        "speech_seconds": 1.78,
+        "first_seconds": 3675.46
+      },
+      "151": {
+        "name": "其他说话人_152",
+        "speech_seconds": 1.86,
+        "first_seconds": 4765.66
+      },
+      "152": {
+        "name": "其他说话人_153",
+        "speech_seconds": 10.18,
+        "first_seconds": 3754.48
+      },
+      "153": {
+        "name": "其他说话人_154",
+        "speech_seconds": 3.06,
+        "first_seconds": 4880.42
+      },
+      "154": {
+        "name": "其他说话人_155",
+        "speech_seconds": 1.74,
+        "first_seconds": 4905.44
+      },
+      "155": {
+        "name": "其他说话人_156",
+        "speech_seconds": 2.76,
+        "first_seconds": 3428.0
+      },
+      "156": {
+        "name": "其他说话人_157",
+        "speech_seconds": 1.28,
+        "first_seconds": 3383.8
+      },
+      "157": {
+        "name": "其他说话人_158",
+        "speech_seconds": 9.24,
+        "first_seconds": 2639.44
+      },
+      "158": {
+        "name": "其他说话人_159",
+        "speech_seconds": 13.42,
+        "first_seconds": 156.06
+      },
+      "159": {
+        "name": "其他说话人_160",
+        "speech_seconds": 2.2,
+        "first_seconds": 4768.66
+      },
+      "160": {
+        "name": "其他说话人_161",
+        "speech_seconds": 2.0,
+        "first_seconds": 4635.86
+      },
+      "161": {
+        "name": "其他说话人_162",
+        "speech_seconds": 1.92,
+        "first_seconds": 4733.38
+      },
+      "162": {
+        "name": "其他说话人_163",
+        "speech_seconds": 1.22,
+        "first_seconds": 4859.88
+      },
+      "163": {
+        "name": "其他说话人_164",
+        "speech_seconds": 1.14,
+        "first_seconds": 4641.44
+      },
+      "164": {
+        "name": "其他说话人_165",
+        "speech_seconds": 2.0,
+        "first_seconds": 3663.36
+      },
+      "165": {
+        "name": "其他说话人_166",
+        "speech_seconds": 5.84,
+        "first_seconds": 561.32
+      },
+      "166": {
+        "name": "其他说话人_167",
+        "speech_seconds": 19.88,
+        "first_seconds": 3246.8
+      },
+      "167": {
+        "name": "其他说话人_168",
+        "speech_seconds": 2.86,
+        "first_seconds": 3955.02
+      },
+      "168": {
+        "name": "其他说话人_169",
+        "speech_seconds": 1.76,
+        "first_seconds": 5108.62
+      },
+      "169": {
+        "name": "其他说话人_170",
+        "speech_seconds": 5.52,
+        "first_seconds": 5568.44
+      },
+      "170": {
+        "name": "其他说话人_171",
+        "speech_seconds": 6.18,
+        "first_seconds": 3328.86
+      },
+      "171": {
+        "name": "其他说话人_172",
+        "speech_seconds": 41.74,
+        "first_seconds": 1848.26
+      },
+      "172": {
+        "name": "其他说话人_173",
+        "speech_seconds": 2.24,
+        "first_seconds": 4958.54
+      },
+      "173": {
+        "name": "其他说话人_174",
+        "speech_seconds": 1.3,
+        "first_seconds": 4928.32
+      },
+      "174": {
+        "name": "其他说话人_175",
+        "speech_seconds": 6.2,
+        "first_seconds": 3985.44
+      },
+      "175": {
+        "name": "其他说话人_176",
+        "speech_seconds": 1.52,
+        "first_seconds": 3980.98
+      },
+      "176": {
+        "name": "其他说话人_177",
+        "speech_seconds": 2.06,
+        "first_seconds": 4994.66
+      },
+      "177": {
+        "name": "其他说话人_178",
+        "speech_seconds": 2.52,
+        "first_seconds": 4777.46
+      },
+      "178": {
+        "name": "其他说话人_179",
+        "speech_seconds": 2.8,
+        "first_seconds": 3649.96
+      },
+      "179": {
+        "name": "其他说话人_180",
+        "speech_seconds": 2.1,
+        "first_seconds": 903.78
+      },
+      "180": {
+        "name": "其他说话人_181",
+        "speech_seconds": 1.3,
+        "first_seconds": 3216.64
+      },
+      "181": {
+        "name": "其他说话人_182",
+        "speech_seconds": 1.24,
+        "first_seconds": 3714.66
+      },
+      "182": {
+        "name": "其他说话人_183",
+        "speech_seconds": 1.8,
+        "first_seconds": 2668.8
+      },
+      "183": {
+        "name": "其他说话人_184",
+        "speech_seconds": 2.84,
+        "first_seconds": 3293.26
+      },
+      "184": {
+        "name": "其他说话人_185",
+        "speech_seconds": 1.5,
+        "first_seconds": 4960.78
+      },
+      "185": {
+        "name": "其他说话人_186",
+        "speech_seconds": 1.22,
+        "first_seconds": 3026.02
+      },
+      "186": {
+        "name": "其他说话人_187",
+        "speech_seconds": 1.84,
+        "first_seconds": 3858.44
+      },
+      "187": {
+        "name": "其他说话人_188",
+        "speech_seconds": 1.36,
+        "first_seconds": 3724.58
+      },
+      "188": {
+        "name": "其他说话人_189",
+        "speech_seconds": 1.48,
+        "first_seconds": 4616.68
+      },
+      "189": {
+        "name": "其他说话人_190",
+        "speech_seconds": 2.02,
+        "first_seconds": 3850.62
+      },
+      "190": {
+        "name": "其他说话人_191",
+        "speech_seconds": 2.26,
+        "first_seconds": 3856.18
+      },
+      "191": {
+        "name": "其他说话人_192",
+        "speech_seconds": 1.92,
+        "first_seconds": 4812.52
+      },
+      "192": {
+        "name": "其他说话人_193",
+        "speech_seconds": 1.58,
+        "first_seconds": 3652.76
+      },
+      "193": {
+        "name": "其他说话人_194",
+        "speech_seconds": 5.02,
+        "first_seconds": 3399.98
+      },
+      "194": {
+        "name": "其他说话人_195",
+        "speech_seconds": 2.5,
+        "first_seconds": 4288.42
+      },
+      "195": {
+        "name": "其他说话人_196",
+        "speech_seconds": 2.02,
+        "first_seconds": 2902.54
+      },
+      "196": {
+        "name": "其他说话人_197",
+        "speech_seconds": 2.0,
+        "first_seconds": 4911.34
+      },
+      "197": {
+        "name": "其他说话人_198",
+        "speech_seconds": 2.2,
+        "first_seconds": 2844.44
+      },
+      "198": {
+        "name": "其他说话人_199",
+        "speech_seconds": 1.1,
+        "first_seconds": 3357.3
+      },
+      "199": {
+        "name": "其他说话人_200",
+        "speech_seconds": 2.36,
+        "first_seconds": 3450.62
+      },
+      "200": {
+        "name": "其他说话人_201",
+        "speech_seconds": 1.28,
+        "first_seconds": 3425.74
+      },
+      "201": {
+        "name": "其他说话人_202",
+        "speech_seconds": 5.78,
+        "first_seconds": 4843.96
+      },
+      "202": {
+        "name": "其他说话人_203",
+        "speech_seconds": 2.62,
+        "first_seconds": 4781.82
+      },
+      "203": {
+        "name": "其他说话人_204",
+        "speech_seconds": 1.24,
+        "first_seconds": 3027.24
+      },
+      "204": {
+        "name": "其他说话人_205",
+        "speech_seconds": 1.1,
+        "first_seconds": 4687.44
+      },
+      "205": {
+        "name": "其他说话人_206",
+        "speech_seconds": 1.4,
+        "first_seconds": 3535.68
+      },
+      "206": {
+        "name": "其他说话人_207",
+        "speech_seconds": 3.68,
+        "first_seconds": 3890.0
+      },
+      "207": {
+        "name": "其他说话人_208",
+        "speech_seconds": 1.8,
+        "first_seconds": 2961.96
+      },
+      "208": {
+        "name": "其他说话人_209",
+        "speech_seconds": 1.22,
+        "first_seconds": 3056.3
+      },
+      "209": {
+        "name": "其他说话人_210",
+        "speech_seconds": 2.16,
+        "first_seconds": 1845.64
+      },
+      "210": {
+        "name": "其他说话人_211",
+        "speech_seconds": 1.16,
+        "first_seconds": 3094.54
+      },
+      "211": {
+        "name": "其他说话人_212",
+        "speech_seconds": 2.32,
+        "first_seconds": 4814.44
+      },
+      "212": {
+        "name": "其他说话人_213",
+        "speech_seconds": 4.22,
+        "first_seconds": 2778.82
+      },
+      "213": {
+        "name": "其他说话人_214",
+        "speech_seconds": 2.94,
+        "first_seconds": 3647.02
+      },
+      "214": {
+        "name": "其他说话人_215",
+        "speech_seconds": 1.1,
+        "first_seconds": 3323.12
+      },
+      "215": {
+        "name": "其他说话人_216",
+        "speech_seconds": 2.84,
+        "first_seconds": 3264.22
+      },
+      "216": {
+        "name": "其他说话人_217",
+        "speech_seconds": 1.2,
+        "first_seconds": 1828.28
+      },
+      "217": {
+        "name": "其他说话人_218",
+        "speech_seconds": 2.38,
+        "first_seconds": 3309.04
+      },
+      "218": {
+        "name": "其他说话人_219",
+        "speech_seconds": 2.26,
+        "first_seconds": 3452.98
+      },
+      "219": {
+        "name": "其他说话人_220",
+        "speech_seconds": 3.64,
+        "first_seconds": 3046.3
+      },
+      "220": {
+        "name": "其他说话人_221",
+        "speech_seconds": 5.5,
+        "first_seconds": 3057.52
+      },
+      "221": {
+        "name": "其他说话人_222",
+        "speech_seconds": 1.5,
+        "first_seconds": 2148.62
+      },
+      "222": {
+        "name": "其他说话人_223",
+        "speech_seconds": 1.78,
+        "first_seconds": 2066.46
+      },
+      "223": {
+        "name": "其他说话人_224",
+        "speech_seconds": 1.74,
+        "first_seconds": 3321.38
+      },
+      "224": {
+        "name": "其他说话人_225",
+        "speech_seconds": 1.0,
+        "first_seconds": 3721.7
+      },
+      "225": {
+        "name": "其他说话人_226",
+        "speech_seconds": 2.38,
+        "first_seconds": 3392.52
+      },
+      "226": {
+        "name": "其他说话人_227",
+        "speech_seconds": 1.46,
+        "first_seconds": 2873.38
+      },
+      "227": {
+        "name": "其他说话人_228",
+        "speech_seconds": 1.0,
+        "first_seconds": 2646.64
+      },
+      "228": {
+        "name": "其他说话人_229",
+        "speech_seconds": 2.64,
+        "first_seconds": 3733.74
+      },
+      "229": {
+        "name": "其他说话人_230",
+        "speech_seconds": 1.02,
+        "first_seconds": 2007.58
+      },
+      "230": {
+        "name": "其他说话人_231",
+        "speech_seconds": 9.64,
+        "first_seconds": 3252.92
+      },
+      "231": {
+        "name": "其他说话人_232",
+        "speech_seconds": 2.4,
+        "first_seconds": 5143.1
+      },
+      "232": {
+        "name": "其他说话人_233",
+        "speech_seconds": 3.72,
+        "first_seconds": 4915.26
+      },
+      "233": {
+        "name": "其他说话人_234",
+        "speech_seconds": 1.26,
+        "first_seconds": 1888.72
+      },
+      "234": {
+        "name": "其他说话人_235",
+        "speech_seconds": 2.82,
+        "first_seconds": 2631.3
+      },
+      "235": {
+        "name": "其他说话人_236",
+        "speech_seconds": 1.86,
+        "first_seconds": 3628.66
+      },
+      "236": {
+        "name": "其他说话人_237",
+        "speech_seconds": 3.42,
+        "first_seconds": 3569.12
+      },
+      "237": {
+        "name": "其他说话人_238",
+        "speech_seconds": 1.02,
+        "first_seconds": 5304.66
+      },
+      "238": {
+        "name": "其他说话人_239",
+        "speech_seconds": 1.38,
+        "first_seconds": 2677.4
+      },
+      "239": {
+        "name": "其他说话人_240",
+        "speech_seconds": 1.32,
+        "first_seconds": 3965.04
+      },
+      "240": {
+        "name": "其他说话人_241",
+        "speech_seconds": 15.46,
+        "first_seconds": 1143.56
+      },
+      "241": {
+        "name": "其他说话人_242",
+        "speech_seconds": 2.14,
+        "first_seconds": 3177.72
+      },
+      "242": {
+        "name": "其他说话人_243",
+        "speech_seconds": 1.4,
+        "first_seconds": 4335.4
+      },
+      "243": {
+        "name": "其他说话人_244",
+        "speech_seconds": 1.56,
+        "first_seconds": 3953.46
+      },
+      "244": {
+        "name": "其他说话人_245",
+        "speech_seconds": 1.24,
+        "first_seconds": 4924.5
+      },
+      "245": {
+        "name": "其他说话人_246",
+        "speech_seconds": 1.6,
+        "first_seconds": 3289.48
+      },
+      "246": {
+        "name": "其他说话人_247",
+        "speech_seconds": 2.24,
+        "first_seconds": 3007.3
+      },
+      "247": {
+        "name": "其他说话人_248",
+        "speech_seconds": 1.08,
+        "first_seconds": 3171.78
+      },
+      "248": {
+        "name": "其他说话人_249",
+        "speech_seconds": 2.4,
+        "first_seconds": 3038.8
+      },
+      "249": {
+        "name": "其他说话人_250",
+        "speech_seconds": 1.82,
+        "first_seconds": 2774.22
+      },
+      "250": {
+        "name": "其他说话人_251",
+        "speech_seconds": 2.16,
+        "first_seconds": 3448.46
+      },
+      "251": {
+        "name": "其他说话人_252",
+        "speech_seconds": 1.4,
+        "first_seconds": 2985.0
+      },
+      "252": {
+        "name": "其他说话人_253",
+        "speech_seconds": 2.94,
+        "first_seconds": 2817.12
+      },
+      "253": {
+        "name": "其他说话人_254",
+        "speech_seconds": 1.76,
+        "first_seconds": 1876.16
+      },
+      "254": {
+        "name": "其他说话人_255",
+        "speech_seconds": 1.46,
+        "first_seconds": 4325.14
+      },
+      "255": {
+        "name": "其他说话人_256",
+        "speech_seconds": 2.06,
+        "first_seconds": 4682.02
+      },
+      "256": {
+        "name": "其他说话人_257",
+        "speech_seconds": 2.02,
+        "first_seconds": 4274.38
+      },
+      "257": {
+        "name": "其他说话人_258",
+        "speech_seconds": 1.14,
+        "first_seconds": 2003.24
+      },
+      "258": {
+        "name": "其他说话人_259",
+        "speech_seconds": 1.94,
+        "first_seconds": 1206.3
+      },
+      "259": {
+        "name": "其他说话人_260",
+        "speech_seconds": 2.74,
+        "first_seconds": 4986.3
+      },
+      "260": {
+        "name": "其他说话人_261",
+        "speech_seconds": 2.48,
+        "first_seconds": 2330.42
+      },
+      "261": {
+        "name": "其他说话人_262",
+        "speech_seconds": 3.0,
+        "first_seconds": 3043.3
+      },
+      "262": {
+        "name": "其他说话人_263",
+        "speech_seconds": 1.8,
+        "first_seconds": 3031.26
+      },
+      "263": {
+        "name": "其他说话人_264",
+        "speech_seconds": 3.54,
+        "first_seconds": 4770.86
+      },
+      "264": {
+        "name": "其他说话人_265",
+        "speech_seconds": 1.78,
+        "first_seconds": 3361.36
+      },
+      "265": {
+        "name": "其他说话人_266",
+        "speech_seconds": 1.72,
+        "first_seconds": 4627.14
+      },
+      "266": {
+        "name": "其他说话人_267",
+        "speech_seconds": 2.84,
+        "first_seconds": 3779.86
+      },
+      "267": {
+        "name": "其他说话人_268",
+        "speech_seconds": 1.58,
+        "first_seconds": 5079.04
+      },
+      "268": {
+        "name": "其他说话人_269",
+        "speech_seconds": 3.48,
+        "first_seconds": 5263.04
+      },
+      "269": {
+        "name": "其他说话人_270",
+        "speech_seconds": 2.0,
+        "first_seconds": 2599.06
+      },
+      "270": {
+        "name": "其他说话人_271",
+        "speech_seconds": 3.0,
+        "first_seconds": 3717.7
+      },
+      "271": {
+        "name": "其他说话人_272",
+        "speech_seconds": 1.9,
+        "first_seconds": 3172.86
+      },
+      "272": {
+        "name": "其他说话人_273",
+        "speech_seconds": 2.44,
+        "first_seconds": 5032.66
+      },
+      "273": {
+        "name": "其他说话人_274",
+        "speech_seconds": 1.54,
+        "first_seconds": 4809.8
+      },
+      "274": {
+        "name": "其他说话人_275",
+        "speech_seconds": 2.04,
+        "first_seconds": 5043.42
+      },
+      "275": {
+        "name": "其他说话人_276",
+        "speech_seconds": 3.0,
+        "first_seconds": 3017.6
+      },
+      "276": {
+        "name": "其他说话人_277",
+        "speech_seconds": 1.0,
+        "first_seconds": 2856.86
+      },
+      "277": {
+        "name": "其他说话人_278",
+        "speech_seconds": 1.9,
+        "first_seconds": 2900.64
+      },
+      "278": {
+        "name": "其他说话人_279",
+        "speech_seconds": 3.28,
+        "first_seconds": 2850.42
+      },
+      "279": {
+        "name": "其他说话人_280",
+        "speech_seconds": 4.3,
+        "first_seconds": 3531.38
+      },
+      "280": {
+        "name": "其他说话人_281",
+        "speech_seconds": 1.14,
+        "first_seconds": 729.16
+      },
+      "281": {
+        "name": "其他说话人_282",
+        "speech_seconds": 4.14,
+        "first_seconds": 3816.84
+      },
+      "282": {
+        "name": "其他说话人_283",
+        "speech_seconds": 1.9,
+        "first_seconds": 4920.6
+      },
+      "283": {
+        "name": "其他说话人_284",
+        "speech_seconds": 2.06,
+        "first_seconds": 546.54
+      },
+      "284": {
+        "name": "其他说话人_285",
+        "speech_seconds": 1.26,
+        "first_seconds": 3005.4
+      },
+      "285": {
+        "name": "其他说话人_286",
+        "speech_seconds": 1.92,
+        "first_seconds": 4296.24
+      },
+      "286": {
+        "name": "其他说话人_287",
+        "speech_seconds": 1.6,
+        "first_seconds": 5375.72
+      },
+      "287": {
+        "name": "其他说话人_288",
+        "speech_seconds": 2.26,
+        "first_seconds": 2440.58
+      },
+      "288": {
+        "name": "其他说话人_289",
+        "speech_seconds": 4.2,
+        "first_seconds": 3488.3
+      },
+      "289": {
+        "name": "其他说话人_290",
+        "speech_seconds": 1.9,
+        "first_seconds": 3444.54
+      },
+      "290": {
+        "name": "其他说话人_291",
+        "speech_seconds": 7.18,
+        "first_seconds": 4870.18
+      },
+      "291": {
+        "name": "其他说话人_292",
+        "speech_seconds": 1.08,
+        "first_seconds": 3604.38
+      },
+      "292": {
+        "name": "其他说话人_293",
+        "speech_seconds": 2.68,
+        "first_seconds": 5038.86
+      },
+      "293": {
+        "name": "其他说话人_294",
+        "speech_seconds": 4.24,
+        "first_seconds": 4933.8
+      },
+      "294": {
+        "name": "其他说话人_295",
+        "speech_seconds": 2.62,
+        "first_seconds": 4774.84
+      },
+      "295": {
+        "name": "其他说话人_296",
+        "speech_seconds": 1.06,
+        "first_seconds": 2719.32
+      },
+      "296": {
+        "name": "其他说话人_297",
+        "speech_seconds": 7.72,
+        "first_seconds": 2967.92
+      },
+      "297": {
+        "name": "其他说话人_298",
+        "speech_seconds": 2.48,
+        "first_seconds": 3594.2
+      },
+      "298": {
+        "name": "其他说话人_299",
+        "speech_seconds": 2.76,
+        "first_seconds": 3623.62
+      },
+      "299": {
+        "name": "其他说话人_300",
+        "speech_seconds": 1.36,
+        "first_seconds": 3291.9
+      },
+      "300": {
+        "name": "其他说话人_301",
+        "speech_seconds": 3.32,
+        "first_seconds": 1870.14
+      },
+      "301": {
+        "name": "其他说话人_302",
+        "speech_seconds": 1.22,
+        "first_seconds": 2680.5
+      },
+      "302": {
+        "name": "其他说话人_303",
+        "speech_seconds": 1.96,
+        "first_seconds": 3324.22
+      },
+      "303": {
+        "name": "其他说话人_304",
+        "speech_seconds": 4.7,
+        "first_seconds": 3385.08
+      },
+      "304": {
+        "name": "其他说话人_305",
+        "speech_seconds": 1.34,
+        "first_seconds": 3190.44
+      },
+      "305": {
+        "name": "其他说话人_306",
+        "speech_seconds": 2.06,
+        "first_seconds": 3002.62
+      },
+      "306": {
+        "name": "其他说话人_307",
+        "speech_seconds": 1.64,
+        "first_seconds": 3752.36
+      },
+      "307": {
+        "name": "其他说话人_308",
+        "speech_seconds": 2.0,
+        "first_seconds": 2176.76
+      },
+      "308": {
+        "name": "其他说话人_309",
+        "speech_seconds": 2.0,
+        "first_seconds": 3777.86
+      },
+      "309": {
+        "name": "其他说话人_310",
+        "speech_seconds": 1.4,
+        "first_seconds": 3723.18
+      },
+      "310": {
+        "name": "其他说话人_311",
+        "speech_seconds": 1.7,
+        "first_seconds": 2384.62
+      },
+      "311": {
+        "name": "其他说话人_312",
+        "speech_seconds": 2.86,
+        "first_seconds": 3374.38
+      },
+      "312": {
+        "name": "其他说话人_313",
+        "speech_seconds": 11.9,
+        "first_seconds": 2821.22
+      },
+      "313": {
+        "name": "其他说话人_314",
+        "speech_seconds": 2.28,
+        "first_seconds": 2993.34
+      },
+      "314": {
+        "name": "其他说话人_315",
+        "speech_seconds": 3.8,
+        "first_seconds": 3010.0
+      },
+      "315": {
+        "name": "其他说话人_316",
+        "speech_seconds": 2.46,
+        "first_seconds": 2085.04
+      },
+      "316": {
+        "name": "其他说话人_317",
+        "speech_seconds": 1.32,
+        "first_seconds": 5061.82
+      },
+      "317": {
+        "name": "其他说话人_318",
+        "speech_seconds": 3.04,
+        "first_seconds": 4979.38
+      },
+      "318": {
+        "name": "其他说话人_319",
+        "speech_seconds": 9.42,
+        "first_seconds": 625.8
+      },
+      "319": {
+        "name": "其他说话人_320",
+        "speech_seconds": 4.48,
+        "first_seconds": 3747.88
+      },
+      "320": {
+        "name": "其他说话人_321",
+        "speech_seconds": 1.46,
+        "first_seconds": 2955.68
+      },
+      "321": {
+        "name": "其他说话人_322",
+        "speech_seconds": 1.0,
+        "first_seconds": 4303.6
+      },
+      "322": {
+        "name": "其他说话人_323",
+        "speech_seconds": 1.22,
+        "first_seconds": 3574.46
+      },
+      "323": {
+        "name": "其他说话人_324",
+        "speech_seconds": 2.0,
+        "first_seconds": 3801.96
+      },
+      "324": {
+        "name": "其他说话人_325",
+        "speech_seconds": 3.08,
+        "first_seconds": 2995.62
+      },
+      "325": {
+        "name": "其他说话人_326",
+        "speech_seconds": 2.44,
+        "first_seconds": 3437.82
+      },
+      "326": {
+        "name": "其他说话人_327",
+        "speech_seconds": 1.86,
+        "first_seconds": 3774.62
+      },
+      "327": {
+        "name": "其他说话人_328",
+        "speech_seconds": 1.56,
+        "first_seconds": 1890.2
+      },
+      "328": {
+        "name": "其他说话人_329",
+        "speech_seconds": 1.52,
+        "first_seconds": 3854.66
+      },
+      "329": {
+        "name": "其他说话人_330",
+        "speech_seconds": 6.48,
+        "first_seconds": 2684.82
+      },
+      "330": {
+        "name": "其他说话人_331",
+        "speech_seconds": 1.74,
+        "first_seconds": 2957.14
+      },
+      "331": {
+        "name": "其他说话人_332",
+        "speech_seconds": 2.38,
+        "first_seconds": 3596.68
+      },
+      "332": {
+        "name": "其他说话人_333",
+        "speech_seconds": 2.42,
+        "first_seconds": 3316.98
+      },
+      "333": {
+        "name": "其他说话人_334",
+        "speech_seconds": 1.48,
+        "first_seconds": 3654.34
+      },
+      "334": {
+        "name": "其他说话人_335",
+        "speech_seconds": 1.76,
+        "first_seconds": 3899.98
+      },
+      "335": {
+        "name": "其他说话人_336",
+        "speech_seconds": 1.0,
+        "first_seconds": 2120.68
+      },
+      "336": {
+        "name": "其他说话人_337",
+        "speech_seconds": 6.04,
+        "first_seconds": 3220.24
+      },
+      "337": {
+        "name": "其他说话人_338",
+        "speech_seconds": 2.56,
+        "first_seconds": 5054.92
+      },
+      "338": {
+        "name": "其他说话人_339",
+        "speech_seconds": 3.36,
+        "first_seconds": 2846.64
+      },
+      "339": {
+        "name": "其他说话人_340",
+        "speech_seconds": 1.42,
+        "first_seconds": 3601.84
+      },
+      "340": {
+        "name": "其他说话人_341",
+        "speech_seconds": 9.44,
+        "first_seconds": 4849.9
+      },
+      "341": {
+        "name": "其他说话人_342",
+        "speech_seconds": 3.0,
+        "first_seconds": 3164.68
+      },
+      "342": {
+        "name": "其他说话人_343",
+        "speech_seconds": 1.44,
+        "first_seconds": 4717.68
+      },
+      "343": {
+        "name": "其他说话人_344",
+        "speech_seconds": 2.0,
+        "first_seconds": 3990.38
+      },
+      "344": {
+        "name": "其他说话人_345",
+        "speech_seconds": 1.38,
+        "first_seconds": 5336.52
+      },
+      "345": {
+        "name": "其他说话人_346",
+        "speech_seconds": 1.82,
+        "first_seconds": 2382.8
+      },
+      "346": {
+        "name": "其他说话人_347",
+        "speech_seconds": 2.16,
+        "first_seconds": 3710.1
+      },
+      "347": {
+        "name": "其他说话人_348",
+        "speech_seconds": 1.6,
+        "first_seconds": 3727.34
+      },
+      "348": {
+        "name": "其他说话人_349",
+        "speech_seconds": 2.0,
+        "first_seconds": 2608.46
+      },
+      "349": {
+        "name": "其他说话人_350",
+        "speech_seconds": 9.3,
+        "first_seconds": 3791.02
+      },
+      "350": {
+        "name": "其他说话人_351",
+        "speech_seconds": 4.84,
+        "first_seconds": 4604.92
+      },
+      "351": {
+        "name": "其他说话人_352",
+        "speech_seconds": 1.98,
+        "first_seconds": 3364.22
+      },
+      "352": {
+        "name": "其他说话人_353",
+        "speech_seconds": 3.7,
+        "first_seconds": 2896.94
+      },
+      "353": {
+        "name": "其他说话人_354",
+        "speech_seconds": 1.6,
+        "first_seconds": 4730.3
+      },
+      "354": {
+        "name": "其他说话人_355",
+        "speech_seconds": 2.1,
+        "first_seconds": 3962.0
+      },
+      "355": {
+        "name": "其他说话人_356",
+        "speech_seconds": 2.6,
+        "first_seconds": 3731.14
+      },
+      "356": {
+        "name": "其他说话人_357",
+        "speech_seconds": 6.16,
+        "first_seconds": 3630.52
+      },
+      "357": {
+        "name": "其他说话人_358",
+        "speech_seconds": 1.12,
+        "first_seconds": 3170.66
+      },
+      "358": {
+        "name": "其他说话人_359",
+        "speech_seconds": 2.8,
+        "first_seconds": 3562.0
+      },
+      "359": {
+        "name": "其他说话人_360",
+        "speech_seconds": 1.42,
+        "first_seconds": 896.0
+      },
+      "360": {
+        "name": "其他说话人_361",
+        "speech_seconds": 1.92,
+        "first_seconds": 478.54
+      },
+      "361": {
+        "name": "其他说话人_362",
+        "speech_seconds": 1.8,
+        "first_seconds": 1286.54
+      },
+      "362": {
+        "name": "其他说话人_363",
+        "speech_seconds": 1.62,
+        "first_seconds": 2914.2
+      },
+      "363": {
+        "name": "其他说话人_364",
+        "speech_seconds": 1.26,
+        "first_seconds": 384.62
+      },
+      "364": {
+        "name": "其他说话人_365",
+        "speech_seconds": 1.18,
+        "first_seconds": 3169.48
+      },
+      "365": {
+        "name": "其他说话人_366",
+        "speech_seconds": 1.76,
+        "first_seconds": 737.02
+      },
+      "366": {
+        "name": "其他说话人_367",
+        "speech_seconds": 1.48,
+        "first_seconds": 1821.66
+      },
+      "367": {
+        "name": "其他说话人_368",
+        "speech_seconds": 1.62,
+        "first_seconds": 454.88
+      },
+      "368": {
+        "name": "其他说话人_369",
+        "speech_seconds": 4.02,
+        "first_seconds": 1989.52
+      },
+      "369": {
+        "name": "其他说话人_370",
+        "speech_seconds": 1.42,
+        "first_seconds": 169.86
+      },
+      "370": {
+        "name": "其他说话人_371",
+        "speech_seconds": 1.54,
+        "first_seconds": 3389.78
+      },
+      "371": {
+        "name": "其他说话人_372",
+        "speech_seconds": 1.38,
+        "first_seconds": 1945.76
+      },
+      "372": {
+        "name": "其他说话人_373",
+        "speech_seconds": 1.48,
+        "first_seconds": 2666.88
+      },
+      "373": {
+        "name": "其他说话人_374",
+        "speech_seconds": 2.22,
+        "first_seconds": 3814.62
+      },
+      "374": {
+        "name": "其他说话人_375",
+        "speech_seconds": 1.32,
+        "first_seconds": 333.0
+      },
+      "375": {
+        "name": "其他说话人_376",
+        "speech_seconds": 1.04,
+        "first_seconds": 1079.88
+      },
+      "376": {
+        "name": "其他说话人_377",
+        "speech_seconds": 1.42,
+        "first_seconds": 73.0
+      },
+      "377": {
+        "name": "其他说话人_378",
+        "speech_seconds": 1.42,
+        "first_seconds": 217.4
+      },
+      "378": {
+        "name": "其他说话人_379",
+        "speech_seconds": 1.72,
+        "first_seconds": 3983.32
+      },
+      "379": {
+        "name": "其他说话人_380",
+        "speech_seconds": 1.68,
+        "first_seconds": 64.4
+      },
+      "380": {
+        "name": "其他说话人_381",
+        "speech_seconds": 1.18,
+        "first_seconds": 447.38
+      },
+      "381": {
+        "name": "其他说话人_382",
+        "speech_seconds": 1.42,
+        "first_seconds": 3315.56
+      },
+      "382": {
+        "name": "其他说话人_383",
+        "speech_seconds": 1.42,
+        "first_seconds": 1173.78
+      },
+      "383": {
+        "name": "其他说话人_384",
+        "speech_seconds": 1.0,
+        "first_seconds": 3001.2
+      },
+      "384": {
+        "name": "其他说话人_385",
+        "speech_seconds": 3.06,
+        "first_seconds": 1235.72
+      },
+      "385": {
+        "name": "其他说话人_386",
+        "speech_seconds": 3.18,
+        "first_seconds": 1092.48
+      },
+      "386": {
+        "name": "其他说话人_387",
+        "speech_seconds": 1.3,
+        "first_seconds": 982.56
+      },
+      "387": {
+        "name": "其他说话人_388",
+        "speech_seconds": 1.0,
+        "first_seconds": 247.24
+      },
+      "388": {
+        "name": "其他说话人_389",
+        "speech_seconds": 1.76,
+        "first_seconds": 305.18
+      },
+      "389": {
+        "name": "其他说话人_390",
+        "speech_seconds": 1.2,
+        "first_seconds": 453.68
+      },
+      "390": {
+        "name": "其他说话人_391",
+        "speech_seconds": 1.6,
+        "first_seconds": 3744.02
+      },
+      "391": {
+        "name": "其他说话人_392",
+        "speech_seconds": 1.72,
+        "first_seconds": 2777.1
+      },
+      "392": {
+        "name": "其他说话人_393",
+        "speech_seconds": 1.92,
+        "first_seconds": 1963.62
+      },
+      "393": {
+        "name": "其他说话人_394",
+        "speech_seconds": 1.86,
+        "first_seconds": 14.84
+      },
+      "394": {
+        "name": "其他说话人_395",
+        "speech_seconds": 2.1,
+        "first_seconds": 1909.5
+      },
+      "395": {
+        "name": "其他说话人_396",
+        "speech_seconds": 2.3,
+        "first_seconds": 152.82
+      },
+      "396": {
+        "name": "其他说话人_397",
+        "speech_seconds": 12.76,
+        "first_seconds": 434.0
+      },
+      "397": {
+        "name": "其他说话人_398",
+        "speech_seconds": 1.54,
+        "first_seconds": 1188.16
+      },
+      "398": {
+        "name": "其他说话人_399",
+        "speech_seconds": 1.12,
+        "first_seconds": 1950.88
+      },
+      "399": {
+        "name": "其他说话人_400",
+        "speech_seconds": 1.62,
+        "first_seconds": 1929.22
+      },
+      "400": {
+        "name": "其他说话人_401",
+        "speech_seconds": 1.38,
+        "first_seconds": 2716.82
+      },
+      "401": {
+        "name": "其他说话人_402",
+        "speech_seconds": 2.24,
+        "first_seconds": 3394.9
+      },
+      "402": {
+        "name": "其他说话人_403",
+        "speech_seconds": 6.06,
+        "first_seconds": 3269.76
+      },
+      "403": {
+        "name": "其他说话人_404",
+        "speech_seconds": 1.08,
+        "first_seconds": 4282.14
+      },
+      "404": {
+        "name": "其他说话人_405",
+        "speech_seconds": 3.42,
+        "first_seconds": 386.98
+      },
+      "405": {
+        "name": "其他说话人_406",
+        "speech_seconds": 2.34,
+        "first_seconds": 1219.58
+      },
+      "406": {
+        "name": "其他说话人_407",
+        "speech_seconds": 1.0,
+        "first_seconds": 3432.2
+      },
+      "407": {
+        "name": "其他说话人_408",
+        "speech_seconds": 2.3,
+        "first_seconds": 1940.88
+      },
+      "408": {
+        "name": "其他说话人_409",
+        "speech_seconds": 1.74,
+        "first_seconds": 2234.86
+      },
+      "409": {
+        "name": "其他说话人_410",
+        "speech_seconds": 1.14,
+        "first_seconds": 2095.04
+      },
+      "410": {
+        "name": "其他说话人_411",
+        "speech_seconds": 2.12,
+        "first_seconds": 2033.42
+      },
+      "411": {
+        "name": "其他说话人_412",
+        "speech_seconds": 1.48,
+        "first_seconds": 2964.14
+      },
+      "412": {
+        "name": "其他说话人_413",
+        "speech_seconds": 2.14,
+        "first_seconds": 139.52
+      },
+      "413": {
+        "name": "其他说话人_414",
+        "speech_seconds": 1.6,
+        "first_seconds": 3118.4
+      },
+      "414": {
+        "name": "其他说话人_415",
+        "speech_seconds": 2.06,
+        "first_seconds": 1194.56
+      },
+      "415": {
+        "name": "其他说话人_416",
+        "speech_seconds": 3.56,
+        "first_seconds": 460.02
+      },
+      "416": {
+        "name": "其他说话人_417",
+        "speech_seconds": 1.0,
+        "first_seconds": 1211.58
+      },
+      "417": {
+        "name": "其他说话人_418",
+        "speech_seconds": 1.96,
+        "first_seconds": 410.58
+      },
+      "418": {
+        "name": "其他说话人_419",
+        "speech_seconds": 1.36,
+        "first_seconds": 474.56
+      },
+      "419": {
+        "name": "其他说话人_420",
+        "speech_seconds": 1.1,
+        "first_seconds": 1169.16
+      },
+      "420": {
+        "name": "其他说话人_421",
+        "speech_seconds": 1.64,
+        "first_seconds": 299.42
+      },
+      "421": {
+        "name": "其他说话人_422",
+        "speech_seconds": 1.42,
+        "first_seconds": 23.64
+      },
+      "422": {
+        "name": "其他说话人_423",
+        "speech_seconds": 1.12,
+        "first_seconds": 1522.74
+      },
+      "423": {
+        "name": "其他说话人_424",
+        "speech_seconds": 1.08,
+        "first_seconds": 987.52
+      },
+      "424": {
+        "name": "其他说话人_425",
+        "speech_seconds": 3.1,
+        "first_seconds": 2624.44
+      },
+      "425": {
+        "name": "其他说话人_426",
+        "speech_seconds": 1.06,
+        "first_seconds": 17.54
+      },
+      "426": {
+        "name": "其他说话人_427",
+        "speech_seconds": 5.58,
+        "first_seconds": 1815.7
+      },
+      "427": {
+        "name": "其他说话人_428",
+        "speech_seconds": 3.6,
+        "first_seconds": 1046.02
+      },
+      "428": {
+        "name": "其他说话人_429",
+        "speech_seconds": 1.52,
+        "first_seconds": 3333.06
+      },
+      "429": {
+        "name": "其他说话人_430",
+        "speech_seconds": 1.18,
+        "first_seconds": 2071.26
+      },
+      "430": {
+        "name": "其他说话人_431",
+        "speech_seconds": 2.0,
+        "first_seconds": 1943.76
+      },
+      "431": {
+        "name": "其他说话人_432",
+        "speech_seconds": 1.0,
+        "first_seconds": 3020.6
+      },
+      "432": {
+        "name": "其他说话人_433",
+        "speech_seconds": 1.34,
+        "first_seconds": 739.98
+      },
+      "433": {
+        "name": "其他说话人_434",
+        "speech_seconds": 1.1,
+        "first_seconds": 709.46
+      },
+      "434": {
+        "name": "其他说话人_435",
+        "speech_seconds": 5.62,
+        "first_seconds": 1081.98
+      },
+      "435": {
+        "name": "其他说话人_436",
+        "speech_seconds": 1.72,
+        "first_seconds": 2714.14
+      },
+      "436": {
+        "name": "其他说话人_437",
+        "speech_seconds": 1.08,
+        "first_seconds": 2670.6
+      },
+      "437": {
+        "name": "其他说话人_438",
+        "speech_seconds": 1.16,
+        "first_seconds": 26.98
+      },
+      "438": {
+        "name": "其他说话人_439",
+        "speech_seconds": 1.34,
+        "first_seconds": 2647.84
+      },
+      "439": {
+        "name": "其他说话人_440",
+        "speech_seconds": 1.96,
+        "first_seconds": 916.02
+      },
+      "440": {
+        "name": "其他说话人_441",
+        "speech_seconds": 2.1,
+        "first_seconds": 3041.2
+      },
+      "441": {
+        "name": "其他说话人_442",
+        "speech_seconds": 1.12,
+        "first_seconds": 2718.2
+      },
+      "442": {
+        "name": "其他说话人_443",
+        "speech_seconds": 2.96,
+        "first_seconds": 1958.16
+      },
+      "443": {
+        "name": "其他说话人_444",
+        "speech_seconds": 1.26,
+        "first_seconds": 334.32
+      },
+      "444": {
+        "name": "其他说话人_445",
+        "speech_seconds": 1.84,
+        "first_seconds": 1239.92
+      },
+      "445": {
+        "name": "其他说话人_446",
+        "speech_seconds": 1.72,
+        "first_seconds": 985.8
+      },
+      "446": {
+        "name": "其他说话人_447",
+        "speech_seconds": 1.44,
+        "first_seconds": 585.54
+      },
+      "447": {
+        "name": "其他说话人_448",
+        "speech_seconds": 1.28,
+        "first_seconds": 1903.84
+      },
+      "448": {
+        "name": "其他说话人_449",
+        "speech_seconds": 4.42,
+        "first_seconds": 1064.92
+      },
+      "449": {
+        "name": "其他说话人_450",
+        "speech_seconds": 1.84,
+        "first_seconds": 2838.04
+      },
+      "450": {
+        "name": "其他说话人_451",
+        "speech_seconds": 1.08,
+        "first_seconds": 922.44
+      },
+      "451": {
+        "name": "其他说话人_452",
+        "speech_seconds": 1.9,
+        "first_seconds": 1980.1
+      },
+      "452": {
+        "name": "其他说话人_453",
+        "speech_seconds": 2.44,
+        "first_seconds": 513.68
+      },
+      "453": {
+        "name": "其他说话人_454",
+        "speech_seconds": 1.86,
+        "first_seconds": 248.24
+      },
+      "454": {
+        "name": "其他说话人_455",
+        "speech_seconds": 1.1,
+        "first_seconds": 1247.9
+      },
+      "455": {
+        "name": "其他说话人_456",
+        "speech_seconds": 4.4,
+        "first_seconds": 1161.12
+      },
+      "456": {
+        "name": "其他说话人_457",
+        "speech_seconds": 1.9,
+        "first_seconds": 1952.0
+      },
+      "457": {
+        "name": "其他说话人_458",
+        "speech_seconds": 1.28,
+        "first_seconds": 1841.64
+      },
+      "458": {
+        "name": "其他说话人_459",
+        "speech_seconds": 3.56,
+        "first_seconds": 2027.58
+      },
+      "459": {
+        "name": "其他说话人_460",
+        "speech_seconds": 1.44,
+        "first_seconds": 21.26
+      },
+      "460": {
+        "name": "其他说话人_461",
+        "speech_seconds": 2.92,
+        "first_seconds": 1190.32
+      },
+      "461": {
+        "name": "其他说话人_462",
+        "speech_seconds": 1.7,
+        "first_seconds": 287.74
+      },
+      "462": {
+        "name": "其他说话人_463",
+        "speech_seconds": 1.86,
+        "first_seconds": 423.52
+      },
+      "463": {
+        "name": "其他说话人_464",
+        "speech_seconds": 1.98,
+        "first_seconds": 1040.62
+      },
+      "464": {
+        "name": "其他说话人_465",
+        "speech_seconds": 1.42,
+        "first_seconds": 4840.34
+      },
+      "465": {
+        "name": "其他说话人_466",
+        "speech_seconds": 1.3,
+        "first_seconds": 1970.7
+      },
+      "466": {
+        "name": "其他说话人_467",
+        "speech_seconds": 3.42,
+        "first_seconds": 1824.86
+      },
+      "467": {
+        "name": "其他说话人_468",
+        "speech_seconds": 1.68,
+        "first_seconds": 321.94
+      },
+      "468": {
+        "name": "其他说话人_469",
+        "speech_seconds": 1.1,
+        "first_seconds": 779.58
+      },
+      "469": {
+        "name": "其他说话人_470",
+        "speech_seconds": 1.0,
+        "first_seconds": 449.92
+      },
+      "470": {
+        "name": "其他说话人_471",
+        "speech_seconds": 2.04,
+        "first_seconds": 2587.4
+      },
+      "471": {
+        "name": "其他说话人_472",
+        "speech_seconds": 1.5,
+        "first_seconds": 2223.04
+      },
+      "472": {
+        "name": "其他说话人_473",
+        "speech_seconds": 2.0,
+        "first_seconds": 3092.26
+      },
+      "473": {
+        "name": "其他说话人_474",
+        "speech_seconds": 2.18,
+        "first_seconds": 2040.42
+      },
+      "474": {
+        "name": "其他说话人_475",
+        "speech_seconds": 1.96,
+        "first_seconds": 1961.66
+      },
+      "475": {
+        "name": "其他说话人_476",
+        "speech_seconds": 2.02,
+        "first_seconds": 2237.18
+      },
+      "476": {
+        "name": "其他说话人_477",
+        "speech_seconds": 1.62,
+        "first_seconds": 5110.74
+      },
+      "477": {
+        "name": "其他说话人_478",
+        "speech_seconds": 2.0,
+        "first_seconds": 972.56
+      },
+      "478": {
+        "name": "其他说话人_479",
+        "speech_seconds": 1.48,
+        "first_seconds": 2219.54
+      },
+      "479": {
+        "name": "其他说话人_480",
+        "speech_seconds": 1.56,
+        "first_seconds": 3163.12
+      },
+      "480": {
+        "name": "其他说话人_481",
+        "speech_seconds": 17.1,
+        "first_seconds": 355.5
+      },
+      "481": {
+        "name": "其他说话人_482",
+        "speech_seconds": 1.0,
+        "first_seconds": 891.74
+      },
+      "482": {
+        "name": "其他说话人_483",
+        "speech_seconds": 2.06,
+        "first_seconds": 1055.84
+      },
+      "483": {
+        "name": "其他说话人_484",
+        "speech_seconds": 1.2,
+        "first_seconds": 2108.9
+      },
+      "484": {
+        "name": "其他说话人_485",
+        "speech_seconds": 2.54,
+        "first_seconds": 2634.12
+      },
+      "485": {
+        "name": "其他说话人_486",
+        "speech_seconds": 2.04,
+        "first_seconds": 3704.02
+      },
+      "486": {
+        "name": "其他说话人_487",
+        "speech_seconds": 3.3,
+        "first_seconds": 4298.16
+      },
+      "487": {
+        "name": "其他说话人_488",
+        "speech_seconds": 1.14,
+        "first_seconds": 20.12
+      },
+      "488": {
+        "name": "其他说话人_489",
+        "speech_seconds": 1.44,
+        "first_seconds": 3024.36
+      },
+      "489": {
+        "name": "其他说话人_490",
+        "speech_seconds": 1.84,
+        "first_seconds": 746.78
+      },
+      "490": {
+        "name": "其他说话人_491",
+        "speech_seconds": 1.34,
+        "first_seconds": 1170.76
+      },
+      "491": {
+        "name": "其他说话人_492",
+        "speech_seconds": 2.0,
+        "first_seconds": 500.5
+      },
+      "492": {
+        "name": "其他说话人_493",
+        "speech_seconds": 13.54,
+        "first_seconds": 222.86
+      },
+      "493": {
+        "name": "其他说话人_494",
+        "speech_seconds": 3.04,
+        "first_seconds": 2213.92
+      },
+      "494": {
+        "name": "其他说话人_495",
+        "speech_seconds": 1.06,
+        "first_seconds": 2004.38
+      },
+      "495": {
+        "name": "其他说话人_496",
+        "speech_seconds": 2.02,
+        "first_seconds": 2809.38
+      },
+      "496": {
+        "name": "其他说话人_497",
+        "speech_seconds": 3.14,
+        "first_seconds": 3126.46
+      },
+      "497": {
+        "name": "其他说话人_498",
+        "speech_seconds": 1.46,
+        "first_seconds": 1226.04
+      },
+      "498": {
+        "name": "其他说话人_499",
+        "speech_seconds": 20.16,
+        "first_seconds": 2876.5
+      },
+      "499": {
+        "name": "其他说话人_500",
+        "speech_seconds": 2.22,
+        "first_seconds": 1519.8
+      },
+      "500": {
+        "name": "其他说话人_501",
+        "speech_seconds": 1.9,
+        "first_seconds": 2077.64
+      },
+      "501": {
+        "name": "其他说话人_502",
+        "speech_seconds": 1.3,
+        "first_seconds": 533.2
+      },
+      "502": {
+        "name": "其他说话人_503",
+        "speech_seconds": 1.8,
+        "first_seconds": 3167.68
+      },
+      "503": {
+        "name": "其他说话人_504",
+        "speech_seconds": 3.08,
+        "first_seconds": 466.66
+      },
+      "504": {
+        "name": "其他说话人_505",
+        "speech_seconds": 1.36,
+        "first_seconds": 2096.18
+      },
+      "505": {
+        "name": "其他说话人_506",
+        "speech_seconds": 1.08,
+        "first_seconds": 172.36
+      },
+      "506": {
+        "name": "其他说话人_507",
+        "speech_seconds": 1.0,
+        "first_seconds": 2002.24
+      },
+      "507": {
+        "name": "其他说话人_508",
+        "speech_seconds": 2.2,
+        "first_seconds": 150.1
+      },
+      "508": {
+        "name": "其他说话人_509",
+        "speech_seconds": 1.2,
+        "first_seconds": 318.44
+      },
+      "509": {
+        "name": "其他说话人_510",
+        "speech_seconds": 4.0,
+        "first_seconds": 1836.98
+      },
+      "510": {
+        "name": "其他说话人_511",
+        "speech_seconds": 1.32,
+        "first_seconds": 3773.06
+      },
+      "511": {
+        "name": "其他说话人_512",
+        "speech_seconds": 1.16,
+        "first_seconds": 495.04
+      },
+      "512": {
+        "name": "其他说话人_513",
+        "speech_seconds": 1.38,
+        "first_seconds": 3776.48
+      },
+      "513": {
+        "name": "其他说话人_514",
+        "speech_seconds": 1.12,
+        "first_seconds": 914.9
+      },
+      "514": {
+        "name": "其他说话人_515",
+        "speech_seconds": 1.4,
+        "first_seconds": 3088.74
+      },
+      "515": {
+        "name": "其他说话人_516",
+        "speech_seconds": 1.14,
+        "first_seconds": 102.86
+      },
+      "516": {
+        "name": "其他说话人_517",
+        "speech_seconds": 2.48,
+        "first_seconds": 1017.72
+      },
+      "517": {
+        "name": "其他说话人_518",
+        "speech_seconds": 1.08,
+        "first_seconds": 80.62
+      },
+      "518": {
+        "name": "其他说话人_519",
+        "speech_seconds": 3.18,
+        "first_seconds": 1176.02
+      },
+      "519": {
+        "name": "其他说话人_520",
+        "speech_seconds": 2.66,
+        "first_seconds": 1912.34
+      },
+      "520": {
+        "name": "其他说话人_521",
+        "speech_seconds": 1.94,
+        "first_seconds": 180.78
+      },
+      "521": {
+        "name": "其他说话人_522",
+        "speech_seconds": 1.66,
+        "first_seconds": 407.88
+      },
+      "522": {
+        "name": "其他说话人_523",
+        "speech_seconds": 4.0,
+        "first_seconds": 418.74
+      },
+      "523": {
+        "name": "其他说话人_524",
+        "speech_seconds": 2.04,
+        "first_seconds": 2611.4
+      },
+      "524": {
+        "name": "其他说话人_525",
+        "speech_seconds": 2.22,
+        "first_seconds": 937.98
+      },
+      "525": {
+        "name": "其他说话人_526",
+        "speech_seconds": 2.08,
+        "first_seconds": 2058.76
+      },
+      "526": {
+        "name": "其他说话人_527",
+        "speech_seconds": 2.0,
+        "first_seconds": 145.28
+      },
+      "527": {
+        "name": "其他说话人_528",
+        "speech_seconds": 1.14,
+        "first_seconds": 912.68
+      },
+      "528": {
+        "name": "其他说话人_529",
+        "speech_seconds": 1.56,
+        "first_seconds": 917.98
+      },
+      "529": {
+        "name": "其他说话人_530",
+        "speech_seconds": 1.96,
+        "first_seconds": 82.88
+      },
+      "530": {
+        "name": "其他说话人_531",
+        "speech_seconds": 2.36,
+        "first_seconds": 174.86
+      },
+      "531": {
+        "name": "其他说话人_532",
+        "speech_seconds": 1.32,
+        "first_seconds": 1193.24
+      },
+      "532": {
+        "name": "其他说话人_533",
+        "speech_seconds": 1.32,
+        "first_seconds": 1908.18
+      },
+      "533": {
+        "name": "其他说话人_534",
+        "speech_seconds": 1.64,
+        "first_seconds": 1159.2
+      },
+      "534": {
+        "name": "其他说话人_535",
+        "speech_seconds": 1.84,
+        "first_seconds": 3736.38
+      },
+      "535": {
+        "name": "其他说话人_536",
+        "speech_seconds": 1.06,
+        "first_seconds": 3366.42
+      },
+      "536": {
+        "name": "其他说话人_537",
+        "speech_seconds": 6.36,
+        "first_seconds": 564.76
+      },
+      "537": {
+        "name": "其他说话人_538",
+        "speech_seconds": 1.0,
+        "first_seconds": 4913.88
+      },
+      "538": {
+        "name": "其他说话人_539",
+        "speech_seconds": 1.62,
+        "first_seconds": 84.84
+      },
+      "539": {
+        "name": "其他说话人_540",
+        "speech_seconds": 1.02,
+        "first_seconds": 542.26
+      },
+      "540": {
+        "name": "其他说话人_541",
+        "speech_seconds": 1.82,
+        "first_seconds": 2486.44
+      },
+      "541": {
+        "name": "其他说话人_542",
+        "speech_seconds": 5.04,
+        "first_seconds": 3551.84
+      },
+      "542": {
+        "name": "其他说话人_543",
+        "speech_seconds": 1.6,
+        "first_seconds": 3608.76
+      },
+      "543": {
+        "name": "其他说话人_544",
+        "speech_seconds": 11.1,
+        "first_seconds": 126.16
+      },
+      "544": {
+        "name": "其他说话人_545",
+        "speech_seconds": 2.42,
+        "first_seconds": 1982.0
+      },
+      "545": {
+        "name": "其他说话人_546",
+        "speech_seconds": 1.12,
+        "first_seconds": 2816.0
+      },
+      "546": {
+        "name": "其他说话人_547",
+        "speech_seconds": 2.4,
+        "first_seconds": 3707.7
+      },
+      "547": {
+        "name": "其他说话人_548",
+        "speech_seconds": 2.04,
+        "first_seconds": 744.74
+      },
+      "548": {
+        "name": "其他说话人_549",
+        "speech_seconds": 1.54,
+        "first_seconds": 730.3
+      },
+      "549": {
+        "name": "其他说话人_550",
+        "speech_seconds": 1.1,
+        "first_seconds": 524.2
+      },
+      "550": {
+        "name": "其他说话人_551",
+        "speech_seconds": 1.08,
+        "first_seconds": 2872.3
+      },
+      "551": {
+        "name": "其他说话人_552",
+        "speech_seconds": 2.94,
+        "first_seconds": 2459.16
+      },
+      "552": {
+        "name": "其他说话人_553",
+        "speech_seconds": 1.44,
+        "first_seconds": 450.92
+      },
+      "553": {
+        "name": "其他说话人_554",
+        "speech_seconds": 3.26,
+        "first_seconds": 301.92
+      },
+      "554": {
+        "name": "其他说话人_555",
+        "speech_seconds": 2.0,
+        "first_seconds": 1880.3
+      },
+      "555": {
+        "name": "其他说话人_556",
+        "speech_seconds": 1.3,
+        "first_seconds": 741.32
+      },
+      "556": {
+        "name": "其他说话人_557",
+        "speech_seconds": 1.08,
+        "first_seconds": 913.82
+      },
+      "557": {
+        "name": "其他说话人_558",
+        "speech_seconds": 1.44,
+        "first_seconds": 540.58
+      },
+      "558": {
+        "name": "其他说话人_559",
+        "speech_seconds": 1.68,
+        "first_seconds": 2658.64
+      },
+      "559": {
+        "name": "其他说话人_560",
+        "speech_seconds": 2.08,
+        "first_seconds": 3120.0
+      },
+      "560": {
+        "name": "其他说话人_561",
+        "speech_seconds": 3.06,
+        "first_seconds": 1071.62
+      },
+      "561": {
+        "name": "其他说话人_562",
+        "speech_seconds": 1.18,
+        "first_seconds": 81.7
+      },
+      "562": {
+        "name": "其他说话人_563",
+        "speech_seconds": 4.28,
+        "first_seconds": 293.34
+      },
+      "563": {
+        "name": "其他说话人_564",
+        "speech_seconds": 1.22,
+        "first_seconds": 3278.62
+      },
+      "564": {
+        "name": "其他说话人_565",
+        "speech_seconds": 4.32,
+        "first_seconds": 3564.8
+      },
+      "565": {
+        "name": "其他说话人_566",
+        "speech_seconds": 1.04,
+        "first_seconds": 902.74
+      },
+      "566": {
+        "name": "其他说话人_567",
+        "speech_seconds": 3.2,
+        "first_seconds": 3505.3
+      },
+      "567": {
+        "name": "其他说话人_568",
+        "speech_seconds": 4.32,
+        "first_seconds": 66.08
+      },
+      "568": {
+        "name": "其他说话人_569",
+        "speech_seconds": 1.9,
+        "first_seconds": 178.88
+      },
+      "569": {
+        "name": "其他说话人_570",
+        "speech_seconds": 4.64,
+        "first_seconds": 240.8
+      },
+      "570": {
+        "name": "其他说话人_571",
+        "speech_seconds": 2.0,
+        "first_seconds": 1197.4
+      },
+      "571": {
+        "name": "其他说话人_572",
+        "speech_seconds": 1.02,
+        "first_seconds": 531.7
+      },
+      "572": {
+        "name": "其他说话人_573",
+        "speech_seconds": 1.08,
+        "first_seconds": 907.5
+      },
+      "573": {
+        "name": "其他说话人_574",
+        "speech_seconds": 1.6,
+        "first_seconds": 1035.66
+      },
+      "574": {
+        "name": "其他说话人_575",
+        "speech_seconds": 6.32,
+        "first_seconds": 5080.94
+      },
+      "575": {
+        "name": "其他说话人_576",
+        "speech_seconds": 1.0,
+        "first_seconds": 1199.4
+      },
+      "576": {
+        "name": "其他说话人_577",
+        "speech_seconds": 1.92,
+        "first_seconds": 1884.14
+      },
+      "577": {
+        "name": "其他说话人_578",
+        "speech_seconds": 1.5,
+        "first_seconds": 2674.44
+      },
+      "578": {
+        "name": "其他说话人_579",
+        "speech_seconds": 1.46,
+        "first_seconds": 78.1
+      },
+      "579": {
+        "name": "其他说话人_580",
+        "speech_seconds": 2.24,
+        "first_seconds": 1842.92
+      },
+      "580": {
+        "name": "其他说话人_581",
+        "speech_seconds": 1.1,
+        "first_seconds": 3227.56
+      },
+      "581": {
+        "name": "其他说话人_582",
+        "speech_seconds": 1.12,
+        "first_seconds": 706.0
+      },
+      "582": {
+        "name": "其他说话人_583",
+        "speech_seconds": 2.4,
+        "first_seconds": 3049.94
+      },
+      "583": {
+        "name": "其他说话人_584",
+        "speech_seconds": 2.4,
+        "first_seconds": 3063.02
+      },
+      "584": {
+        "name": "其他说话人_585",
+        "speech_seconds": 1.74,
+        "first_seconds": 2378.0
+      },
+      "585": {
+        "name": "其他说话人_586",
+        "speech_seconds": 1.82,
+        "first_seconds": 3232.64
+      },
+      "586": {
+        "name": "其他说话人_587",
+        "speech_seconds": 2.88,
+        "first_seconds": 2544.9
+      },
+      "587": {
+        "name": "其他说话人_588",
+        "speech_seconds": 1.3,
+        "first_seconds": 493.74
+      },
+      "588": {
+        "name": "其他说话人_589",
+        "speech_seconds": 1.74,
+        "first_seconds": 3702.28
+      },
+      "589": {
+        "name": "其他说话人_590",
+        "speech_seconds": 3.52,
+        "first_seconds": 3590.12
+      },
+      "590": {
+        "name": "其他说话人_591",
+        "speech_seconds": 2.1,
+        "first_seconds": 3848.52
+      },
+      "591": {
+        "name": "其他说话人_592",
+        "speech_seconds": 5.62,
+        "first_seconds": 6.38
+      },
+      "592": {
+        "name": "其他说话人_593",
+        "speech_seconds": 1.6,
+        "first_seconds": 471.04
+      },
+      "593": {
+        "name": "其他说话人_594",
+        "speech_seconds": 1.52,
+        "first_seconds": 1833.2
+      },
+      "594": {
+        "name": "其他说话人_595",
+        "speech_seconds": 2.64,
+        "first_seconds": 698.44
+      },
+      "595": {
+        "name": "其他说话人_596",
+        "speech_seconds": 1.0,
+        "first_seconds": 539.36
+      },
+      "596": {
+        "name": "其他说话人_597",
+        "speech_seconds": 1.34,
+        "first_seconds": 2129.68
+      },
+      "597": {
+        "name": "其他说话人_598",
+        "speech_seconds": 2.54,
+        "first_seconds": 104.0
+      },
+      "598": {
+        "name": "其他说话人_599",
+        "speech_seconds": 1.72,
+        "first_seconds": 2692.76
+      },
+      "599": {
+        "name": "其他说话人_600",
+        "speech_seconds": 18.26,
+        "first_seconds": 2937.12
+      },
+      "600": {
+        "name": "其他说话人_601",
+        "speech_seconds": 2.28,
+        "first_seconds": 3052.34
+      },
+      "601": {
+        "name": "其他说话人_602",
+        "speech_seconds": 1.42,
+        "first_seconds": 1180.8
+      },
+      "602": {
+        "name": "其他说话人_603",
+        "speech_seconds": 3.0,
+        "first_seconds": 1202.4
+      },
+      "603": {
+        "name": "其他说话人_604",
+        "speech_seconds": 1.52,
+        "first_seconds": 18.6
+      },
+      "604": {
+        "name": "其他说话人_605",
+        "speech_seconds": 6.4,
+        "first_seconds": 517.4
+      },
+      "605": {
+        "name": "其他说话人_606",
+        "speech_seconds": 1.8,
+        "first_seconds": 297.62
+      },
+      "606": {
+        "name": "其他说话人_607",
+        "speech_seconds": 2.44,
+        "first_seconds": 2591.3
+      },
+      "607": {
+        "name": "其他说话人_608",
+        "speech_seconds": 1.08,
+        "first_seconds": 2986.4
+      },
+      "608": {
+        "name": "其他说话人_609",
+        "speech_seconds": 1.48,
+        "first_seconds": 2783.04
+      },
+      "609": {
+        "name": "其他说话人_610",
+        "speech_seconds": 2.02,
+        "first_seconds": 2705.8
+      },
+      "610": {
+        "name": "其他说话人_611",
+        "speech_seconds": 2.74,
+        "first_seconds": 2663.98
+      },
+      "611": {
+        "name": "其他说话人_612",
+        "speech_seconds": 1.18,
+        "first_seconds": 25.8
+      },
+      "612": {
+        "name": "其他说话人_613",
+        "speech_seconds": 2.24,
+        "first_seconds": 285.5
+      },
+      "613": {
+        "name": "其他说话人_614",
+        "speech_seconds": 1.0,
+        "first_seconds": 2008.6
+      },
+      "614": {
+        "name": "其他说话人_615",
+        "speech_seconds": 16.6,
+        "first_seconds": 3070.3
+      },
+      "615": {
+        "name": "其他说话人_616",
+        "speech_seconds": 2.64,
+        "first_seconds": 776.14
+      },
+      "616": {
+        "name": "其他说话人_617",
+        "speech_seconds": 1.12,
+        "first_seconds": 1953.9
+      },
+      "617": {
+        "name": "其他说话人_618",
+        "speech_seconds": 1.88,
+        "first_seconds": 3313.68
+      },
+      "618": {
+        "name": "其他说话人_619",
+        "speech_seconds": 2.4,
+        "first_seconds": 3741.62
+      },
+      "619": {
+        "name": "其他说话人_620",
+        "speech_seconds": 1.76,
+        "first_seconds": 910.92
+      },
+      "620": {
+        "name": "其他说话人_621",
+        "speech_seconds": 3.36,
+        "first_seconds": 1037.26
+      },
+      "621": {
+        "name": "其他说话人_622",
+        "speech_seconds": 1.2,
+        "first_seconds": 2184.8
+      },
+      "622": {
+        "name": "其他说话人_623",
+        "speech_seconds": 1.38,
+        "first_seconds": 2005.44
+      },
+      "623": {
+        "name": "其他说话人_624",
+        "speech_seconds": 2.58,
+        "first_seconds": 1283.96
+      },
+      "624": {
+        "name": "其他说话人_625",
+        "speech_seconds": 1.06,
+        "first_seconds": 2000.9
+      },
+      "625": {
+        "name": "其他说话人_626",
+        "speech_seconds": 2.0,
+        "first_seconds": 931.6
+      },
+      "626": {
+        "name": "其他说话人_627",
+        "speech_seconds": 1.56,
+        "first_seconds": 2229.8
+      },
+      "627": {
+        "name": "其他说话人_628",
+        "speech_seconds": 1.14,
+        "first_seconds": 1238.78
+      },
+      "628": {
+        "name": "其他说话人_629",
+        "speech_seconds": 1.92,
+        "first_seconds": 893.14
+      },
+      "629": {
+        "name": "其他说话人_630",
+        "speech_seconds": 1.88,
+        "first_seconds": 485.32
+      },
+      "630": {
+        "name": "其他说话人_631",
+        "speech_seconds": 3.44,
+        "first_seconds": 1993.54
+      },
+      "631": {
+        "name": "其他说话人_632",
+        "speech_seconds": 1.42,
+        "first_seconds": 1965.54
+      },
+      "632": {
+        "name": "其他说话人_633",
+        "speech_seconds": 1.26,
+        "first_seconds": 2012.6
+      },
+      "633": {
+        "name": "其他说话人_634",
+        "speech_seconds": 1.14,
+        "first_seconds": 1524.52
+      },
+      "634": {
+        "name": "其他说话人_635",
+        "speech_seconds": 1.58,
+        "first_seconds": 3712.26
+      },
+      "635": {
+        "name": "其他说话人_636",
+        "speech_seconds": 1.06,
+        "first_seconds": 4712.72
+      },
+      "636": {
+        "name": "其他说话人_637",
+        "speech_seconds": 1.94,
+        "first_seconds": 86.46
+      },
+      "637": {
+        "name": "其他说话人_638",
+        "speech_seconds": 1.02,
+        "first_seconds": 2681.72
+      },
+      "638": {
+        "name": "其他说话人_639",
+        "speech_seconds": 1.48,
+        "first_seconds": 3740.14
+      },
+      "639": {
+        "name": "其他说话人_640",
+        "speech_seconds": 1.06,
+        "first_seconds": 748.62
+      },
+      "640": {
+        "name": "其他说话人_641",
+        "speech_seconds": 2.02,
+        "first_seconds": 991.38
+      },
+      "641": {
+        "name": "其他说话人_642",
+        "speech_seconds": 3.48,
+        "first_seconds": 961.16
+      },
+      "642": {
+        "name": "其他说话人_643",
+        "speech_seconds": 2.42,
+        "first_seconds": 464.24
+      },
+      "643": {
+        "name": "其他说话人_644",
+        "speech_seconds": 2.0,
+        "first_seconds": 412.54
+      },
+      "644": {
+        "name": "其他说话人_645",
+        "speech_seconds": 1.04,
+        "first_seconds": 2009.6
+      },
+      "645": {
+        "name": "其他说话人_646",
+        "speech_seconds": 5.08,
+        "first_seconds": 508.38
+      },
+      "646": {
+        "name": "其他说话人_647",
+        "speech_seconds": 1.7,
+        "first_seconds": 978.24
+      },
+      "647": {
+        "name": "其他说话人_648",
+        "speech_seconds": 2.4,
+        "first_seconds": 2958.88
+      },
+      "648": {
+        "name": "其他说话人_649",
+        "speech_seconds": 3.24,
+        "first_seconds": 3586.88
+      },
+      "649": {
+        "name": "其他说话人_650",
+        "speech_seconds": 3.74,
+        "first_seconds": 1966.96
+      },
+      "650": {
+        "name": "其他说话人_651",
+        "speech_seconds": 2.6,
+        "first_seconds": 70.4
+      },
+      "651": {
+        "name": "其他说话人_652",
+        "speech_seconds": 3.68,
+        "first_seconds": 496.2
+      },
+      "652": {
+        "name": "其他说话人_653",
+        "speech_seconds": 2.58,
+        "first_seconds": 2616.78
+      },
+      "653": {
+        "name": "其他说话人_654",
+        "speech_seconds": 1.84,
+        "first_seconds": 3612.34
+      },
+      "654": {
+        "name": "其他说话人_655",
+        "speech_seconds": 1.2,
+        "first_seconds": 738.78
+      },
+      "655": {
+        "name": "其他说话人_656",
+        "speech_seconds": 2.34,
+        "first_seconds": 707.12
+      },
+      "656": {
+        "name": "其他说话人_657",
+        "speech_seconds": 2.24,
+        "first_seconds": 1165.52
+      },
+      "657": {
+        "name": "其他说话人_658",
+        "speech_seconds": 3.68,
+        "first_seconds": 74.42
+      },
+      "658": {
+        "name": "其他说话人_659",
+        "speech_seconds": 1.3,
+        "first_seconds": 1249.0
+      },
+      "659": {
+        "name": "其他说话人_660",
+        "speech_seconds": 5.16,
+        "first_seconds": 1931.14
+      },
+      "660": {
+        "name": "其他说话人_661",
+        "speech_seconds": 9.6,
+        "first_seconds": 272.96
+      },
+      "661": {
+        "name": "其他说话人_662",
+        "speech_seconds": 1.2,
+        "first_seconds": 2186.66
+      },
+      "662": {
+        "name": "其他说话人_663",
+        "speech_seconds": 3.44,
+        "first_seconds": 166.42
+      },
+      "663": {
+        "name": "其他说话人_664",
+        "speech_seconds": 2.28,
+        "first_seconds": 2092.44
+      },
+      "664": {
+        "name": "其他说话人_665",
+        "speech_seconds": 2.52,
+        "first_seconds": 2651.18
+      },
+      "665": {
+        "name": "其他说话人_666",
+        "speech_seconds": 2.52,
+        "first_seconds": 1077.36
+      },
+      "666": {
+        "name": "其他说话人_667",
+        "speech_seconds": 2.18,
+        "first_seconds": 899.8
+      },
+      "667": {
+        "name": "其他说话人_668",
+        "speech_seconds": 3.28,
+        "first_seconds": 481.54
+      },
+      "668": {
+        "name": "其他说话人_669",
+        "speech_seconds": 1.6,
+        "first_seconds": 1215.88
+      },
+      "669": {
+        "name": "其他说话人_670",
+        "speech_seconds": 1.12,
+        "first_seconds": 927.4
+      },
+      "670": {
+        "name": "其他说话人_671",
+        "speech_seconds": 10.32,
+        "first_seconds": 1258.08
+      },
+      "671": {
+        "name": "其他说话人_672",
+        "speech_seconds": 1.06,
+        "first_seconds": 79.56
+      },
+      "672": {
+        "name": "其他说话人_673",
+        "speech_seconds": 2.52,
+        "first_seconds": 1905.12
+      },
+      "673": {
+        "name": "其他说话人_674",
+        "speech_seconds": 1.94,
+        "first_seconds": 983.86
+      },
+      "674": {
+        "name": "其他说话人_675",
+        "speech_seconds": 2.06,
+        "first_seconds": 989.02
+      },
+      "675": {
+        "name": "其他说话人_676",
+        "speech_seconds": 2.0,
+        "first_seconds": 1200.4
+      },
+      "676": {
+        "name": "其他说话人_677",
+        "speech_seconds": 1.96,
+        "first_seconds": 3665.36
+      },
+      "677": {
+        "name": "其他说话人_678",
+        "speech_seconds": 2.02,
+        "first_seconds": 1053.46
+      },
+      "678": {
+        "name": "其他说话人_679",
+        "speech_seconds": 1.14,
+        "first_seconds": 2773.08
+      },
+      "679": {
+        "name": "其他说话人_680",
+        "speech_seconds": 1.08,
+        "first_seconds": 898.14
+      },
+      "680": {
+        "name": "其他说话人_681",
+        "speech_seconds": 2.0,
+        "first_seconds": 3104.02
+      },
+      "681": {
+        "name": "其他说话人_682",
+        "speech_seconds": 2.26,
+        "first_seconds": 218.82
+      },
+      "682": {
+        "name": "其他说话人_683",
+        "speech_seconds": 2.64,
+        "first_seconds": 2088.22
+      },
+      "683": {
+        "name": "其他说话人_684",
+        "speech_seconds": 2.24,
+        "first_seconds": 3160.88
+      },
+      "684": {
+        "name": "其他说话人_685",
+        "speech_seconds": 9.72,
+        "first_seconds": 2573.02
+      },
+      "685": {
+        "name": "其他说话人_686",
+        "speech_seconds": 2.68,
+        "first_seconds": 1936.6
+      },
+      "686": {
+        "name": "其他说话人_687",
+        "speech_seconds": 1.5,
+        "first_seconds": 1536.0
+      },
+      "687": {
+        "name": "其他说话人_688",
+        "speech_seconds": 2.12,
+        "first_seconds": 742.62
+      },
+      "688": {
+        "name": "其他说话人_689",
+        "speech_seconds": 6.16,
+        "first_seconds": 2907.78
+      },
+      "689": {
+        "name": "其他说话人_690",
+        "speech_seconds": 1.6,
+        "first_seconds": 1254.52
+      },
+      "690": {
+        "name": "其他说话人_691",
+        "speech_seconds": 1.54,
+        "first_seconds": 3673.5
+      },
+      "691": {
+        "name": "其他说话人_692",
+        "speech_seconds": 2.04,
+        "first_seconds": 1233.68
+      },
+      "692": {
+        "name": "其他说话人_693",
+        "speech_seconds": 3.58,
+        "first_seconds": 1972.78
+      },
+      "693": {
+        "name": "其他说话人_694",
+        "speech_seconds": 11.74,
+        "first_seconds": 390.78
+      },
+      "694": {
+        "name": "其他说话人_695",
+        "speech_seconds": 2.2,
+        "first_seconds": 2870.1
+      },
+      "695": {
+        "name": "其他说话人_696",
+        "speech_seconds": 18.78,
+        "first_seconds": 253.56
+      },
+      "696": {
+        "name": "其他说话人_697",
+        "speech_seconds": 1.84,
+        "first_seconds": 1882.3
+      },
+      "697": {
+        "name": "其他说话人_698",
+        "speech_seconds": 2.76,
+        "first_seconds": 237.06
+      },
+      "698": {
+        "name": "其他说话人_699",
+        "speech_seconds": 1.8,
+        "first_seconds": 1292.62
+      },
+      "699": {
+        "name": "其他说话人_700",
+        "speech_seconds": 1.64,
+        "first_seconds": 1538.46
+      },
+      "700": {
+        "name": "其他说话人_701",
+        "speech_seconds": 29.98,
+        "first_seconds": 187.4
+      },
+      "701": {
+        "name": "其他说话人_702",
+        "speech_seconds": 1.26,
+        "first_seconds": 3701.02
+      },
+      "702": {
+        "name": "其他说话人_703",
+        "speech_seconds": 1.52,
+        "first_seconds": 4285.62
+      },
+      "703": {
+        "name": "其他说话人_704",
+        "speech_seconds": 20.06,
+        "first_seconds": 44.1
+      },
+      "704": {
+        "name": "其他说话人_705",
+        "speech_seconds": 1.16,
+        "first_seconds": 2035.54
+      },
+      "705": {
+        "name": "其他说话人_706",
+        "speech_seconds": 8.4,
+        "first_seconds": 881.98
+      },
+      "706": {
+        "name": "其他说话人_707",
+        "speech_seconds": 9.6,
+        "first_seconds": 2695.18
+      },
+      "707": {
+        "name": "其他说话人_708",
+        "speech_seconds": 2.34,
+        "first_seconds": 908.58
+      },
+      "708": {
+        "name": "其他说话人_709",
+        "speech_seconds": 1.14,
+        "first_seconds": 3503.86
+      },
+      "709": {
+        "name": "王焓",
+        "speech_seconds": 3.0,
+        "first_seconds": 0.32
+      },
+      "710": {
+        "name": "其他说话人_710",
+        "speech_seconds": 1.82,
+        "first_seconds": 870.54
+      },
+      "711": {
+        "name": "其他说话人_711",
+        "speech_seconds": 1.46,
+        "first_seconds": 2014.32
+      },
+      "712": {
+        "name": "其他说话人_712",
+        "speech_seconds": 4.18,
+        "first_seconds": 2062.28
+      },
+      "713": {
+        "name": "其他说话人_713",
+        "speech_seconds": 2.76,
+        "first_seconds": 2205.26
+      },
+      "714": {
+        "name": "其他说话人_714",
+        "speech_seconds": 5.38,
+        "first_seconds": 1864.76
+      },
+      "715": {
+        "name": "其他说话人_715",
+        "speech_seconds": 4.28,
+        "first_seconds": 1087.6
+      }
+    }
+  },
+  "quality": {
+    "speech_segment_count": 966,
+    "zone_count": 1279,
+    "duration_by_zone_seconds": {
+      "noEnergy": 577.64,
+      "speech": 2926.24,
+      "noise": 109.9,
+      "music": 1961.88
+    },
+    "model": "large-v3",
+    "music_is_not_transcribed": true,
+    "singing_is_expected_to_be_labeled_music": true
+  }
+}
