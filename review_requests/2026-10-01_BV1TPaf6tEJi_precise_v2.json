@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-01",
+  "url": "https://www.bilibili.com/video/BV1TPaf6tEJi?spm_id_from=333.788.videopod.sections&vd_source=695c8532c926bd4eb1c470ededc1660b",
+  "label": "王焓直播录屏 BV1TPaf6tEJi 精准转写V2",
+  "audio_fallback": true,
+  "model": "large-v3",
+  "precision_mode": true,
+  "output_suffix": "precise_v2",
+  "hotwords": "王焓 焓太医 听潮阁 中医 连麦 PK 粉丝团 灯牌 音浪 开灯 不周山",
+  "wanghan_reference_ranges": [],
+  "requested_at": "2026-10-01T13:08:00+08:00"
+}
