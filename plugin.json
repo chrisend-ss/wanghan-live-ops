@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "wanghan-core-ops",
-  "version": "0.3.2",
-  "description": "新分支核心运营思路：B站录屏、Chrome抖音后台数据、可信复盘与八模块实验的统一入口。",
+  "version": "0.4.0",
+  "description": "王焓直播复盘与核心运营融合：一次采集与审查、一份数据报告、下一轮可验证实验。",
   "author": {
     "name": "chrisend-ss"
   },
@@ -11,7 +11,7 @@
       "interface": {
         "displayName": "新分支核心运营思路",
         "shortDescription": "王焓核心数据分析：直播复盘与战略实验",
-        "longDescription": "接收B站链接与已登录Chrome后台，核对分P和场次，复用转写、只读采集并审查指标口径，校准时间轴后分析进房与新人留存。默认不写主播话术；浏览器连接和转写须实际验证。",
+        "longDescription": "融合B站录屏与已登录Chrome后台：可信转写和说话人审查、时间轴对齐、五层漏斗、八大战略模块及下一轮实验，共用一条证据链并输出一份报告。默认不写主播话术，实际采集与转写能力须逐次核验。",
         "developerName": "chrisend-ss",
         "category": "Productivity",
         "defaultPrompt": "用新分支核心运营思路分析这份王焓运营资料：先判断模块与运营功能，再给证据等级、变量、指标、验证方式、运营部门审查、结论标准和下一步。"
