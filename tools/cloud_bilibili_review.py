@@ -6,6 +6,7 @@ import traceback
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
+from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -53,7 +54,10 @@ def main() -> int:
     wanghan_reference_ranges = request.get("wanghan_reference_ranges") or []
 
     bvid = extract_bvid(url)
-    folder_name = f"{date}_{bvid}" + (f"_{output_suffix}" if output_suffix else "")
+    part = int(parse_qs(urlsplit(url).query).get("p", ["1"])[0])
+    if part < 1:
+        raise ValueError("分P必须是正整数")
+    folder_name = f"{date}_{bvid}" + (f"_p{part}" if part != 1 else "") + (f"_{output_suffix}" if output_suffix else "")
     out_dir = Path("reviews") / folder_name
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -62,6 +66,7 @@ def main() -> int:
         "status": "running",
         "date": date,
         "bvid": bvid,
+        "part": part,
         "url": url,
         "label": label,
         "request_file": str(request_path),
@@ -105,6 +110,7 @@ def main() -> int:
             "owner": info.get("owner"),
             "duration_seconds": info.get("duration"),
             "cid": info.get("cid"),
+            "part": info.get("part", part),
             "source": result["source"],
             "segment_count": len(segments),
             "generated_at": datetime.now(timezone.utc).isoformat(),

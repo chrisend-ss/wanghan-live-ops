@@ -20,7 +20,8 @@ description: 王焓核心数据分析统一入口：整合录屏精准转写、�
 
 按输入路由，并使用 [references/core-data-analysis.md](references/core-data-analysis.md) 完成统一交付：
 
-- B站URL/BV或录屏：先读 [references/live-review-method.md](references/live-review-method.md)，查询可复用精准结果，再按工具能力补转写，核验音频分区、说话人、覆盖范围和状态。
+- B站URL/BV或录屏：先读 [references/source-acquisition.md](references/source-acquisition.md) 的B站入口，核对分P/CID并查询可复用结果；再按 [references/live-review-method.md](references/live-review-method.md) 审查转写，核验音频分区、身份、覆盖范围和状态。
+- Chrome抖音后台或后台标签页：先读 [references/source-acquisition.md](references/source-acquisition.md) 的Chrome入口。绑定已登录的指定配置/场次，只读采集当前页面可核对的指标，按单位、窗口、来源与人群整理后再校准；未连接不声称已取得数据。
 - 已有逐字稿/节点/后台数据：直接审查来源和口径，校准时间轴；不重复转写。
 - 只有后台或整场截图：只在实际粒度上分析，不伪造内容节点、分钟曲线或用户留存。
 - 只有视觉/活动/选题/切片方案：输出待验证假设和实验，不能声称完成直播效果复盘。
@@ -162,6 +163,12 @@ description: 王焓核心数据分析统一入口：整合录屏精准转写、�
 - 生成切片假设
 
 vidIQ 结果属于**外部样本参考**，默认最高作为二/三级参考，不得直接升级为王焓真人或直播效果事实。
+
+### 7. Chrome浏览器与Airtable
+
+Chrome通过宿主官方浏览器扩展读取用户已登录的B站/抖音页面；连接、登录、场次选择、采集与校准分别验收。优先原生导出或可读数值，不凭Canvas截图编造精确曲线。实际浏览器API允许时读取已观察的只读数据响应，不硬编码未验证后台接口。
+
+Airtable保存场次、节点、指标窗口与实验。先发现用户指定数据库和字段，核对session/窗口后再写入；缺数留空，原始认证信息和粉丝身份明细不保存。B站原文/字幕是内容证据，抖音后台是效果证据；vidIQ不能替代这两个入口。采集规则及只读整理脚本见 [source-acquisition.md](references/source-acquisition.md)。
 
 ## 输入与证据处理
 

@@ -6,7 +6,7 @@
 
 - 先检查会话可用工具、仓库当前实现、任务状态和输出完整性；插件包含说明，不代表自带转写服务。缺能力时交付可完成的部分及具体缺口。
 - 同BV/分P/输入版本/模型参数已有有效精准结果则复用；completed 还须核对覆盖时长、质量报告、音频分区、说话人置信度。失败或仅部分覆盖不得当完整结果。
-- 自动ASR与聚类标签均为待核验草稿，speaker=王焓不是身份确认。没有同录像内已确认参考段时仅推断主cluster，不能强定真人性格或习惯。
+- 自动ASR与聚类标签均为待核验草稿，speaker=王焓不是身份确认。没有同录像内已确认参考段时只保留主cluster候选，身份视为未确认，不能强定真人性格或习惯。采集与验收优先按source-acquisition.md执行。
 - 日期与分P取用户说明或来源元数据，不凭BV编号猜测；请求中不放敏感标识或认证信息。
 - 文中事件清单是分析层候选；适配器/API支持哪些字段必须查当前schema，不向不支持的API投递share/marker/speech/music。缺曝光、离房或稳定用户标识时相应比率/留存/复访不可计算。
 - 文中云端流程只有实际可用时执行。新任务须在原授权范围内；公开仓库不保存私人后台和可识别用户资料，原始媒体不长期保留。提交任务后报告运行中，不创建后台监控承诺；只有用户要求时设置后续提醒。
@@ -52,8 +52,8 @@
    - 使用 `avg_logprob` 与 `no_speech_prob` 做保守过滤。
 5. 对 speech 段使用 SpeechBrain ECAPA speaker embedding 做多人说话人聚类。
 6. 王焓身份识别优先级：
-   - **High**：同一录像中给出已确认的王焓纯说话时间段作为 reference range，再匹配 speaker cluster；
-   - **Medium**：没有 reference range 时，根据“总说话时长占比 + 是否较早出现”推断主播主 cluster；
+   - **High模型标签**：同一录像中给出已确认的王焓纯说话时间段作为reference，再匹配；仍须独立检查参考纯净度和ASR质量，不自动等于身份确认；
+   - **Medium旧标签**：没有reference时，时长与出现次序只能产生主cluster候选，身份标未确认，不纳入王焓确认语料；
    - **Low**：短句/混音严重/无法稳定归类，标 `说话人_未知`，不得强行写王焓。
 7. 不默认长期保存王焓声纹向量。持续声纹档案属于更敏感的生物特征型数据，只有用户明确要求后才考虑持久化；默认只使用**同一录像内的参考时间段**。
 
@@ -67,7 +67,7 @@ GitHub `review_requests/*.json` 可包含：
 - `wanghan_reference_ranges: [[start_sec, end_sec], ...]`
 - `output_suffix: "precise_v2"`
 
-若没有 reference range，也应运行 speaker clustering，但王焓标签只能作为中等置信度推断。
+若没有reference，可运行聚类和转写，但王焓身份仍未确认；保留原始标签用于审计，不将主cluster升级为王焓原话。
 
 ## 精准输出
 
@@ -96,7 +96,7 @@ GitHub `review_requests/*.json` 可包含：
 
 - `kind == speech`
 - `speaker == 王焓`
-- 优先 high/medium confidence
+- 已核验参考和身份；ASR质量独立通过或原音已人工确认。旧high/medium或主cluster标签不能单独作为纳入条件。
 
 背景音乐/歌唱只作为节目节点，不进入王焓口头禅、表达习惯、话术风格样本。
 

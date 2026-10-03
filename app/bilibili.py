@@ -5,7 +5,7 @@ import sys
 import tempfile
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 import requests
 
@@ -51,12 +51,17 @@ def get_video_info(url_or_bvid: str) -> Dict[str, Any]:
     pages = data.get("pages") or []
     if not pages:
         raise RuntimeError("视频没有可读取的分P信息")
+    part = int(parse_qs(urlparse(url_or_bvid).query).get("p", ["1"])[0])
+    if not 1 <= part <= len(pages):
+        raise ValueError("视频分P不存在")
+    selected = pages[part - 1]
     return {
         "bvid": bvid,
         "title": data.get("title") or bvid,
         "owner": (data.get("owner") or {}).get("name"),
-        "duration": data.get("duration"),
-        "cid": pages[0]["cid"],
+        "duration": selected.get("duration"),
+        "cid": selected["cid"],
+        "part": part,
         "pages": pages,
     }
 
@@ -90,7 +95,8 @@ def get_public_subtitles(bvid: str, cid: int) -> List[Dict[str, Any]]:
             "start_seconds": float(item.get("from", 0)),
             "end_seconds": float(item.get("to", item.get("from", 0))),
             "text": str(item.get("content", "")).strip(),
-            "speaker": "王焓",
+            "speaker": "说话人_未区分",
+            "speaker_confidence": "low",
         }
         for item in body
         if str(item.get("content", "")).strip()
@@ -344,7 +350,8 @@ def transcribe_temp_audio(
                     "start_seconds": float(seg.start),
                     "end_seconds": float(seg.end),
                     "text": text,
-                    "speaker": "王焓",
+                    "speaker": "说话人_未区分",
+                    "speaker_confidence": "low",
                 }
             )
         return result

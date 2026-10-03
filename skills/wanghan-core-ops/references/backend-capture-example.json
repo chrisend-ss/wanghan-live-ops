@@ -1,0 +1,11 @@
+{
+  "example_only": true,
+  "source_url": "https://example.douyin.com/example-review",
+  "captured_at": "2026-10-03T12:00:00+08:00",
+  "session_id": "SYNTHETIC-EXAMPLE-DO-NOT-IMPORT",
+  "metrics": [
+    {"key": "exposure", "label": "虚构曝光次数", "value": 1000, "unit": "count", "kind": "window_increment", "window_start": "2026-10-03T10:00:00+08:00", "window_end": "2026-10-03T10:10:00+08:00", "traffic_source": "虚构推荐", "population": "虚构曝光事件", "definition_verified": false},
+    {"key": "entries", "label": "虚构进房次数", "value": 100, "unit": "count", "kind": "window_increment", "window_start": "2026-10-03T10:00:00+08:00", "window_end": "2026-10-03T10:10:00+08:00", "traffic_source": "虚构推荐", "population": "虚构曝光事件", "definition_verified": false},
+    {"key": "official_newcomer60_rate", "label": "虚构官方新人60秒留存", "value": "30%", "unit": "percent", "kind": "official_rate", "window_start": "2026-10-03T10:00:00+08:00", "window_end": "2026-10-03T10:10:00+08:00", "traffic_source": "虚构推荐", "population": "虚构完整观察新人", "definition_verified": false}
+  ]
+}

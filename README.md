@@ -4,7 +4,7 @@
 
 ## 个人运营 Skill：新分支核心运营思路
 
-当前版本：**0.3.1**
+当前版本：**0.3.2**
 
 统一入口已整合王焓直播复盘：证据核验→可信时间轴→漏斗分析→战略审查→下一轮实验。当前优先提高进房与新人留存。
 
@@ -24,6 +24,23 @@
 
 调用标识：`$wanghan-core-ops`
 中文展示名：**新分支核心运营思路**
+
+## B站录屏与Chrome后台数据入口
+
+B站链接/BV可读取视频身份、分P/CID和字幕轨线索，优先复用同分P已有转写；匿名接口失败时从正常浏览器页面只读取得元数据。旧字幕不自动认定为王焓原话。云端转写沿用已有工作流，不因本次升级重跑历史任务。
+
+抖音后台使用用户已登录的Chrome配置，通过宿主官方扩展连接。先核对账号、场次与筛选，再读取原生导出/页面数值；当前工具允许开发者读取时可核对已观察的JSON趋势响应。后台页面未实际连接和采集前，不宣称取得数据。
+
+- [两个入口的完整流程与Chrome安装入口](skills/wanghan-core-ops/references/source-acquisition.md)
+- [只读元数据/指标整理脚本](skills/wanghan-core-ops/scripts/prepare_sources.py)
+- [后台交接格式（全部虚构）](skills/wanghan-core-ops/references/backend-capture-example.json)
+
+```bash
+python skills/wanghan-core-ops/scripts/prepare_sources.py bilibili --url "https://www.bilibili.com/video/BV1TPaf6tEJi/" --reviews-root reviews --output data/bilibili-intake.json
+python skills/wanghan-core-ops/scripts/prepare_sources.py backend --input data/capture.json --output data/normalized.json
+```
+
+脚本不读取浏览器凭据、不自动连接抖音、不下载媒体或启动转写。后台整理保留单位、增量/累计/瞬时口径、窗口与缺失；认证参数不保存，比例需另行审查后计算。真实场次结果只存私人台账。
 
 ## 当前能力
 

@@ -6,7 +6,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-from urllib.parse import urljoin
+from urllib.parse import parse_qs, urljoin, urlsplit
 
 import requests
 
@@ -56,13 +56,19 @@ def _raw_decode_assignment(html: str, variable: str) -> Optional[dict]:
         return None
 
 
-def _metadata_from_initial(initial: Optional[dict], bvid: str) -> Dict[str, Any]:
+def _metadata_from_initial(initial: Optional[dict], bvid: str, part: int = 1) -> Dict[str, Any]:
     initial = initial or {}
     video = initial.get("videoData") or initial.get("videoInfo") or {}
     pages = video.get("pages") or []
     cid = video.get("cid")
-    if not cid and pages:
-        cid = pages[0].get("cid")
+    selected = {}
+    if pages:
+        if not 1 <= part <= len(pages):
+            raise ValueError("视频分P不存在")
+        selected = pages[part - 1]
+        cid = selected.get("cid")
+    elif part != 1:
+        raise ValueError("缺少所选分P元数据，不能认定CID")
 
     owner = (
         (initial.get("upData") or {}).get("name")
@@ -74,8 +80,9 @@ def _metadata_from_initial(initial: Optional[dict], bvid: str) -> Dict[str, Any]
         "bvid": video.get("bvid") or bvid,
         "title": video.get("title") or bvid,
         "owner": owner,
-        "duration": video.get("duration"),
+        "duration": selected.get("duration", video.get("duration")),
         "cid": cid,
+        "part": part,
         "pages": pages,
     }
 
@@ -271,7 +278,8 @@ def _page_state_via_browser(url: str) -> Tuple[dict, dict, List[dict], str]:
                                     "start_seconds": float(item.get("from", 0)),
                                     "end_seconds": float(item.get("to", item.get("from", 0))),
                                     "text": text_value,
-                                    "speaker": "王焓",
+                                    "speaker": "说话人_未区分",
+                                    "speaker_confidence": "low",
                                 }
                             )
         except Exception as exc:
@@ -303,6 +311,9 @@ def _page_state_via_browser(url: str) -> Tuple[dict, dict, List[dict], str]:
 
 def get_page_media(url: str) -> Dict[str, Any]:
     bvid = extract_bvid(url)
+    part = int(parse_qs(urlsplit(url).query).get("p", ["1"])[0])
+    if part < 1:
+        raise ValueError("分P必须是正整数")
     errors: List[str] = []
 
     try:
@@ -310,7 +321,7 @@ def get_page_media(url: str) -> Dict[str, Any]:
         candidates = _extract_media_candidates(playinfo)
         if candidates:
             return {
-                "info": _metadata_from_initial(initial, bvid),
+                "info": _metadata_from_initial(initial, bvid, part),
                 "playinfo": playinfo,
                 "cookies": cookies,
                 "method": method,
@@ -327,7 +338,7 @@ def get_page_media(url: str) -> Dict[str, Any]:
         if not candidates:
             raise RuntimeError("Browser page contained no usable playinfo media.")
         return {
-            "info": _metadata_from_initial(initial, bvid),
+            "info": _metadata_from_initial(initial, bvid, part),
             "playinfo": playinfo,
             "cookies": cookies,
             "method": method,
